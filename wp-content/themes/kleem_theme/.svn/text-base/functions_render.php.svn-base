@@ -1,0 +1,305 @@
+<?php
+
+add_action('init', 'rio_add_style');
+
+add_filter('walker_nav_menu_start_el', 'rio_adjust_nav', 10, 2);
+
+
+function rio_add_style() {
+    wp_enqueue_style('thickbox');
+}
+
+function rio_adjust_nav($nav_ref, $args) {
+    
+    // 0 indicates primary menu (hopefulls)
+    if ($args->post_parent == 0 && $args->menu_item_parent == "0") {
+        switch ($args->title) {
+            case 'abstimmen' :
+                return str_replace($args -> title . '</a>', '<div class="menu-item-img-bg"><img src="' . get_stylesheet_directory_uri() . '/images/read.png' . '"></div><div class="title-text">' . $args -> title . '</div>' . '</a>', $nav_ref);
+                break;
+            case 'schreiben' :
+                return str_replace($args -> title . '</a>', '<div class="menu-item-img-bg"><img src="' . get_stylesheet_directory_uri() . '/images/write.png' . '"></div><div class="title-text">' . $args -> title . '</div>' . '</a><ul class="sub-menu"></ul>', $nav_ref);
+                break;
+            case 'informieren' :
+                return str_replace($args -> title . '</a>', '<div class="menu-item-img-bg"><img src="' . get_stylesheet_directory_uri() . '/images/info.png' . '"></div><div class="title-text">' . $args -> title . '</div>' . '</a>', $nav_ref);
+                break;
+        }
+    } 
+
+    return $nav_ref;
+}
+
+function rio_the_colored_title($withLinks = false, $beforeWord = "", $afterWord = "", $postID = -1, $inQuotes = true, $echo = true) {
+    if($postID === -1) {
+        $postID = get_the_ID();
+    } 
+    
+    $title = get_the_title($postID);
+    $terms = get_terms( 'rio_topics' );
+    
+    
+    if(is_wp_error($title) || is_wp_error($terms)) {
+        return "";
+    }
+    
+    
+    // reorder $terms
+    foreach ($terms as $key => $term) {
+        $terms[strtolower($term->name)] = $term;
+        unset($terms[$key]);
+    }
+    
+    
+    // examine each word
+    $words = explode(" ", $title);
+    foreach ($words as &$word) {
+        $escWord = preg_replace('/^[^a-zA-Z0-9]*/','', $word);
+        $escWord = preg_replace('/[^a-zA-Z0-9]*$/','', $escWord);
+        $lowWord = strtolower($escWord);
+
+        if(array_key_exists($lowWord, $terms)) {
+            $term = &$terms[$lowWord];
+            
+            
+            $color = wp_strip_all_tags($term->description);
+
+            if(strlen($color) < 3|| strlen($color) > 10) {
+                $color = "";
+            }
+            
+            
+            $newWord = "";
+            $containerStart = "";
+            $containerEnd = "";
+            
+            if($withLinks === true) {
+                $containerStart .= '<a href="' . get_term_link($term) . '" rel="topic"';
+                $containerEnd .= '</a>';
+            } else {
+                $containerStart .= '<span style="color:#1982D1"';
+                $containerEnd .= '</span>';
+            }
+            
+            
+            if($term->parent != '0') {
+                $newWord .= $containerStart . ' class="rio_topic main_topic" style="color: ' . $color . ';">' . $escWord . $containerEnd;
+            } else {
+                $newWord .= $containerStart . ' class="rio_topic user_topic">' . $escWord . $containerEnd;
+            }
+            $word = str_replace($escWord, $newWord, $word);
+        } else {
+            $word = $beforeWord . $word . $afterWord;
+        }
+    }
+
+
+
+    // reconstruct and wrap
+    $title = implode(" ", $words);
+    $before = ($inQuotes === true)? '<span class="quote">„&nbsp;</span>': '';
+    $after = ($inQuotes === true)? '<span class="quote">&nbsp;“</span>': '';
+    $title = $before . $title . $after;
+    
+    
+    // return
+    if($echo === true) {
+        echo $title;
+    } else {
+        return $title;
+    }
+}
+
+
+
+function rio_get_the_reference($id = 0, $parseYoutube = true) {
+    
+    $url = get_post_meta($id, 'reference', true);
+    if (is_wp_error($url) || strlen($url) == 0)
+        return "";
+    
+    
+    if ($parseYoutube === true && preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url, $match)) {
+        return '<iframe width="300" height="200" modestbranding="1" rel="0" showinfo="0" controls="0" src="http://www.youtube-nocookie.com/embed/' . $match[1] . '?wmode=transparent" frameborder="0" allowfullscreen></iframe>';
+    }
+
+
+    return '<a target="_blank "href="' . $url . '" title="Message-Quellenangabe"">' . __('Referenz') . '</a>';
+    
+}
+
+
+function rio_get_the_topic_list($id = 0, $sep = "") {
+    $taxonomy = 'rio_topics';
+    $terms = get_the_terms($id, $taxonomy);
+
+    if (is_wp_error($terms))
+        return $terms;
+
+    if (empty($terms))
+        return false;
+
+    foreach ($terms as $term) {
+        $link = get_term_link($term, $taxonomy);
+        if (is_wp_error($link))
+            return $link;
+        $color = wp_strip_all_tags($term->description);
+        if(strlen($color) < 3|| strlen($color) > 10) {
+            $color = "";
+        }
+        if($term->parent != '0') {
+            $term_links[] = '<div class="rio_topic_wrap"><a href="' . $link . '" rel="topic" class="main_topic" style="background-color: ' . $color . ';">' . $term->name . '</a></div>';
+        } else {
+            $term_links[] = '<div class="rio_topic_wrap"><a href="' . $link . '" rel="topic" class="user_topic">' . $term->name . '</a></div>';
+        }
+    }
+
+    return join($sep, $term_links);
+}
+
+
+function rio_get_the_commentbox($postID = 0) {
+    if($postID == 0) {
+        $postID = get_the_ID();
+        
+        if(! isset($postID)) {
+            return "";
+        }
+    }
+    
+    
+    $html = "";
+    $commentCount = get_comments_number($postID);
+    
+    
+    if ( $commentCount > 0 ) {
+        $html .= '<div class="comment_box">';
+        $html .= '<a class="comment_number" href="' . get_permalink() . '">' . $commentCount . '</a>';
+        $html .= '</div>';
+    }
+    
+    
+    return $html;
+    
+}
+
+
+function rio_get_the_ratingbox($postID = 0, $userID = 0) {
+    if($postID == 0) {
+        $postID = get_the_ID();
+        
+        if(! isset($postID)) {
+            return "";
+        }
+    }
+    
+    
+    $agreement = intval(get_post_meta($postID, 'agreement', true));
+    $disaffirmation = intval(get_post_meta($postID, 'disaffirmation', true));
+    $sum = $agreement + $disaffirmation;
+    $agreementWidth = 50;
+    $disaffirmationWidth = 50;
+    if ($sum > 0) {
+        $agreementWidth = floor($agreement / $sum * 100);
+        $disaffirmationWidth = floor($disaffirmation / $sum * 100);
+    }
+    
+    $agreementChecked = "";
+    $disaffirmationChecked = "";
+    $nopriv = "nopriv";
+    $ratedClass = "";
+    $link = wp_login_url(get_permalink());
+    $onClick = '';
+    
+    
+    $userID = ($userID == 0)? get_current_user_id() : $userID;
+    if($userID == 0) {
+        $agreementChecked = "checked";
+        $disaffirmationChecked = "checked";
+    } else {
+        $nopriv = "";
+        $onClick = 'onclick="return false;"';
+        $link = "#";
+        $rated = get_user_meta($userID, 'rated', true);
+        if($rated != "" && array_key_exists($postID, $rated)) {
+            $ratedClass = 'rated';
+            if(intval($rated[$postID]) > 0 ) {
+                $agreementChecked = "checked";
+            } else {
+                $disaffirmationChecked = "checked";
+            }
+        }
+    }
+    
+    
+    
+    $html = '<div class="ratingbox ' . $nopriv . ' ' . $ratedClass . '" postID="' . $postID . '">';
+    $html .= '<div class="agreement ratebutton ' . $agreementChecked . '">';
+    $html .= '<a href="' . $link . '" ' . $onClick . '>Zustimmen</a>';
+    $html .= '</div>';
+    $html .= '<div class="disaffirmation ratebutton ' . $disaffirmationChecked . '">';
+    $html .= '<a href="' . $link . '" ' . $onClick . '>Ablehnen</a>';
+    $html .= '</div>';
+    $html .= '<div class="rateometer">';
+    $html .= '<div class="agreement" style="width:' . $agreementWidth . '%;"></div>';
+    $html .= '<div class="disaffirmation" style="width:' . $disaffirmationWidth . '%;"></div>';
+    $html .= '<div class="stats"><span class="agreement val">' . $agreement . '</span>&nbsp;Zustimmungen<span class="disaffirmation val">' . $disaffirmation . '</span>&nbsp;Ablehnungen</div>';
+    $html .= '</div></div>';
+    
+    return $html;
+}
+
+
+
+function rio_get_ajax_pagination($readMore = 'Mehr Messages', $buttonStyle = 'green', $loop = 'content') {
+    // ajax more posts config
+    global $wp_query;
+    $serializedQuery = "";
+    $maxPages = 0;
+    $maxpages = $wp_query -> max_num_pages;
+    
+    
+    if ($maxpages < 2) {
+         return;
+    }
+       
+
+    
+    $query_vars = $wp_query->query_vars;
+    foreach ($query_vars as $q => &$val) {
+        if($val === "") {
+            unset($query_vars[$q]);
+        }
+    }
+    
+    $serializedQuery = base64_encode(serialize($query_vars));
+    $pagingConfig = array(
+        'maxPages'          => $maxPages,
+        'loop'              => $loop,
+        'query'             => $serializedQuery,
+    );
+    
+    
+    
+    //get the ajax loading animation gif
+    $src_path = get_stylesheet_directory_uri() . '/images/ajax-loader.gif';
+    
+    ?>
+    
+    <div id="ajax-post-container"></div>
+    <div class="ajax_more_posts">
+        <a class="large querybutton <?php echo $buttonStyle ?>" id="ajax_pagination_btn" href="#" onclick="return false;"'>
+            <span class="_ajax_link_text"><?php echo $readMore ?></span>
+       </a>
+       <span class="_ajaxpaging_loading" style="display: none;">
+           <img src="<?php echo $src_path ?>" alt="Loading.." />
+       </span>
+    </div>
+    <script type="text/javascript">
+        var rio_paging = <?php echo json_encode($pagingConfig); ?> ;
+    </script>
+    
+    <?php 
+}
+
+
+?>
