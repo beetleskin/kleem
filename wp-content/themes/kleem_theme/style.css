@@ -309,10 +309,6 @@ header#branding {
 }
 /*normale posts*/
 #primary #content .type-post .entry-title {
-	width: 500px;
-	display: inline;
-	float: left;
-	clear: right;
 	line-height: 28px;
 	padding: 0px;
 }
@@ -328,8 +324,8 @@ header#branding {
 }
 
 #primary #content .type-post .title {
-	float: right;
-	width: 618px;
+	width: 617px;
+	float: left;
 	margin-bottom: 10px;
 }
 

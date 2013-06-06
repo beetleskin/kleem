@@ -1,5 +1,0 @@
-<?php
-
-get_footer();
-
-?>
