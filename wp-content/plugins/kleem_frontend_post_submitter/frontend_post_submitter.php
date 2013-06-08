@@ -13,6 +13,27 @@
 
 
 add_action('init', 'FrontendPostSubmitter::init', 11);
+add_action('init', 'fps_init');
+
+
+function fps_init() {
+	add_shortcode( 'fps', 'fps_render' );
+}
+
+
+function fps_render() {
+	ob_start();
+	
+	$form = new FrontendPostSubmitter();
+    $form->enqueue_styles();
+    $form->enqueue_scripts();
+    $form->printAjaxConfig();
+	
+	$form->render();
+	$buffer = ob_get_contents();
+	ob_end_clean();
+	return $buffer;
+}
 
 
 class FrontendPostSubmitter {
@@ -35,7 +56,7 @@ class FrontendPostSubmitter {
     function preRender() {
         $data = array();
         
-        $parentID = get_term_by( 'slug', 'main-topic', 'rio_topics')->term_id ;
+        $parentID = get_term_by( 'slug', 'main-topic', 'opinion_topics')->term_id ;
         $query_args = array(
             'parent'        => $parentID,
             'hide_empty'    => 0,
@@ -58,7 +79,7 @@ class FrontendPostSubmitter {
         $data['nopriv'] = $nopriv;
         $data['submitLink'] = $submitLink;
         $data['onClick'] = $onClick;
-        $topic_data = get_terms('rio_topics', $query_args);
+        $topic_data = get_terms('opinion_topics', $query_args);
         $data['topics'] = $topic_data;
 		$data['images'] = array(
 			"arrow" => plugin_dir_url(__FILE__) . "style/images/sidearrow.png",
@@ -239,7 +260,7 @@ class FrontendPostSubmitter {
             
             // valid integer, check if ID exists
             if($topicID > 0) {
-                if(!get_term_by('id', $topicID, 'rio_topics')) {
+                if(!get_term_by('id', $topicID, 'opinion_topics')) {
                     continue;
                 }
                 
@@ -253,11 +274,11 @@ class FrontendPostSubmitter {
                 }
                 
                 
-                $matching_term = term_exists($topic, 'rio_topics');
+                $matching_term = term_exists($topic, 'opinion_topics');
                 if($matching_term !== NULL) {
                     $topicID = $matching_term['term_id'];
                 } else {
-                    $new_term = wp_insert_term($topic, 'rio_topics');
+                    $new_term = wp_insert_term($topic, 'opinion_topics');
                     if( !is_wp_error($new_term)) {
                         $topicID = $new_term['term_id']; 
                     } else {
@@ -279,7 +300,7 @@ class FrontendPostSubmitter {
             'post_content'  => $description,
             'post_status'   => 'publish',
             'post_title'    => $message,
-            'post_type'     => 'rio_message',
+            'post_type'     => 'opinion',
         );
 
         $postID = wp_insert_post($post_args);
@@ -296,7 +317,7 @@ class FrontendPostSubmitter {
             update_post_meta($postID, 'reference', $reference);
         }
         if(count($topicIDs) > 0) {
-            wp_set_object_terms($postID, $topicIDs, 'rio_topics', true);
+            wp_set_object_terms($postID, $topicIDs, 'opinion_topics', true);
         }
         
         
@@ -337,8 +358,8 @@ class FrontendPostSubmitter {
         
         
         $exclude = array();
-        $parent_exclude = get_term_by( 'slug', 'main-topic', 'rio_topics')->term_id;
-        $exclude =  get_terms('rio_topics', array('parent' => $parent_exclude, 'hide_empty' => 0, 'fields' => 'ids'));
+        $parent_exclude = get_term_by( 'slug', 'main-topic', 'opinion_topics')->term_id;
+        $exclude =  get_terms('opinion_topics', array('parent' => $parent_exclude, 'hide_empty' => 0, 'fields' => 'ids'));
         $exclude[] = $parent_exclude;
         
         $query_args = array(
@@ -350,7 +371,7 @@ class FrontendPostSubmitter {
             'order_by'      =>'count'
         );
         
-        $matches = get_terms('rio_topics', $query_args);
+        $matches = get_terms('opinion_topics', $query_args);
         
         
         $json = array();
@@ -406,7 +427,7 @@ class FrontendPostSubmitter {
         } else {
             $matchingPosts = get_posts(array(
                 'name' => $value,
-                'post_type' => 'rio_message',
+                'post_type' => 'opinion',
                 'post_status' => 'publish',
                 'posts_per_page' => 1,)
             );
