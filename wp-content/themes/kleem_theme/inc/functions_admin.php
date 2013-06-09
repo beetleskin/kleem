@@ -1,21 +1,20 @@
 <?php
 
 
+add_action('admin_menu', 'add_export_tool_menu_item');
 
-add_action('admin_menu', 'my_plugin_menu');
 
-function my_plugin_menu() {
-    add_submenu_page('tools.php', 'Rio-Nachrichten exportieren', 'Rio-Nachrichten exportieren', 'administrator', 'rio_tool_export', 'rio_tool_export_form_cb');
+function add_export_tool_menu_item() {
+    add_submenu_page('tools.php', 'Meinungen exportieren', 'Meinungen exportieren', 'administrator', 'opinion_export', 'opinion_export_form_cb');
 }
 
-function rio_tool_export_form_cb() {
+function opinion_export_form_cb() {
     $form_param =  "export_opinions";
-    
     
     // handle export request
     if (key_exists($form_param, $_REQUEST)) {
         // a export request was sent
-        rio_tool_export_dl();
+        opinion_export_dl();
         return;
     }
 
@@ -26,13 +25,13 @@ function rio_tool_export_form_cb() {
     
     $form = '<div id="' . $form_id . '_wrap">';
     $form .= '<form action="' . $form_action . '" id="' . $form_id . '" method="' . $form_method . '">';
-    $form .= '<input type="submit" name ="' . $form_param . '" value="Nachrichten Exportieren">';
+    $form .= '<input type="submit" name ="' . $form_param . '" value="Meinungen Exportieren">';
     $form .= '</form></div>';
 
     echo $form;
 }
 
-function rio_tool_export_dl() {
+function opinion_export_dl() {
     $query_args = array(
         "post_status" => "publish",
         "post_type" => "opinion",
@@ -45,26 +44,32 @@ function rio_tool_export_dl() {
 
 
     while ($the_query -> have_posts()) : $the_query -> the_post();
+		$msg_id = get_the_ID();
+		$agreement = intval(get_post_meta($msg_id, '_agreement', true));
+		$disaffirmation = intval(get_post_meta($msg_id, '_disaffirmation', true));
         $opinions[] = array(
-            "title" => get_the_title(),
-            "content" => get_the_content(),
-            "popularity" => intval(get_post_meta(get_the_ID(), 'agreement', true)) - intval(get_post_meta(get_the_ID(), 'disaffirmation', true)),
+            "title" 		=> get_the_title(),
+            "content" 		=> get_the_content(),
+            "popularity" 	=> ($agreement+$disaffirmation == 0)? 0 : (($agreement - $disaffirmation) / ($agreement + $disaffirmation)),
+            "clicks"		=> kleem_get_post_views($msg_id),
         );
             
     endwhile;
 
-    usort($opinions, "rio_popularity_sort");
+    usort($opinions, "popularity_sort");
 
     foreach ($opinions as $msg) {
-        echo '<div style="margin-top: 30px; font: 1em Georgia, Arial; border-bottom: 1px dashed black;" id="post_export"><p><b>';
+        echo '<div style="margin-top: 30px; font: 1em Georgia, Arial; border-bottom: 1px dashed black;" id="post_export"><p><strong>';
         echo '"' . $msg['title'] . '"';
-        echo "</b></p>";
+        echo "</strong></p>";
         echo $msg['content'];
+        echo '<p>Beliebtheit: ' . $msg['popularity'] . '</p>';
+		echo '<p>Clicks: ' . $msg['clicks'] . '</p>';
         echo "</div>";
     }
 }
 
-function rio_popularity_sort(&$a, &$b) {
+function popularity_sort(&$a, &$b) {
     return $a["popularity"] < $b["popularity"];
 }
 

@@ -69,9 +69,9 @@ function kleem_the_colored_title($withLinks = false, $beforeWord = "", $afterWor
             
             
             if($term->parent != '0') {
-                $newWord .= $containerStart . ' class="rio_topic main_topic" style="color: ' . $color . ';">' . $escWord . $containerEnd;
+                $newWord .= $containerStart . ' class="opinion_topic main_topic" style="color: ' . $color . ';">' . $escWord . $containerEnd;
             } else {
-                $newWord .= $containerStart . ' class="rio_topic user_topic">' . $escWord . $containerEnd;
+                $newWord .= $containerStart . ' class="opinion_topic user_topic">' . $escWord . $containerEnd;
             }
             $word = str_replace($escWord, $newWord, $word);
         } else {
@@ -133,9 +133,9 @@ function kleem_get_the_topic_list($id = 0, $sep = "") {
             $color = "";
         }
         if($term->parent != '0') {
-            $term_links[] = '<div class="rio_topic_wrap"><a href="' . $link . '" rel="topic" class="main_topic" style="background-color: ' . $color . ';">' . $term->name . '</a></div>';
+            $term_links[] = '<div class="opinion_topic_wrap"><a href="' . $link . '" rel="topic" class="main_topic" style="background-color: ' . $color . ';">' . $term->name . '</a></div>';
         } else {
-            $term_links[] = '<div class="rio_topic_wrap"><a href="' . $link . '" rel="topic" class="user_topic">' . $term->name . '</a></div>';
+            $term_links[] = '<div class="opinion_topic_wrap"><a href="' . $link . '" rel="topic" class="user_topic">' . $term->name . '</a></div>';
         }
     }
 
@@ -281,7 +281,7 @@ function kleem_get_ajax_pagination($readMore = 'Mehr Messages', $buttonStyle = '
        </span>
     </div>
     <script type="text/javascript">
-        var rio_paging = <?php echo json_encode($pagingConfig); ?> ;
+        var opinion_paging = <?php echo json_encode($pagingConfig); ?> ;
     </script>
     
     <?php 

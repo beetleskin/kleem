@@ -49,27 +49,16 @@ function kleem_register_pt_opinion()  {
 function kleem_get_post_views($postID){
     $count_key = '_post_views_count';
     $count = get_post_meta($postID, $count_key, true);
-    if($count==''){
-        delete_post_meta($postID, $count_key);
-        add_post_meta($postID, $count_key, '0');
-        return 0;
-    }
-    return intval($count);
+    return ($count=='')? 0 : intval($count);
 }
 
 
-function kleem_update_post_views($postID, $new_count=-1) {
+function kleem_update_post_views($postID) {
     $meta_key = '_post_views_count';
     $count = get_post_meta($postID, $meta_key, true);
+	$count = ($count == "")? 0 : intval($count);
 	
-	// meta tag doesn't exist yet
-	if(is_int($count) && intval($count) >= 0) {
-		$count = ($new_count==-1)? $count++ : $new_count;
-	} else {
-		$count = ($new_count==-1)? 0 : $new_count;
-	}
-	
-	update_post_meta($postID, $meta_key, $count);
+	update_post_meta($postID, $meta_key, $count + 1);
 }
 
 
