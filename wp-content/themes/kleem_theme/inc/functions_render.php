@@ -4,8 +4,9 @@
 /* front end action hooks */
 
 function render_init() {
+	// enqueue main script
 	wp_enqueue_style('thickbox');
-	wp_enqueue_script('thickbox');
+    wp_enqueue_script('kleem-opinion-script', get_stylesheet_directory_uri() . '/inc/opinion.js', array('thickbox', 'jquery'));
 	
 	// hide toolbar ...
 	if ( current_user_can('subscriber') ) {
@@ -178,8 +179,8 @@ function kleem_get_the_ratingbox($postID = 0, $userID = 0) {
     }
     
     
-    $agreement = intval(get_post_meta($postID, 'agreement', true));
-    $disaffirmation = intval(get_post_meta($postID, 'disaffirmation', true));
+    $agreement = intval(get_post_meta($postID, '_agreement', true));
+    $disaffirmation = intval(get_post_meta($postID, '_disaffirmation', true));
     $sum = $agreement + $disaffirmation;
     $agreementWidth = 50;
     $disaffirmationWidth = 50;

@@ -1,10 +1,11 @@
 <?php
+// TODO: wrap rating post meta in one array
 
 function ajax_init() {
 	// register ajax callbacks
-	add_action('wp_ajax_rio_ajax_rate', 'rio_ajax_rate');
-	add_action('wp_ajax_rio_ajax_more_posts', 'rio_ajax_more_posts');
-	add_action('wp_ajax_nopriv_rio_ajax_more_posts', 'rio_ajax_more_posts');
+	add_action('wp_ajax_ajax_rate', 'ajax_rate');
+	add_action('wp_ajax_ajax_more_posts', 'ajax_more_posts');
+	add_action('wp_ajax_nopriv_ajax_more_posts', 'ajax_more_posts');
 	
 	kleem_add_script();
 }
@@ -24,8 +25,6 @@ function kleem_add_script() {
     );
     
     
-    // enqueue script
-    wp_enqueue_script('kleem-opinion-script', get_stylesheet_directory_uri() . '/js/opinion.js', array('thickbox', 'jquery'));
     // add configs
     wp_localize_script('kleem-opinion-script', 'kleem_ajax_config', $ajaxConfig);
 }
@@ -40,69 +39,71 @@ function ajax_rate() {
     }
     
     
-    if( key_exists('rating', $_REQUEST) ) {
+    if( !key_exists('rating', $_REQUEST) )
+		die();
         
-        $msgID = intval(wp_strip_all_tags($_REQUEST['rating']['msgID']));
-        $ratingDelta = intval(wp_strip_all_tags($_REQUEST['rating']['val']));
+	
+    $msgID = intval(wp_strip_all_tags($_REQUEST['rating']['msgID']));
+    $ratingDelta = intval(wp_strip_all_tags($_REQUEST['rating']['val']));
+    
+    if( !(isset($msgID) && isset($ratingDelta)) )
+		die();
+	
+	
+    $thePost = get_post($msgID);
+    
+    
+    if( $thePost != NULL && $thePost->post_type == 'opinion' ) {
+        $uID = get_current_user_id();
+        $userRating = get_user_meta($uID, '_rated', true);
         
-        if(isset($msgID) && isset($ratingDelta) ) {
-            $thePost = get_post($msgID);
+        
+        // user has already voted for this message
+        if($userRating != "" && array_key_exists($msgID, $userRating)) {
+            
+            // remove old vote from post
+            $metaKey = ($userRating[$msgID] > 0)? '_agreement' : '_disaffirmation';
+            $metaKeyVal = intval(get_post_meta($msgID, $metaKey, true));
+            update_post_meta($msgID, $metaKey, $metaKeyVal - 1);
             
             
-            if( $thePost != NULL && $thePost->post_type == 'opinion' ) {
-                $uID = get_current_user_id();
-                $userRating = get_user_meta($uID, 'rated', true);
+            // voted the same as before, reset vote from user
+            if( $ratingDelta == $userRating[$msgID]) {
+                unset($userRating[$msgID]);
                 
-                
-                
-                // user has already voted for this message
-                if($userRating != "" && array_key_exists($msgID, $userRating)) {
-                    
-                    // remove old vote from post
-                    $metaKey = ($userRating[$msgID] > 0)? 'agreement' : 'disaffirmation';
-                    $metaKeyVal = intval(get_post_meta($msgID, $metaKey, true));
-                    update_post_meta($msgID, $metaKey, $metaKeyVal - 1);
-                    
-                    
-                    // voted the same as before, reset vote from user
-                    if( $ratingDelta == $userRating[$msgID]) {
-                        unset($userRating[$msgID]);
-                        
-                    // voted something different, update user and post
-                    } else {
-                        $userRating[$msgID] = $ratingDelta;
-                        $metaKey = ($userRating[$msgID] > 0)? 'agreement' : 'disaffirmation';
-                        $metaKeyVal = intval(get_post_meta($msgID, $metaKey, true));
-                        update_post_meta($msgID, $metaKey, $metaKeyVal + 1);
-                    }
-                    
-                    update_user_meta($uID, 'rated', $userRating);
-                    
-                    
-                    
-                // user has not yet voted
-                } else {
-                    
-
-                    $metaKey = ($ratingDelta > 0)? 'agreement' : 'disaffirmation';
-                    $metaKeyVal = intval(get_post_meta($msgID, $metaKey, true));
-                    if($userRating === "") {
-                        $userRating = array();
-                    }
-                    $userRating[$msgID] = $ratingDelta;
-                    
-                    
-                    update_post_meta($msgID, $metaKey, $metaKeyVal + 1);
-                    update_user_meta($uID, 'rated', $userRating);
-                }
-            
-            
-                setControversity($msgID);
-                header("Content-Type: text/plain");
-                echo json_encode(array('newBox' => kleem_get_the_ratingbox($msgID, $uID)));
-                die();
+            // voted something different, update user and post
+            } else {
+                $userRating[$msgID] = $ratingDelta;
+                $metaKey = ($userRating[$msgID] > 0)? '_agreement' : '_disaffirmation';
+                $metaKeyVal = intval(get_post_meta($msgID, $metaKey, true));
+                update_post_meta($msgID, $metaKey, $metaKeyVal + 1);
             }
+            
+            update_user_meta($uID, '_rated', $userRating);
+            
+            
+            
+        // user has not yet voted
+        } else {
+            
+
+            $metaKey = ($ratingDelta > 0)? '_agreement' : '_disaffirmation';
+            $metaKeyVal = intval(get_post_meta($msgID, $metaKey, true));
+            if($userRating === "") {
+                $userRating = array();
+            }
+            $userRating[$msgID] = $ratingDelta;
+            
+            
+            update_post_meta($msgID, $metaKey, $metaKeyVal + 1);
+            update_user_meta($uID, '_rated', $userRating);
         }
+    
+    
+        kleem_update_controversity($msgID);
+        header("Content-Type: text/plain");
+        echo json_encode(array('newBox' => kleem_get_the_ratingbox($msgID, $uID)));
+        die();
     }
 }
 

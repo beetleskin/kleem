@@ -13,25 +13,16 @@
 		<header class="entry-header">
 		<?php if (has_post_thumbnail() ): ?>
 			<div class="entry-thumbnail">
-			<?php if (is_singular()): ?>
-				<a class="thickbox" href="<?php echo current(wp_get_attachment_image_src( get_post_thumbnail_id(), 'full')); ?>"><?php the_post_thumbnail('thumbnail'); ?></a>
-			<?php else: ?>
-				<a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('thumbnail'); ?></a>
-			<?php endif; ?>
+			<a class="thickbox" href="<?php echo current(wp_get_attachment_image_src( get_post_thumbnail_id(), 'full')); ?>"><?php the_post_thumbnail('thumbnail'); ?></a>
 		</div><!-- .entry-thumbnail -->
 		<?php endif; ?>
         <div class="opinion_topics">
 			<?php echo kleem_get_the_topic_list(get_the_ID()); ?>
  		</div><!-- .opinion_topics -->
-	     <a href="<?php the_permalink(); ?>">
-	        <h1 class="entry-title">
-	            <?php kleem_the_colored_title(true); ?>
-	        </h1>
-        </a>
+        <h1 class="entry-title">
+        	<?php kleem_the_colored_title(true); ?>
+        </h1>
 		</header><!-- .entry-header -->
-		
-		
-		
 		
 		
 		<div class="opinion-reference">
@@ -47,7 +38,6 @@
 	            $autorRef = esc_url( get_author_posts_url( get_the_author_meta( 'ID' )));
 	            $date = get_the_date();
 	            $date_c = get_the_date( 'c' );
-	            $avatar = get_avatar(get_the_author_meta('ID'), 40);
 	        ?>
 	        <a href="<?php echo $autorRef; ?>" rel="author" title="Alle Meinungen von <?php echo $author; ?> ansehen"> <?php echo $author; ?></a>
 	        &nbsp;|&nbsp;<time class="entry-date" datetime="<?php echo $date_c?>" pubdate><?php echo $date ?></time>

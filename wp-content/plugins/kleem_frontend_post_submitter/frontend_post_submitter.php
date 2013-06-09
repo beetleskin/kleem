@@ -56,12 +56,11 @@ class FrontendPostSubmitter {
     function preRender() {
         $data = array();
         
-        $parentID = get_term_by( 'slug', 'main-topic', 'opinion_topics')->term_id ;
-        $query_args = array(
-            'parent'        => $parentID,
-            'hide_empty'    => 0,
-            'order_by'      => 'count'
-        );
+		$opinion_topics = get_terms("opinion_topics", array(
+            'hide_empty'    => false,
+            'hierarchical'  => false,
+            'parent'		=> get_term_by('slug', '_maintopics', 'opinion_topics')->term_id,
+        ));
         
     
         $nopriv = 'nopriv';
@@ -79,12 +78,11 @@ class FrontendPostSubmitter {
         $data['nopriv'] = $nopriv;
         $data['submitLink'] = $submitLink;
         $data['onClick'] = $onClick;
-        $topic_data = get_terms('opinion_topics', $query_args);
+        $topic_data = $opinion_topics;
         $data['topics'] = $topic_data;
 		$data['images'] = array(
 			"arrow" => plugin_dir_url(__FILE__) . "style/images/sidearrow.png",
 			"plus" => plugin_dir_url(__FILE__) . "style/images/sideplus.png"
-					
 		);  
         return $data;
     }
@@ -153,16 +151,14 @@ class FrontendPostSubmitter {
 	       		<input id="maxfilesize" type="hidden" name="MAX_FILE_SIZE" value="<?php echo self::$validationConfig['image_size_max'] ; ?>" />	
         	</form>
        </div>
-       
-        
-<?php
-}
+	<?php
+	}
 
 
     public function printAjaxConfig() {
         
         // add security check
-        self::$ioConfig['bookboak'] = wp_create_nonce  ('rio-newmsg');
+        self::$ioConfig['bookboak'] = wp_create_nonce  ('kleem-newmsg');
         
         // Print data to sourcecode
         wp_localize_script('messageform-script', 'messageform_config', self::$ioConfig);
@@ -173,23 +169,19 @@ class FrontendPostSubmitter {
     function enqueue_scripts() {
         
         // multiselect widget
-        wp_enqueue_script('jquery-ui-multiselect', plugins_url('script/jquery-ui-multiselect-widget/src/jquery.multiselect.min.js', __FILE__), array('jquery-ui-core', 'jquery-ui-widget'));
+        wp_enqueue_script('jquery-ui-multiselect', plugins_url('script/jquery.ui.multiselect/src/jquery.multiselect.min.js', __FILE__), array('jquery-ui-core', 'jquery-ui-widget'));
         
         // autosuggest
         wp_enqueue_script('autosuggest', plugins_url('script/autoSuggestv14/jquery.autoSuggest.packed.js', __FILE__), array('jquery'));
         
-        // jquery-ajaxForm
-        wp_deregister_script('jquery-form');
-        wp_enqueue_script('jquery-form-new', 'http://malsup.github.com/jquery.form.js', array('jquery'));
-        
         // message form script
-        wp_enqueue_script('messageform-script', plugins_url('script/messageform.js', __FILE__), array('jquery', 'jquery-form-new', 'autosuggest', 'jquery-ui-multiselect'));
+        wp_enqueue_script('messageform-script', plugins_url('script/messageform.js', __FILE__), array('jquery', 'jquery-form', 'autosuggest', 'jquery-ui-multiselect'));
     }
     
     
     function enqueue_styles() {
         // multiselect style
-        wp_enqueue_style('jquery-ui-multiselect', plugins_url('script/jquery-ui-multiselect-widget/jquery.multiselect.css', __FILE__));
+        wp_enqueue_style('jquery-ui-multiselect', plugins_url('script/jquery.ui.multiselect/jquery.multiselect.css', __FILE__));
         
         // jquery-ui style
         wp_enqueue_style('jquery-ui-theme', plugins_url('style/jquery_messageform.css', __FILE__));
@@ -208,9 +200,6 @@ class FrontendPostSubmitter {
         
         self::$url = home_url("schreiben");
         
-        // Check for SSL
-        $protocol = (is_ssl()) ? 'https://' : 'http://';
-
         self::$ioConfig = array(
             'ajaxurl'               => get_home_url() . '/wp-admin/admin-ajax.php',
             'submitAction'          => 'messageform_submit',
@@ -236,8 +225,8 @@ class FrontendPostSubmitter {
         add_action('wp_ajax_' . self::$ioConfig['submitAction'], 'FrontendPostSubmitter::submit');
         
         // autocomplete tags
-        add_action('wp_ajax_' . self::$ioConfig['suggestTagsAction'], 'FrontendPostSubmitter::getTags');
-        add_action('wp_ajax_nopriv_' . self::$ioConfig['suggestTagsAction'], 'FrontendPostSubmitter::getTags');
+        add_action('wp_ajax_' . self::$ioConfig['suggestTagsAction'], 'FrontendPostSubmitter::ajax_get_tags');
+        add_action('wp_ajax_nopriv_' . self::$ioConfig['suggestTagsAction'], 'FrontendPostSubmitter::ajax_get_tags');
     }
 
 
@@ -282,7 +271,6 @@ class FrontendPostSubmitter {
                     if( !is_wp_error($new_term)) {
                         $topicID = $new_term['term_id']; 
                     } else {
-                        // error("User " . get_current_user_id() . " failed to insert new topic: " . $new_term . " - [" . $new_term->get_error_message() . "]");
                         $error = $new_term->get_error_message();
                     }
                     
@@ -349,25 +337,21 @@ class FrontendPostSubmitter {
     }
 
 
-    public static function getTags($param) {
-        if( !(self::securityCheck() && key_exists(self::$ioConfig['suggestTagsQueryParam'], $_GET) ) ) {
+    public static function ajax_get_tags($param) {
+        if( !(self::securityCheck() && key_exists(self::$ioConfig['suggestTagsQueryParam'], $_REQUEST) ) ) {
             die();
         }
         
-        $query =  $_GET[self::$ioConfig['suggestTagsQueryParam']];
+        $query =  $_REQUEST[self::$ioConfig['suggestTagsQueryParam']];
         
-        
-        $exclude = array();
-        $parent_exclude = get_term_by( 'slug', 'main-topic', 'opinion_topics')->term_id;
+        $parent_exclude = get_term_by( 'slug', '_maintopics', 'opinion_topics' )->term_id;
         $exclude =  get_terms('opinion_topics', array('parent' => $parent_exclude, 'hide_empty' => 0, 'fields' => 'ids'));
         $exclude[] = $parent_exclude;
-        
         $query_args = array(
-            'exclude'       => $exclude,
+        	'exclude'  		=> $exclude,
             'search'        => $query,
-            'hide_empty'    => 0,
-            'hierarchical'  => 0,
-            'fields'        => 'all',
+            'hide_empty'    => false,
+            'hierarchical'  => false,
             'order_by'      =>'count'
         );
         
@@ -507,7 +491,7 @@ class FrontendPostSubmitter {
             $nonce = $_REQUEST["bookboak"];
         }
 
-        if( !isset($nonce) || wp_verify_nonce($nonce, 'rio-newmsg') != 1 ) {
+        if( !isset($nonce) || wp_verify_nonce($nonce, 'kleem-newmsg') != 1 ) {
             $response['securityError'] = array(
                 'redirect' => self::$url,
                 'message'  => '<div id="securityErrorMessage"><p>Sorry, deine Session ist abgelaufen ... </p><a href="' . self::$url . '">Neue Message Schreiben</a></div>',

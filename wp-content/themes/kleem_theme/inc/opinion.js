@@ -29,11 +29,11 @@ jQuery(function($) {
 					//Ajax request for query next post item from the database
 					$.ajax({
 						type : "POST",
-						url : rio_msg_ajax.ajaxurl,
+						url : kleem_ajax_config.ajaxurl,
 						data : {
 							paged : paged,
-							bookboak : rio_msg_ajax.bookboak,
-							action : rio_msg_ajax.morePostsAction,
+							bookboak : kleem_ajax_config.bookboak,
+							action : kleem_ajax_config.morePostsAction,
 							loop : loopfile,
 							query : query,
 							
@@ -131,11 +131,11 @@ jQuery(function($) {
 				// send the rating
 				$.ajax({
 					type : 'POST',
-					url : rio_msg_ajax.ajaxurl,
+					url : kleem_ajax_config.ajaxurl,
 					beforeSend: rb.setInactive,
 					data : {
-						action : rio_msg_ajax.rateAction,
-						bookboak : rio_msg_ajax.bookboak,
+						action : kleem_ajax_config.rateAction,
+						bookboak : kleem_ajax_config.bookboak,
 						rating : {
 							msgID : rb.msgID,
 							val : event.data.rateDelta,
