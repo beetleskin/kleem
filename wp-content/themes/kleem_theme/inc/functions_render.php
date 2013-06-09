@@ -15,7 +15,7 @@ function render_init() {
 
 
 
-function rio_the_colored_title($withLinks = false, $beforeWord = "", $afterWord = "", $postID = -1, $inQuotes = true, $echo = true) {
+function kleem_the_colored_title($withLinks = false, $beforeWord = "", $afterWord = "", $postID = -1, $inQuotes = true, $echo = true) {
     if($postID === -1) {
         $postID = get_the_ID();
     } 
@@ -97,7 +97,7 @@ function rio_the_colored_title($withLinks = false, $beforeWord = "", $afterWord 
 
 
 
-function rio_get_the_reference($id = 0, $parseYoutube = true) {
+function kleem_get_the_reference($id = 0, $parseYoutube = true) {
     
     $url = get_post_meta($id, 'reference', true);
     if (is_wp_error($url) || strlen($url) == 0)
@@ -110,11 +110,10 @@ function rio_get_the_reference($id = 0, $parseYoutube = true) {
 
 
     return '<a target="_blank "href="' . $url . '" title="Message-Quellenangabe"">' . __('Referenz') . '</a>';
-    
 }
 
 
-function rio_get_the_topic_list($id = 0, $sep = "") {
+function kleem_get_the_topic_list($id = 0, $sep = "") {
     $taxonomy = 'opinion_topics';
     $terms = get_the_terms($id, $taxonomy);
 
@@ -143,7 +142,7 @@ function rio_get_the_topic_list($id = 0, $sep = "") {
 }
 
 
-function rio_get_the_commentbox($postID = 0) {
+function kleem_get_the_commentbox($postID = 0) {
     if($postID == 0) {
         $postID = get_the_ID();
         
@@ -169,7 +168,7 @@ function rio_get_the_commentbox($postID = 0) {
 }
 
 
-function rio_get_the_ratingbox($postID = 0, $userID = 0) {
+function kleem_get_the_ratingbox($postID = 0, $userID = 0) {
     if($postID == 0) {
         $postID = get_the_ID();
         
@@ -236,7 +235,7 @@ function rio_get_the_ratingbox($postID = 0, $userID = 0) {
 
 
 
-function rio_get_ajax_pagination($readMore = 'Mehr Messages', $buttonStyle = 'green', $loop = 'content') {
+function kleem_get_ajax_pagination($readMore = 'Mehr Messages', $buttonStyle = 'green', $loop = 'content') {
     // ajax more posts config
     global $wp_query;
     $serializedQuery = "";

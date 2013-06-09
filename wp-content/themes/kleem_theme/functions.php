@@ -54,27 +54,39 @@ function kleem_queryvars($qvars) {
  * Handle cutom queries of the 'opinion' post type: Read $REQUEST params and convert to WP_QUERY params.
  */
 function kleem_filter($query) {
-	if (isset($query -> query_vars['opinion_custom'])) {
-
+	
+	// handle custom request params
+	if ( isset($query->query_vars['opinion_custom']) && !empty($query->query_vars['opinion_custom']) ) {
 		$custom_request = $query -> query_vars['opinion_custom'];
 
 		// reset everything else
-		$query -> query_vars['post_type'] = 'opinion';
-		$args = "";
-
+		$query_custom_vars = array(
+			'post_type'			=> 'opinion',
+			'post_status'		=> 'publish',
+			'order' 			=> 'DESC',
+			'orderby'		 	=> 'meta_value_num', 
+			'posts_per_page' 	=> 10);
+		
 		if ($custom_request == 'most_agreet') {
-			$args = array('meta_key' => '_agreement', 'order' => 'DESC', 'orderby' => 'meta_value_num', 'posts_per_page' => 10, );
-
+			$query_custom_vars['meta_key'] = '_agreement';
 		} else if ($custom_request == 'most_disagreet') {
-			$args = array('meta_key' => '_disaffirmation', 'order' => 'DESC', 'orderby' => 'meta_value_num', 'posts_per_page' => 10, );
-
+			$query_custom_vars['meta_key'] = '_disaffirmation';
 		} else if ($custom_request == 'diversive') {
-			$args = array('meta_key' => '_controversity', 'order' => 'DESC', 'orderby' => 'meta_value_num', 'posts_per_page' => 10, );
+			$query_custom_vars['meta_key'] = '_controversity';
 		}
 
-		$query -> query_vars = wp_parse_args($args, $query -> query_vars);
+		$query->query_vars = wp_parse_args($query_custom_vars, $query->query_vars);
+		remove_action( 'pre_get_posts', 'kleem_filter' );
+	} 
+	
+	// alter author page post query by custom post types
+	 if ( $query->is_author === true && !empty($query->query_vars['author_name']) ) {
+        $query->set( 'post_type', array('post', 'opinion') );
+    	remove_action( 'pre_get_posts', 'kleem_filter' );
 	}
 
+
+	
 	return $query;
 }
 
