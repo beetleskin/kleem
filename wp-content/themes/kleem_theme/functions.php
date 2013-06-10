@@ -16,6 +16,7 @@ include_once ('inc/functions_data.php');
 
 
 function theme_init() {
+    
 	// theme stuff
 	register_nav_menu('top', 'Topmenu');
 	register_nav_menu('footer', 'Footermenu');

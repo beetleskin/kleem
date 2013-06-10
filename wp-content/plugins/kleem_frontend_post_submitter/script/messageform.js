@@ -71,7 +71,7 @@ jQuery(function($) { riomessageform : {
 		function MessageForm(dom_selector) {
 			var m = this;
 			this.form = $(dom_selector);
-			this.submit = $('a#message_submit', dom_selector);
+			this.submit = $('button#opinion_submit', dom_selector);
 			this.inputs = {
 				'msg' : $('#message', dom_selector),
 				'descr' : $('#description', dom_selector),
@@ -104,7 +104,20 @@ jQuery(function($) { riomessageform : {
 
 				m.form.ajaxForm(options);
 				m.submit.click(function() {
-					$('#messageform').submit();
+					
+					if( $(this).attr('nopriv') !== undefined ) {
+						
+						$( (jQuery.browser.webkit)? "body": "html").animate({ scrollTop: 0 }, "slow", function(){
+							$('#errormessage', m.form).fadeTo(400, 0.2).fadeTo(400, 1.0);
+						});
+						
+					} else {
+						
+						m.form.submit();
+						
+					}
+					
+					// no further click handling
 					return false;
 				});
 			}
@@ -251,14 +264,15 @@ jQuery(function($) { riomessageform : {
 
 						}
 					}
-
-					if(errors.length > 0) {
-						$('#errormessage', m.form).animate({
-							opacity : 'toggle',
-							height : 'toggle'
-						}, "slow");
-					}
+						
 				});
+				
+				$('#errormessage', m.form).animate({
+					opacity : 'toggle',
+					height : 'toggle'
+				}, "slow");
+				
+				$("html, body").animate({ scrollTop: 0 }, "slow");
 			}
 
 			this.securityErrorHandler = function(securityError) {

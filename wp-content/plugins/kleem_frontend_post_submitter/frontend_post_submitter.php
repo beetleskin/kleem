@@ -56,30 +56,18 @@ class FrontendPostSubmitter {
     function preRender() {
         $data = array();
         
-		$opinion_topics = get_terms("opinion_topics", array(
+        // defaults
+        $data['nopriv_redirect'] = wp_login_url(get_permalink());
+        $data['isLoggedIn'] = get_current_user_id() != 0;
+        
+        // topics
+		$data['topics'] = get_terms("opinion_topics", array(
             'hide_empty'    => false,
             'hierarchical'  => false,
             'parent'		=> get_term_by('slug', '_maintopics', 'opinion_topics')->term_id,
         ));
         
-    
-        $nopriv = 'nopriv';
-        $submitLink = wp_login_url(get_permalink());
-        $onClick = '';
-		$isLoggedIn = get_current_user_id() != 0;
-        
-        if($isLoggedIn) {
-            $nopriv = '';
-            $submitLink = '#';
-            $onClick = 'onclick="return false;"';
-        }
-        
-        $data['isLoggedIn'] = $isLoggedIn;
-        $data['nopriv'] = $nopriv;
-        $data['submitLink'] = $submitLink;
-        $data['onClick'] = $onClick;
-        $topic_data = $opinion_topics;
-        $data['topics'] = $topic_data;
+        // images
 		$data['images'] = array(
 			"arrow" => plugin_dir_url(__FILE__) . "style/images/sidearrow.png",
 			"plus" => plugin_dir_url(__FILE__) . "style/images/sideplus.png"
@@ -93,15 +81,19 @@ class FrontendPostSubmitter {
         $data = $this->preRender();
         ?>
         
-        <?php if($data['isLoggedIn'] == false) : ?>
-        <div class="entry-content">
-            <?php the_content();  ?>
-        </div>
+        <?php if($data['isLoggedIn'] == false) : 
+            //TODO: display hint if not logged in ?>
         <?php endif; ?>
+        
         <div id="messageform_wrap">   	
-		    <form action="<?php echo $this->form_action ?>" id="<?php echo $this->form_id ?>" class="<?php echo $data['nopriv'] ?>" method="<?php echo $this->form_method ?>">
+            <form action="<?php echo $this->form_action ?>" id="<?php echo $this->form_id ?>" <?php if($data['isLoggedIn'] == false) echo 'nopriv="nopriv"' ?> method="<?php echo $this->form_method ?>" novalidate="novalidate">
+
 		        <div class="wrap">   
-		        	<div id="errormessage"></div>
+		        	<div id="errormessage">
+	        	    <?php if($data['isLoggedIn'] == false) : ?>
+                        <p>Um eine <strong>neue Idee</strong> zu erstellen musst du <a href="<?php echo $data['nopriv_redirect']; ?>">eingeloggt</a> sein!</p>
+                    <?php endif; ?>
+		        	</div>
 		        
 		      	  	<div class="itemhead obligated"><img src="<?php echo $data ["images"]["arrow"];  ?>"/><h2>Deine Message an Rio</h2></div>
 		     	    <div class="itembody">
@@ -147,8 +139,11 @@ class FrontendPostSubmitter {
 				       	</div>			           
 			        </div>		
 			    </div>	
-	       		<div class="message_submit_container"><a href="<?php echo $data['submitLink'] ?>" <?php echo $data['onClick'] ?> id="message_submit">Abschicken</a></div>
-	       		<input id="maxfilesize" type="hidden" name="MAX_FILE_SIZE" value="<?php echo self::$validationConfig['image_size_max'] ; ?>" />	
+	       		<div class="message_submit_container">
+                    <button form="<?php echo $this->form_id ?>" id="opinion_submit" <?php if($data['isLoggedIn'] == false) echo 'nopriv="nopriv"' ?>>Abschicken</button>   
+                </div><!-- .message_submit_container-->
+                <input id="maxfilesize" type="hidden" name="MAX_FILE_SIZE" value="<?php echo self::$validationConfig['file_size_max'] ; ?>" />
+
         	</form>
        </div>
 	<?php
@@ -223,10 +218,23 @@ class FrontendPostSubmitter {
         
         // form ajax
         add_action('wp_ajax_' . self::$ioConfig['submitAction'], 'FrontendPostSubmitter::submit');
+        add_action('wp_ajax_nopriv' . self::$ioConfig['submitAction'], 'FrontendPostSubmitter::submit_nopriv');
         
         // autocomplete tags
         add_action('wp_ajax_' . self::$ioConfig['suggestTagsAction'], 'FrontendPostSubmitter::ajax_get_tags');
         add_action('wp_ajax_nopriv_' . self::$ioConfig['suggestTagsAction'], 'FrontendPostSubmitter::ajax_get_tags');
+    }
+
+
+    
+    public static function submit_nopriv() {
+         if( !self::securityCheck()) {
+            die();
+        }
+         
+        $msg = '<p>Um eine <strong>neue Idee</strong> zu erstellen musst du <a href="' . wp_login_url(get_permalink()) . '">eingeloggt</a> sein!</p>';
+        self::ajaxRespond($message);
+        die();
     }
 
 
@@ -331,8 +339,7 @@ class FrontendPostSubmitter {
         }
             
         
-        header("Content-Type: text/plain");
-        echo json_encode($response);
+        self::ajaxRespond($response);
         die();
     }
 
@@ -475,8 +482,7 @@ class FrontendPostSubmitter {
 
         
         if(key_exists('error', $response)) {
-            header("Content-Type: text/plain");
-            echo json_encode($response);
+            self::ajaxRespond($response);
             return false;
         }
         
@@ -517,6 +523,13 @@ class FrontendPostSubmitter {
         $html .= '</div>';
         
         return $html;
+    }
+    
+    
+    public static function ajaxRespond(&$message) {
+        header("Content-Type: text/plain");
+        echo json_encode($message);
+        die();
     }
 }
 
