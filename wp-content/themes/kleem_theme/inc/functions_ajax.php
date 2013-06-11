@@ -161,7 +161,7 @@ function ajax_security_check($nonceTerm, $redirect, $htmlrepsonse = false) {
 
     
     if( !isset($nonce) || wp_verify_nonce($nonce, $nonceTerm) != 1 ) {
-        $message = '<div id="securityErrorMessage"><p>Sorry, deine Session ist abgelaufen ... </p><a href="' . $redirect . '">Hier </a>gehts weiter</div>';
+        $message = '<div class="error"><p>Sorry, deine Session ist abgelaufen ... </p><a href="' . $redirect . '">Hier </a>gehts weiter</div>';
         
         header("Content-Type: text/plain");
         if($htmlrepsonse) {

@@ -79,7 +79,7 @@ class FrontendPostSubmitter {
             <form action="<?php echo $this->form_action ?>" id="messageform" <?php if($data['isLoggedIn'] == false) echo 'nopriv="nopriv"' ?> method="POST" novalidate="novalidate">
 
 		        <div class="wrap">   
-		        	<div id="errormessage">
+		        	<div id="errormessage" class="error">
 	        	    <?php if($data['isLoggedIn'] == false) : ?>
                         <p>Um eine <strong>neue Meinung</strong> zu erstellen musst du <a href="<?php echo $data['nopriv_redirect']; ?>">eingeloggt</a> sein!</p>
                     <?php endif; ?>
