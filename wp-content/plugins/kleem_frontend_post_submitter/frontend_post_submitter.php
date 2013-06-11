@@ -1,6 +1,6 @@
 <?php
 /**
- * @package Message-To-Rio
+ * @package kleem_frontend_post_submitter
  */
 
 /*
@@ -23,37 +23,27 @@ function fps_init() {
 
 function fps_render() {
 	ob_start();
-	
 	$form = new FrontendPostSubmitter();
-    $form->enqueue_styles();
-    $form->enqueue_scripts();
-    $form->printAjaxConfig();
-	
 	$form->render();
+	$form->post_render();
 	$buffer = ob_get_contents();
 	ob_end_clean();
+	
 	return $buffer;
 }
 
 
 class FrontendPostSubmitter {
 
-    private $form_action;
-    private $form_id;
-    private $form_method;
-    
     private static $ioConfig;
     private static $validationConfig;
     private static $url;
     
 
     function __construct() {
-        $this -> form_action = "";
-        $this -> form_id = "messageform";
-        $this -> form_method = "POST";
     }
 
-    function preRender() {
+    function pre_render() {
         $data = array();
         
         // defaults
@@ -78,7 +68,7 @@ class FrontendPostSubmitter {
 
     function render() {
 
-        $data = $this->preRender();
+        $data = $this->pre_render();
         ?>
         
         <?php if($data['isLoggedIn'] == false) : 
@@ -86,23 +76,23 @@ class FrontendPostSubmitter {
         <?php endif; ?>
         
         <div id="messageform_wrap">   	
-            <form action="<?php echo $this->form_action ?>" id="<?php echo $this->form_id ?>" <?php if($data['isLoggedIn'] == false) echo 'nopriv="nopriv"' ?> method="<?php echo $this->form_method ?>" novalidate="novalidate">
+            <form action="<?php echo $this->form_action ?>" id="messageform" <?php if($data['isLoggedIn'] == false) echo 'nopriv="nopriv"' ?> method="POST" novalidate="novalidate">
 
 		        <div class="wrap">   
 		        	<div id="errormessage">
 	        	    <?php if($data['isLoggedIn'] == false) : ?>
-                        <p>Um eine <strong>neue Idee</strong> zu erstellen musst du <a href="<?php echo $data['nopriv_redirect']; ?>">eingeloggt</a> sein!</p>
+                        <p>Um eine <strong>neue Meinung</strong> zu erstellen musst du <a href="<?php echo $data['nopriv_redirect']; ?>">eingeloggt</a> sein!</p>
                     <?php endif; ?>
 		        	</div>
 		        
-		      	  	<div class="itemhead obligated"><img src="<?php echo $data ["images"]["arrow"];  ?>"/><h2>Deine Message an Rio</h2></div>
+		      	  	<div class="itemhead obligated"><img src="<?php echo $data ["images"]["arrow"];  ?>"/><h2>Sag deine Meinung</h2></div>
 		     	    <div class="itembody">
-		        	    <textarea id="message" name="message" placeholder="Deine Nachricht an Rio (kurzgefasst: 300 Zeichen) ..."></textarea>
+		        	    <textarea id="message" name="message" placeholder="Deine Meinung (kurzgefasst: 300 Zeichen) ..."></textarea>
 		        	</div>
 		        
 			        <div class="itemhead"><img class="additional" src="<?php echo $data ["images"]["plus"];  ?>"/><h2>Erklärungstext hinzufügen</h2></div>
 			        <div class="itembody" style="display: none;">
-			            <textarea id="description" name="description" placeholder="Du brauchst noch ein paar Sätze um deine Message zu erklären, dann schreibe hier deinen Text (500 Zeichen) ..."></textarea>
+			            <textarea id="description" name="description" placeholder="Du brauchst noch ein paar Sätze um deinen Standpunkt zu erklären? Dann schreibe hier deinen Text (500 Zeichen) ..."></textarea>
 			        </div>
 		        
 		
@@ -140,7 +130,7 @@ class FrontendPostSubmitter {
 			        </div>		
 			    </div>	
 	       		<div class="message_submit_container">
-                    <button form="<?php echo $this->form_id ?>" id="opinion_submit" <?php if($data['isLoggedIn'] == false) echo 'nopriv="nopriv"' ?>>Abschicken</button>   
+                    <button form="messageform" id="opinion_submit" <?php if($data['isLoggedIn'] == false) echo 'nopriv="nopriv"' ?>>Abschicken</button>   
                 </div><!-- .message_submit_container-->
                 <input id="maxfilesize" type="hidden" name="MAX_FILE_SIZE" value="<?php echo self::$validationConfig['file_size_max'] ; ?>" />
 
@@ -149,15 +139,21 @@ class FrontendPostSubmitter {
 	<?php
 	}
 
+	public function post_render() {
+		$this->enqueue_styles();
+    	$this->enqueue_scripts();
+    	$this->print_ajax_config();
+	}
 
-    public function printAjaxConfig() {
+
+    public function print_ajax_config() {
         
         // add security check
         self::$ioConfig['bookboak'] = wp_create_nonce  ('kleem-newmsg');
         
         // Print data to sourcecode
-        wp_localize_script('messageform-script', 'messageform_config', self::$ioConfig);
-        wp_localize_script('messageform-script', 'messageform_validation', self::$validationConfig);
+        wp_localize_script('fps-script', 'messageform_config', self::$ioConfig);
+        wp_localize_script('fps-script', 'messageform_validation', self::$validationConfig);
     }
 
 
@@ -170,7 +166,7 @@ class FrontendPostSubmitter {
         wp_enqueue_script('autosuggest', plugins_url('script/autoSuggestv14/jquery.autoSuggest.packed.js', __FILE__), array('jquery'));
         
         // message form script
-        wp_enqueue_script('messageform-script', plugins_url('script/messageform.js', __FILE__), array('jquery', 'jquery-form', 'autosuggest', 'jquery-ui-multiselect'));
+        wp_enqueue_script('fps-script', plugins_url('script/frontend_post_form.js', __FILE__), array('jquery', 'jquery-form', 'autosuggest', 'jquery-ui-multiselect'));
     }
     
     
@@ -190,19 +186,15 @@ class FrontendPostSubmitter {
 
 
     public static function init() {
+    	global $wp_handle_upload_error;
         $wp_handle_upload_error = 'FrontendPostSubmitter::myHandleUploadError';
-        
-        
         self::$url = home_url("schreiben");
-        
         self::$ioConfig = array(
             'ajaxurl'               => get_home_url() . '/wp-admin/admin-ajax.php',
             'submitAction'          => 'messageform_submit',
             'suggestTagsAction'     => 'messageform_tags',
             'suggestTagsQueryParam' => 'qry',
-            
         );
-        
         self::$validationConfig = array(
             'message_max_chars'     => 300,
             'message_min_chars'     => 20,
@@ -214,13 +206,9 @@ class FrontendPostSubmitter {
             'reference_max_chars'   => 1000,
         );
         
-        
-        
-        // form ajax
+        // register ajax actions
         add_action('wp_ajax_' . self::$ioConfig['submitAction'], 'FrontendPostSubmitter::submit');
         add_action('wp_ajax_nopriv' . self::$ioConfig['submitAction'], 'FrontendPostSubmitter::submit_nopriv');
-        
-        // autocomplete tags
         add_action('wp_ajax_' . self::$ioConfig['suggestTagsAction'], 'FrontendPostSubmitter::ajax_get_tags');
         add_action('wp_ajax_nopriv_' . self::$ioConfig['suggestTagsAction'], 'FrontendPostSubmitter::ajax_get_tags');
     }
@@ -518,8 +506,8 @@ class FrontendPostSubmitter {
         
         $html = '<div id="submitSuccessMessage">';
         $html .= '<p>Deine Nachricht wurde erfoglreich abgeschickt!</p>';
-        $html .= '<div class="redirect thePost"><a href="' . $postPermaLink . '">Message ansehen</a></div>';
-        $html .= '<div class="redirect newMessage"><a href="' . self::$url . '">Neue Message Schreiben</a></div>';
+        $html .= '<div class="redirect thePost"><a href="' . $postPermaLink . '">Meinung ansehen</a></div>';
+        $html .= '<div class="redirect newMessage"><a href="' . self::$url . '">Neue Meinung schreiben</a></div>';
         $html .= '</div>';
         
         return $html;

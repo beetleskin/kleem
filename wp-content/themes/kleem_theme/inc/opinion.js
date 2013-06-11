@@ -18,7 +18,7 @@ jQuery(function($) {
 
 				//get the variables of query
 				var maxpages = opts.maxpages;
-				var loopfile = opts.loop;
+				var template_part = opts.template_part;
 				var query = opts.query;
 				var paged = 1;
 				var active = true;
@@ -34,7 +34,7 @@ jQuery(function($) {
 							paged : paged,
 							bookboak : kleem_ajax_config.bookboak,
 							action : kleem_ajax_config.morePostsAction,
-							loop : loopfile,
+							template_part : template_part,
 							query : query,
 							
 						},
@@ -98,7 +98,7 @@ jQuery(function($) {
 	
 
 	
-	riomessage : {
+	message_post : {
 		var ratingboxes = new Array();
 
 		function RatingBox(ratingbox) {
@@ -178,9 +178,9 @@ jQuery(function($) {
 			var paging_btn  = $("#ajax_pagination_btn");
 			if(paging_btn.length > 0) {
 				paging_btn.ajaxpaging({
-				    loop: rio_paging.loop,
-				    maxpages: rio_paging.maxpages,
-				    query: rio_paging.query
+				    template_part: ajax_post_paging_config.template_part,
+				    maxpages: ajax_post_paging_config.maxpages,
+				    query: ajax_post_paging_config.query
 				});
 			}
 		});

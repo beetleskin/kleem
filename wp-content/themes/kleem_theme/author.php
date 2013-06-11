@@ -40,8 +40,6 @@ get_header(); ?>
 				rewind_posts();
 			?>
 
-			<?php twentytwelve_content_nav( 'nav-above' ); ?>
-
 			<?php
 			// If a user has filled out their description, show a bio on their entries.
 			if ( get_the_author_meta( 'description' ) ) : ?>
@@ -71,7 +69,7 @@ get_header(); ?>
 				?>
 			<?php endwhile; ?>
 
-			<?php twentytwelve_content_nav( 'nav-below' ); ?>
+			<?php kleem_get_ajax_pagination(); ?>
 
 		<?php else : ?>
 			<?php get_template_part( 'content', 'none' ); ?>

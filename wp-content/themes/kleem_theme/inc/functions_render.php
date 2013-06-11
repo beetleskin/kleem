@@ -236,35 +236,27 @@ function kleem_get_the_ratingbox($postID = 0, $userID = 0) {
 
 
 
-function kleem_get_ajax_pagination($readMore = 'Mehr Messages', $buttonStyle = 'green', $loop = 'content') {
+function kleem_get_ajax_pagination($readMore = 'Mehr Messages', $buttonStyle = 'green', $template_part = 'content-opinion') {
     // ajax more posts config
     global $wp_query;
-    $serializedQuery = "";
-    $maxPages = 0;
-    $maxpages = $wp_query -> max_num_pages;
-    
-    
-    if ($maxpages < 2) {
+    $maxpages = $wp_query->max_num_pages;
+    if ($maxpages <= 1) {
          return;
     }
        
-
-    
-    $query_vars = $wp_query->query_vars;
-    foreach ($query_vars as $q => &$val) {
+    $clean_query_vars = array();
+    foreach ($wp_query->query_vars as $q => &$val) {
         if($val === "") {
-            unset($query_vars[$q]);
+            $clean_query_vars[$q] = $val;
         }
     }
     
-    $serializedQuery = base64_encode(serialize($query_vars));
+    $serializedQuery = base64_encode(serialize($clean_query_vars));
     $pagingConfig = array(
         'maxPages'          => $maxPages,
-        'loop'              => $loop,
+        'template_part'              => $template_part,
         'query'             => $serializedQuery,
     );
-    
-    
     
     //get the ajax loading animation gif
     $src_path = get_stylesheet_directory_uri() . '/images/ajax-loader.gif';
@@ -281,7 +273,7 @@ function kleem_get_ajax_pagination($readMore = 'Mehr Messages', $buttonStyle = '
        </span>
     </div>
     <script type="text/javascript">
-        var opinion_paging = <?php echo json_encode($pagingConfig); ?> ;
+        var ajax_post_paging_config = <?php echo json_encode($pagingConfig); ?> ;
     </script>
     
     <?php 

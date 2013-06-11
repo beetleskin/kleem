@@ -48,8 +48,8 @@ get_header(); ?>
 				get_template_part( 'content', 'opinion' );
 
 			endwhile;
-
-			twentytwelve_content_nav( 'nav-below' );
+			
+			kleem_get_ajax_pagination();
 			?>
 
 		<?php else : ?>

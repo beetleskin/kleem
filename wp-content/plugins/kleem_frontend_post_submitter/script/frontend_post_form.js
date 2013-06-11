@@ -2,7 +2,7 @@
  * @author Stefan Kaiser
  */
 
-jQuery(function($) { riomessageform : {
+jQuery(function($) { post_submit_form : {
 
 
 		function TextFieldCounter(textfield, maxChars) {
