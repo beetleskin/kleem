@@ -23,7 +23,7 @@ function kleem_setup() {
 	
 	// navs
 	register_nav_menu('top', 'Topmenu');
-	register_nav_menu('footer', 'Footermenu');
+	register_nav_menu('bottom', 'Footermenu');
 
 	// data stuff
 	kleem_register_pt_opinion();
