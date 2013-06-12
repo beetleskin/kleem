@@ -69,7 +69,7 @@ get_header(); ?>
 				?>
 			<?php endwhile; ?>
 
-			<?php kleem_get_ajax_pagination(); ?>
+			<?php kleem_get_ajax_pagination('content-opinion'); ?>
 
 		<?php else : ?>
 			<?php get_template_part( 'content', 'none' ); ?>

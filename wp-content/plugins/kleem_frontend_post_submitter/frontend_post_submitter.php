@@ -71,10 +71,6 @@ class FrontendPostSubmitter {
         $data = $this->pre_render();
         ?>
         
-        <?php if($data['isLoggedIn'] == false) : 
-            //TODO: display hint if not logged in ?>
-        <?php endif; ?>
-        
         <div id="messageform_wrap">   	
             <form action="<?php echo $this->form_action ?>" id="messageform" <?php if($data['isLoggedIn'] == false) echo 'nopriv="nopriv"' ?> method="POST" novalidate="novalidate">
 

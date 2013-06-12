@@ -254,7 +254,7 @@ function kleem_get_ajax_pagination($readMore = 'Mehr Messages', $buttonStyle = '
     $serializedQuery = base64_encode(serialize($clean_query_vars));
     $pagingConfig = array(
         'maxPages'          => $maxPages,
-        'template_part'              => $template_part,
+        'template_part'     => $template_part,
         'query'             => $serializedQuery,
     );
     

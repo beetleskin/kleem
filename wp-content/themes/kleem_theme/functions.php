@@ -1,11 +1,12 @@
 <?php
 
-add_action('init', 'theme_init');
+add_action('init', 'kleem_setup');
 
 register_activation_hook(__FILE__, 'kleem_activate');
 register_deactivation_hook(__FILE__, 'kleem_deactivate');
 
 add_action('generate_rewrite_rules', 'kleem_add_rewrite_rules');
+add_action( 'after_setup_theme', 'theme_formats');
 add_filter('query_vars', 'kleem_queryvars');
 add_filter('pre_get_posts', 'kleem_filter');
 
@@ -15,9 +16,12 @@ include_once ('inc/functions_ajax.php');
 include_once ('inc/functions_data.php');
 
 
-function theme_init() {
+function kleem_setup() {
     
-	// theme stuff
+	// post formats
+	add_theme_support( 'post-formats', array( 'status', 'video', 'quote' ) );
+	
+	// navs
 	register_nav_menu('top', 'Topmenu');
 	register_nav_menu('footer', 'Footermenu');
 
@@ -27,6 +31,10 @@ function theme_init() {
 	// other stuff
 	render_init();
 	ajax_init();
+}
+
+function theme_formats(){
+     add_theme_support( 'post-formats', array( 'page', 'opinion' ) );
 }
 
 
