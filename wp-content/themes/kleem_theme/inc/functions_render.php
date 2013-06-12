@@ -7,6 +7,7 @@ function render_init() {
 	// enqueue main script
 	wp_enqueue_style('thickbox');
     wp_enqueue_script('kleem-opinion-script', get_stylesheet_directory_uri() . '/inc/opinion.js', array('thickbox', 'jquery'));
+	wp_enqueue_script('ajaxpaging', get_stylesheet_directory_uri() . '/inc/ajaxpaging.js', array('jquery'));
 	
 	// hide toolbar ...
 	if ( current_user_can('subscriber') ) {
@@ -236,7 +237,7 @@ function kleem_get_the_ratingbox($postID = 0, $userID = 0) {
 
 
 
-function kleem_get_ajax_pagination($readMore = 'Mehr Messages', $buttonStyle = 'green', $template_part = 'content-opinion') {
+function kleem_get_ajax_pagination($readMore = 'Mehr Posts ...', $buttonStyle = 'green') {
     // ajax more posts config
     global $wp_query;
     $maxpages = $wp_query->max_num_pages;
@@ -246,7 +247,7 @@ function kleem_get_ajax_pagination($readMore = 'Mehr Messages', $buttonStyle = '
        
     $clean_query_vars = array();
     foreach ($wp_query->query_vars as $q => &$val) {
-        if($val === "") {
+        if($val != "") {
             $clean_query_vars[$q] = $val;
         }
     }
@@ -254,7 +255,6 @@ function kleem_get_ajax_pagination($readMore = 'Mehr Messages', $buttonStyle = '
     $serializedQuery = base64_encode(serialize($clean_query_vars));
     $pagingConfig = array(
         'maxPages'          => $maxPages,
-        'template_part'     => $template_part,
         'query'             => $serializedQuery,
     );
     

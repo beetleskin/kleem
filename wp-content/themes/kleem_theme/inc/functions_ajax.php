@@ -107,8 +107,7 @@ function ajax_rate() {
     }
 }
 
-// TODO: template_part is kind of hard coded ...
-// TODO: generate post-format for custom post type and render according to post format ...? would be more consistent to default theming ...
+
 function ajax_more_posts() {
     if(!ajax_security_check('kleem-general', get_home_url(), true)) {
         die('security error');
@@ -116,31 +115,30 @@ function ajax_more_posts() {
     
    
     global $wp_query;
-    $page_no; $loop; $query;
+    $page_no; $query;
 
     // validate ...
-    if (empty($_REQUEST['query']) || empty($_REQUEST['template_part'])) {
+    if ( empty($_REQUEST['query']) ) {
         echo '<p>query var ERROR</p>';
         die();
     }
 
 
     $query = unserialize(base64_decode(wp_strip_all_tags($_REQUEST['query'])));
-    $template_part = wp_strip_all_tags($_REQUEST['template_part']);
     $paged = wp_strip_all_tags($_REQUEST['paged']);
     $query['paged'] = $paged;
-    // just to be sure ... 
-    $query['post_type'] = 'opinion';
     $query['nopaging'] = false;
     
 
     ob_start();
-    if ($template_part) {
-        query_posts($query);
-        while (have_posts()) : the_post();
-            get_template_part($template_part);
-        endwhile;
-    }
+    query_posts($query);
+    while (have_posts()) : the_post();
+        if( is_custom_post_type() ) {
+			get_template_part( 'content', get_post_type() ); 
+		} else {
+			get_template_part( 'content', get_post_format() );
+		}
+    endwhile;
 
     $buffer = ob_get_contents();
     ob_end_clean();

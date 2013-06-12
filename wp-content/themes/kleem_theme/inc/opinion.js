@@ -5,184 +5,72 @@
 
 jQuery(function($) { 
 	
+	$.fn.ratingBox = function( options ) {
+		
+		return this.each(function() {
+			
+			var $this = $(this);
+			var msgID = $this.attr('postID');
+			var active = true;
 	
-	ajaxPaging : {
-	
-		$.fn.ajaxpaging = function(options) {
-			//build main options before element iteration
-			var opts = $.extend({}, $.fn.ajaxpaging.defaults, options);
-
-			//iterate and reformat each matched element
-			return this.each(function() {
-				var $this = $(this);
-
-				//get the variables of query
-				var maxpages = opts.maxpages;
-				var template_part = opts.template_part;
-				var query = opts.query;
-				var paged = 1;
-				var active = true;
-
-				$this.bind('click', function() {
-					paged++;
-
-					//Ajax request for query next post item from the database
-					$.ajax({
-						type : "POST",
-						url : kleem_ajax_config.ajaxurl,
-						data : {
-							paged : paged,
-							bookboak : kleem_ajax_config.bookboak,
-							action : kleem_ajax_config.morePostsAction,
-							template_part : template_part,
-							query : query,
-							
-						},
-						dataType : "html",
-						beforeSend : pendingState,
-						success : function(msg) {
-							
-							
-							//append the new content
-							var newPosts = $(msg).css('display', 'none');
-							
-							// stupid error check
-							if(newPosts.attr('id') == "securityErrorMessage" || newPosts.length == 0 || maxpages == paged) {
-								active = false;
-							}
-							
-							// init the rating boxes
-							$('.ratingbox:not(.nopriv)', newPosts).each(function(e) {
-								ratingboxes.push(new RatingBox(this));
-							});
-							
-							
-							$("#ajax-post-container").append(newPosts);
-							newPosts.fadeIn();
-							
-
-							/** hide next link for fetch more post if you are in the last page */
-							if( active ) {
-								$('#ajax_pagination_btn').show();
-							} else {
-								$(this).click(false);
-							}
-								
-							/* trigger CompletPagination callback */
-							$("#ajax_pagination_btn").trigger("complete-paginate");
-						},
-						complete : hideloading
-					});
-					return false;
-				});
-
-			});
-		};
-
-		/** loadingImage function is used to show loading image until Ajax request complete */
-		function pendingState() {
-			$('#ajax_pagination_btn').hide();
-			$("._ajaxpaging_loading").show();
-		}
-
-		/** hide the loading image */
-		function hideloading() {
-			$("._ajaxpaging_loading").hide();
-		}
-
-		// plugin defaults
-		$.fn.ajaxpaging.defaults = {
-			maxpage : 1
-		};
-	}
-	
-
-	
-	message_post : {
-		var ratingboxes = new Array();
-
-		function RatingBox(ratingbox) {
-			var rb = this;
-			this.box = $(ratingbox);
-			this.msgID = rb.box.attr('postID');
-			this.active = true;
-
-			this.__construct = function() {
-				$('.ratebutton', rb.box).each(function(){
-					var delta = ($(this).hasClass('agreement')) ? 1 : -1;
-					$(this).bind('click', {rateDelta: delta}, rb.rateClicked);
-				});
+			function __construct() {
+				$('.ratebutton', $this).click(rateClicked);
 			}
 			
-			this.setActive = function() {
-				rb.active = true;
+			function setActive() {
+				active = true;
 			}
 			
-			this.setInactive = function() {
-				rb.active = false;
+			function setInactive() {
+				active = false;
 			}
-
-			this.rateClicked = function(event) {
+	
+			function rateClicked(event) {
 				// unbind the buttons
-				if(!rb.active) {
+				if(!active) {
 					return;
 				}
-
+	
 				// send the rating
+				var delta = ($(this).hasClass('agreement')) ? 1 : -1;
 				$.ajax({
 					type : 'POST',
 					url : kleem_ajax_config.ajaxurl,
-					beforeSend: rb.setInactive,
+					beforeSend: setInactive,
 					data : {
 						action : kleem_ajax_config.rateAction,
 						bookboak : kleem_ajax_config.bookboak,
 						rating : {
-							msgID : rb.msgID,
-							val : event.data.rateDelta,
+							msgID : msgID,
+							val : delta,
 						}
 					},
-					success : rb.ratingSent,
-					error : rb.ajaxError,
+					success : ratingSent,
+					error : ajaxError,
 					dataType : 'json'
 				});
 			};
-
-			this.ratingSent = function(data, textStatus, jqXH) {
+	
+			function ratingSent(data, textStatus, jqXH) {
 				if(data.newBox) {
-					$('.ratebutton', rb.box).unbind('click');
-					var oldBox = rb.box;
-					rb.box = $(data.newBox);
-					oldBox.replaceWith(rb.box);
-					rb.__construct();
+					$this.replaceWith( $(data.newBox).ratingBox() );
 				}
-				rb.setActive();
 			}
-
-			this.ajaxError = function(jqXHR, textStatus, errorThrown) {
-				rb.setActive();
+	
+			function ajaxError(jqXHR, textStatus, errorThrown) {
+				setActive();
 			}
-
+	
 			// call constructor
-			this.__construct();
-		}
-		
-
-		$(document).ready(function() {
-
-			// init the rating boxes
-			$('.ratingbox:not(.nopriv)').each(function(e) {
-				ratingboxes.push(new RatingBox(this));
-			});
-			
-			// init dynamic ajax paging
-			var paging_btn  = $("#ajax_pagination_btn");
-			if(paging_btn.length > 0) {
-				paging_btn.ajaxpaging({
-				    template_part: ajax_post_paging_config.template_part,
-				    maxpages: ajax_post_paging_config.maxpages,
-				    query: ajax_post_paging_config.query
-				});
-			}
+			__construct();
 		});
 	}
+		
+
+	$(document).ready(function() {
+
+		// init the rating boxes
+		$('.ratingbox:not(.nopriv)').ratingBox();
+	});
+
 });

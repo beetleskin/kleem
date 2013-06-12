@@ -91,6 +91,10 @@ function kleem_update_controversity($postID, $agreement = -1, $disaffirmation = 
 }
 
 
+function is_custom_post_type() {
+	return in_array(get_post_type(), get_post_types(array('public' => true, '_builtin' => false), 'names', 'and') ); 
+}
+
 
 
 ?>

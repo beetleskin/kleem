@@ -59,8 +59,8 @@ get_header(); ?>
 				
 				<?php 
 
-					if(get_post_type() == 'opinion') {
-						get_template_part( 'content', 'opinion' ); 
+					if( is_custom_post_type() ) {
+						get_template_part( 'content', get_post_type() ); 
 					} else {
 						get_template_part( 'content', get_post_format() );
 					}
@@ -69,7 +69,7 @@ get_header(); ?>
 				?>
 			<?php endwhile; ?>
 
-			<?php kleem_get_ajax_pagination('content-opinion'); ?>
+			<?php kleem_get_ajax_pagination(); ?>
 
 		<?php else : ?>
 			<?php get_template_part( 'content', 'none' ); ?>

@@ -33,11 +33,15 @@ get_header(); ?>
 				 * this in a child theme then include a file called called content-___.php
 				 * (where ___ is the post format) and that will be used instead.
 				 */
-				get_template_part( 'content', 'opinion' );
+				if( is_custom_post_type() ) {
+					get_template_part( 'content', get_post_type() ); 
+				} else {
+					get_template_part( 'content', get_post_format() );
+				}
 
 			endwhile;
 
-			kleem_get_ajax_pagination('content-opinion');
+			kleem_get_ajax_pagination();
 			?>
 
 		<?php else : ?>
