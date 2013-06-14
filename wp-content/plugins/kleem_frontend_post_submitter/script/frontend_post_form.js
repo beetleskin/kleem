@@ -58,11 +58,11 @@ jQuery(function($) { post_submit_form : {
 				selectedItemProp : "name",
 				searchObjProps : "name",
 				minChars : messageform_validation.sub_topic_min_chars,
-				asHtmlID : "sub_topics",
+				asHtmlID : "custom_topics",
 				startText : "Thema ...",
 				emptyText : "neues Thema mit TAB",
-				limitText : "nur maximal " + messageform_validation.sub_topics_max + " Themen sind erlaubt",
-				selectionLimit : messageform_validation.sub_topics_max,
+				limitText : "nur maximal " + messageform_validation.custom_topics_max + " Themen sind erlaubt",
+				selectionLimit : messageform_validation.custom_topics_max,
 			};
 
 			$(dom_selector_input, dom_selector_root).autoSuggest(messageform_config.ajaxurl, options);
@@ -70,6 +70,7 @@ jQuery(function($) { post_submit_form : {
 
 		function MessageForm(dom_selector) {
 			var m = this;
+			this.fileApiSupported = window.FormData !== undefined;
 			this.form = $(dom_selector);
 			this.submit = $('button#opinion_submit', dom_selector);
 			this.inputs = {
@@ -77,7 +78,7 @@ jQuery(function($) { post_submit_form : {
 				'descr' : $('#description', dom_selector),
 				'link' : $('#reference_input', dom_selector),
 				'topics' : $('#topics', dom_selector),
-				'sub_topics' : $('#as-values-sub_topics', dom_selector),
+				'custom_topics' : $('#as-values-custom_topics', dom_selector),
 				'maxfilesize' : $('#maxfilesize', dom_selector),
 			};
 			this.sending = false;
@@ -121,6 +122,9 @@ jQuery(function($) { post_submit_form : {
 					return false;
 				});
 			}
+			
+			
+			
 			// collect the data
 			this.beforeSubmit = function(formData, jqForm, options) {
 				if(m.sending) {
@@ -140,7 +144,7 @@ jQuery(function($) { post_submit_form : {
 				}
 
 				// handle file
-				if(file != null) {
+				if(file != null && m.fileApiSupported) {
 					// validate
 					if( file.value.fileSize > messageform_validation.image_size_max) {
 						m.errorHandler([{
@@ -164,7 +168,6 @@ jQuery(function($) { post_submit_form : {
 				
 				
 				formData.length = 0;
-
 				formData.push( {
 					name : m.inputs.msg.attr('name'),
 					value : m.inputs.msg.val()
@@ -182,12 +185,8 @@ jQuery(function($) { post_submit_form : {
 					value : m.inputs.topics.val()
 				});
 				formData.push( {
-					name : $('#sub_topics').attr('name'),
-					value : m.inputs.sub_topics.val()
-				});
-				formData.push( {
-					name : m.inputs.maxfilesize.attr('name'),
-					value : m.inputs.maxfilesize.val()
+					name : $('#custom_topics').attr('name'),
+					value : m.inputs.custom_topics.val()
 				});
 				if(file != null) {
 					formData.push( file );
@@ -323,7 +322,7 @@ jQuery(function($) { post_submit_form : {
 		$(document).ready(function() {
 			var accordeon = new Accordeon('#messageform', '.itemhead');
 			var multiselect = new MultiSelector('#messageform', '#topics');
-			var autosuggest = new AutoSuggestor('#messageform', '#sub_topics');
+			var autosuggest = new AutoSuggestor('#messageform', '#custom_topics');
 
 			var mf = new MessageForm('#messageform:not(.nopriv)');
 

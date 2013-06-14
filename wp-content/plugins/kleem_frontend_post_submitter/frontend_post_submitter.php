@@ -117,9 +117,9 @@ class FrontendPostSubmitter {
 					                
 					            </select>
 					  		</div>
-					       	<div class="sub_topics_container">
+					       	<div class="custom_topics_container">
 					            <h2>Eigene Themen hinzufügen:</h2>
-					            <input type="select" id="sub_topics" name="sub_topics" placeholder="Thema hinzufügen ..."/>
+					            <input type="select" id="custom_topics" name="custom_topics" placeholder="Thema hinzufügen ..."/>
 					        </div>
 					        <p style="clear:both;"></p>
 				       	</div>			           
@@ -128,7 +128,7 @@ class FrontendPostSubmitter {
 	       		<div class="message_submit_container">
                     <button form="messageform" id="opinion_submit" <?php if($data['isLoggedIn'] == false) echo 'nopriv="nopriv"' ?>>Abschicken</button>   
                 </div><!-- .message_submit_container-->
-                <input id="maxfilesize" type="hidden" name="MAX_FILE_SIZE" value="<?php echo self::$validationConfig['file_size_max'] ; ?>" />
+                <input id="maxfilesize" type="hidden" name="MAX_FILE_SIZE" value="<?php echo self::$validationConfig['image_size_max'] ; ?>" />
 
         	</form>
        </div>
@@ -184,7 +184,7 @@ class FrontendPostSubmitter {
     public static function init() {
     	global $wp_handle_upload_error;
         $wp_handle_upload_error = 'FrontendPostSubmitter::myHandleUploadError';
-        self::$url = home_url("schreiben");
+        self::$url = home_url("mitreden");
         self::$ioConfig = array(
             'ajaxurl'               => get_home_url() . '/wp-admin/admin-ajax.php',
             'submitAction'          => 'messageform_submit',
@@ -197,8 +197,8 @@ class FrontendPostSubmitter {
             'description_max_chars' => 500,
             'sub_topic_min_chars'   => 1,
             'sub_topic_max_chars'   => 15,
-            'sub_topics_max'        => 5,
-            'image_size_max'        => 5000000,
+            'custom_topics_max'        => 5,
+            'image_size_max'        => 3000000,
             'reference_max_chars'   => 1000,
         );
         
@@ -231,8 +231,8 @@ class FrontendPostSubmitter {
         $description = wp_strip_all_tags($_POST['description']);
         $message = wp_strip_all_tags($_POST['message']);
         $reference = wp_strip_all_tags($_POST['reference']);
-        $topicIDs = array();
-        $query_topics = array_merge(explode(",", $_POST['topics']), array_slice(explode(",", $_POST['sub_topics']), 0, 5));
+        $post_topic_IDs = array();
+        $query_topics = array_merge(explode(",", $_POST['topics']), array_slice(explode(",", $_POST['custom_topics']), 0, 5));
         
         
         // validate main topic selection
@@ -270,7 +270,7 @@ class FrontendPostSubmitter {
             }
              
             if(is_int($topicID)) {
-                $topicIDs[] = $topicID;
+                $post_topic_IDs[] = $topicID;
             }
         }
         
@@ -296,8 +296,8 @@ class FrontendPostSubmitter {
         if(strlen($reference) > 0) {
             update_post_meta($postID, 'reference', $reference);
         }
-        if(count($topicIDs) > 0) {
-            wp_set_object_terms($postID, $topicIDs, 'opinion_topics', true);
+        if(count($post_topic_IDs) > 0) {
+            wp_set_object_terms($postID, $post_topic_IDs, 'opinion_topics', true);
         }
         
         
@@ -306,8 +306,7 @@ class FrontendPostSubmitter {
             if(!is_wp_error($attach_id)) {
                 update_post_meta( $postID, '_thumbnail_id', $attach_id );
             } else {
-                //error($attach_id->get_error_message());
-                $error = $postID->get_error_message();
+                // TODO: log
             }
         }
         
