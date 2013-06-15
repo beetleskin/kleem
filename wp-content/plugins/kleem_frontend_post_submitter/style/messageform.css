@@ -119,10 +119,17 @@
 
 }
 
-/*additional_______________*/
+/* progress bar*/
 
-#input_files_special input,
-#input_files_special .progress {
+#progressbar {
+	display: none;
+	width: 475px;
+	height: 20px;
+	position: relative;
+	padding: 0px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
 	margin: 10px;
 	padding: 10px;
 	width: 455px;
@@ -138,18 +145,7 @@
 	box-shadow: inset 0 1px 1px rgba(0,0,0,0.1);
 }
 
-#input_files_special .progress {
-	display: none;
-	width: 475px;
-	height: 20px;
-	position: relative;
-	padding: 0px;
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	border-radius: 5px;
-}
-
-#input_files_special .progress .bar {
+#progressbar .bar {
 	width: 30%;
 	height: 100%;
 	background-color: #c5de71;
@@ -158,7 +154,7 @@
 	border-radius: 5px;
 }
 
-#input_files_special .progress .percent {
+#progressbar .percent {
 	height: 100%;
 	position: absolute;
 	display: inline-block;

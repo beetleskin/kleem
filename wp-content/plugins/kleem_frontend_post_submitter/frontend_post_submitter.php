@@ -80,51 +80,50 @@ class FrontendPostSubmitter {
                         <p>Um eine <strong>neue Meinung</strong> zu erstellen musst du <a href="<?php echo $data['nopriv_redirect']; ?>">eingeloggt</a> sein!</p>
                     <?php endif; ?>
 		        	</div>
-		        
-		      	  	<div class="itemhead obligated"><img src="<?php echo $data ["images"]["arrow"];  ?>"/><h2>Sag deine Meinung</h2></div>
-		     	    <div class="itembody">
-		        	    <textarea id="message" name="message" placeholder="Deine Meinung (kurzgefasst: 300 Zeichen) ..."></textarea>
-		        	</div>
-		        
-			        <div class="itemhead"><img class="additional" src="<?php echo $data ["images"]["plus"];  ?>"/><h2>Erklärungstext hinzufügen</h2></div>
-			        <div class="itembody" style="display: none;">
-			            <textarea id="description" name="description" placeholder="Du brauchst noch ein paar Sätze um deinen Standpunkt zu erklären? Dann schreibe hier deinen Text (500 Zeichen) ..."></textarea>
-			        </div>
-		        
+		        	
+		        	<fieldset form="messageform">
+			      	  	<div class="itemhead obligated"><img src="<?php echo $data ["images"]["arrow"];  ?>"/><h2>Sag deine Meinung</h2></div>
+			     	    <div class="itembody">
+			        	    <textarea id="message" name="message" placeholder="Deine Meinung (kurzgefasst: 300 Zeichen) ..."></textarea>
+			        	</div>
+			        </fieldset>
+			        
+			        <fieldset form="messageform">
+				        <div class="itemhead"><img class="additional" src="<?php echo $data ["images"]["plus"];  ?>"/><h2>Details und Bild hinzufügen</h2></div>
+				        <div class="itembody" style="display: none;">
+				            <textarea id="description" name="description" placeholder="Du brauchst noch ein paar Sätze um deinen Standpunkt zu erklären? Dann schreibe hier deinen Text (500 Zeichen) ..."></textarea>
+				        	<input type="file" id="image_upload" name="message_image" accept="image/*">
+				        </div>
+		        	</fieldset>
 		
-			        <div class="itemhead"><img class="additional" src="<?php echo $data ["images"]["plus"];  ?>"/><h2>Bild oder Link hinzufügen</h2></div>
-			        <div class="itembody" id="input_files_special" style="display: none;">
-			        	<input type="file" id="image_upload" name="message_image" accept="image/*">
-			        	<div class="progress">
-                            <div class="bar"></div>
-                            <div class="percent">0%</div>
-                        </div>
-			        	<input type="text" id="reference_input" name="reference" placeholder="Schreibe hier deinen Link (z.B. http://www.mirantao.de) ...">
-			        </div>
-		        
-		        
-			        <div class="itemhead obligated"><img src="<?php echo $data ["images"]["arrow"];  ?>"/><h2>Themen hinzufügen</h2></div>
-			        <div class="itembody">
-			        	
-			        	<div class="all_topics_container clearfix">
-				        	<div class="topics_container">
-					        	<h2>Wähle <u>mindestens</u> ein Thema aus:</h2>
-					            <select id="topics" name="topics" multiple="multiple">
-					                
-					                <?php foreach ( $data['topics'] as &$topic ): ?>
-					                    <option value="<?php echo $topic->term_id ?>"><?php echo $topic->name ?></option>
-					                <?php endforeach; ?>
-					                
-					            </select>
-					  		</div>
-					       	<div class="custom_topics_container">
-					            <h2>Eigene Themen hinzufügen:</h2>
-					            <input type="select" id="custom_topics" name="custom_topics" placeholder="Thema hinzufügen ..."/>
-					        </div>
-					        <p style="clear:both;"></p>
-				       	</div>			           
-			        </div>		
-			    </div>	
+					<fieldset form="messageform">
+				        <div class="itemhead obligated"><img src="<?php echo $data ["images"]["arrow"];  ?>"/><h2>Themen hinzufügen</h2></div>
+				        <div class="itembody">
+				        	
+				        	<div class="all_topics_container clearfix">
+					        	<div class="topics_container">
+						        	<h2>Wähle <u>mindestens</u> ein Thema aus:</h2>
+						            <select id="topics" name="topics" multiple="multiple">
+						                
+						                <?php foreach ( $data['topics'] as &$topic ): ?>
+						                    <option value="<?php echo $topic->term_id ?>"><?php echo $topic->name ?></option>
+						                <?php endforeach; ?>
+						                
+						            </select>
+						  		</div>
+						       	<div class="custom_topics_container">
+						            <h2>Eigene Themen hinzufügen:</h2>
+						            <input type="select" id="custom_topics" name="custom_topics" placeholder="Thema hinzufügen ..."/>
+						        </div>
+						        <p style="clear:both;"></p>
+					       	</div>			           
+				        </div>
+					</fieldset>		
+			    </div>
+			    <div id="progressbar">
+                    <div class="bar"></div>
+                    <div class="percent">0%</div>
+                </div>
 	       		<div class="message_submit_container">
                     <button form="messageform" id="opinion_submit" <?php if($data['isLoggedIn'] == false) echo 'nopriv="nopriv"' ?>>Abschicken</button>   
                 </div><!-- .message_submit_container-->
@@ -199,7 +198,6 @@ class FrontendPostSubmitter {
             'sub_topic_max_chars'   => 15,
             'custom_topics_max'        => 5,
             'image_size_max'        => 3000000,
-            'reference_max_chars'   => 1000,
         );
         
         // register ajax actions
@@ -230,7 +228,6 @@ class FrontendPostSubmitter {
         $error = null;
         $description = wp_strip_all_tags($_POST['description']);
         $message = wp_strip_all_tags($_POST['message']);
-        $reference = wp_strip_all_tags($_POST['reference']);
         $post_topic_IDs = array();
         $query_topics = array_merge(explode(",", $_POST['topics']), array_slice(explode(",", $_POST['custom_topics']), 0, 5));
         
@@ -273,7 +270,13 @@ class FrontendPostSubmitter {
                 $post_topic_IDs[] = $topicID;
             }
         }
+
+		// parse links
+		if( function_exists("kleem_auto_link_text")) {
+			$description = kleem_auto_link_text($description);
+		}
         
+		// insert post
         $post_args = array(
             'ping_status'   => 'open',
             'post_author'   => get_current_user_id(),
@@ -290,17 +293,16 @@ class FrontendPostSubmitter {
             die();
         }
         
-        
-        update_post_meta($postID, 'agreement', 0);
-        update_post_meta($postID, 'disaffirmation', 0);
-        if(strlen($reference) > 0) {
-            update_post_meta($postID, 'reference', $reference);
-        }
+        // insert opinion_topics
         if(count($post_topic_IDs) > 0) {
             wp_set_object_terms($postID, $post_topic_IDs, 'opinion_topics', true);
         }
+		
+		// insert meta
+        update_post_meta($postID, 'agreement', 0);
+        update_post_meta($postID, 'disaffirmation', 0);
         
-        
+        // attach image
         if( key_exists('message_image', $_FILES) ) {
             $attach_id = media_handle_upload( 'message_image', $postID );
             if(!is_wp_error($attach_id)) {
@@ -443,16 +445,6 @@ class FrontendPostSubmitter {
         }
 
 
-        // check reference
-        $element = "reference";
-        $value = wp_strip_all_tags($_POST[$element]);
-        if(strlen($value) > self::$validationConfig['reference_max_chars']) {
-            $response['error'][] = array(
-                'element'   => $element,
-                'message'   => "Der Link darf maximal " . self::$validationConfig['reference_max_chars'] . " Zeichen lang sein.",
-            );
-        }
-        
         // check topics
         $element = "topics";
         $value = explode(',', wp_strip_all_tags($_POST[$element]));

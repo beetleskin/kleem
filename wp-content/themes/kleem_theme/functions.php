@@ -7,6 +7,7 @@ register_deactivation_hook(__FILE__, 'kleem_deactivate');
 
 add_action('generate_rewrite_rules', 'kleem_add_rewrite_rules');
 add_action( 'after_setup_theme', 'theme_formats');
+add_action( 'widgets_init', 'kleem_widgets_init' );
 add_filter('query_vars', 'kleem_queryvars');
 add_filter('pre_get_posts', 'kleem_filter');
 /* front end action hooks */
@@ -30,15 +31,27 @@ function kleem_setup() {
 	add_theme_support( 'post-formats', array( 'status', 'video', 'quote' ) );
 	
 	// navs
-	register_nav_menu('top', 'Topmenu');
 	register_nav_menu('bottom', 'Footermenu');
-
+	
 	// data stuff
 	kleem_register_pt_opinion();
 
 	// other stuff
 	render_init();
 	ajax_init();
+}
+
+
+function kleem_widgets_init() {
+	// widget area stuff
+	register_sidebar( array(
+		'name' => __( 'User profile widget area', 'twentytwelve' ),
+		'id' => 'sidebar-header',
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'after_widget' => '</aside>',
+		'before_title' => '<h3 class="widget-title">',
+		'after_title' => '</h3>',
+	) );
 }
 
 function theme_formats(){

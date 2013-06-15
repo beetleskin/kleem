@@ -76,7 +76,6 @@ jQuery(function($) { post_submit_form : {
 			this.inputs = {
 				'msg' : $('#message', dom_selector),
 				'descr' : $('#description', dom_selector),
-				'link' : $('#reference_input', dom_selector),
 				'topics' : $('#topics', dom_selector),
 				'custom_topics' : $('#as-values-custom_topics', dom_selector),
 				'maxfilesize' : $('#maxfilesize', dom_selector),
@@ -175,10 +174,6 @@ jQuery(function($) { post_submit_form : {
 				formData.push( {
 					name : m.inputs.descr.attr('name'),
 					value : m.inputs.descr.val()
-				});
-				formData.push( {
-					name : m.inputs.link.attr('name'),
-					value : m.inputs.link.val()
 				});
 				formData.push( {
 					name : m.inputs.topics.attr('name'),
