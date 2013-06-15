@@ -1,16 +1,16 @@
 === Social Login ===
 Contributors: ClaudeSchlesser
-Tags: social login, social connect, facebook login, linkedin, livejournal, google, yahoo, twitter login, openid, paypal, google, vkontakte, hyves, widget, plugin, social network login, comments
+Tags: social login, social connect, facebook login, linkedin, livejournal, google, yahoo, twitter login, xing, openid, paypal, google, hyves, widget, plugin, social network login, comments
 Requires at least: 3.0
 Tested up to: 3.5.1
-Stable tag: 4.3
+Stable tag: 4.4
 
 Allow your visitors to comment and login with social networks like Twitter, Facebook, Paypal, LinkedIn, LiveJournal, OpenID, VKontakte, Google, Yahoo
 
 == Description ==
 
 Social Login is a professionally developed and free Wordpress (BuddyPress compatible) plugin that allows your visitors to comment, 
-login and register with 20+ Social Networks like for example Facebook, Twitter, Google, LinkedIn, Paypal, LiveJournal, Hyves, Вконтакте and Yahoo.<br /><br />
+login and register with 20+ Social Networks like for example Facebook, Twitter, Google, LinkedIn, Xing, PayPal, LiveJournal, Hyves, Вконтакте and Yahoo.<br /><br />
 <strong>Make your blog social!</strong><br />
 
 <strong>Choose where to add the Social Login Plugin:</strong>
@@ -33,7 +33,8 @@ login and register with 20+ Social Networks like for example Facebook, Twitter, 
  <li>Twitter</li>
  <li>Google</li>
  <li>LinkedIn</li>
- <li>Paypal</li>
+ <li>Xing</li>
+ <li>PayPal</li>
  <li>Yahoo</li>
  <li>Github.com</li>
  <li>Foursquare</li>
@@ -120,6 +121,9 @@ http://docs.oneall.com/plugins/guide/social-login-wordpress/
 5. **Login** - Login formular with small buttons (Social Network Buttons are included)
 
 == Changelog ==
+
+= 4.4 =
+* Social Network "Xing" added
 
 = 4.3 =
 * Social Network Avatars improved
