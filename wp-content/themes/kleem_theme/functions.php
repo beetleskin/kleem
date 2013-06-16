@@ -234,6 +234,7 @@ function kleem_sidebar_login_widget_form_args($args) {
 	$args['label_password'] = "Pwd";
 	$args['label_remember'] = "merken";
 	$args['label_login'] = "Login";
+	$args['remember'] = false;
 	return $args;
 }
 
