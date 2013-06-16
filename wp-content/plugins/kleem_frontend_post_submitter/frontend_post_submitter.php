@@ -99,7 +99,6 @@ class FrontendPostSubmitter {
 					<fieldset form="messageform">
 				        <div class="itemhead obligated"><img src="<?php echo $data ["images"]["arrow"];  ?>"/><h2>Themen hinzufügen</h2></div>
 				        <div class="itembody">
-				        	
 				        	<div class="all_topics_container clearfix">
 					        	<div class="topics_container">
 						        	<h2>Wähle <u>mindestens</u> ein Thema aus:</h2>
@@ -119,11 +118,14 @@ class FrontendPostSubmitter {
 					       	</div>			           
 				        </div>
 					</fieldset>		
+					
 			    </div>
+			    
 			    <div id="progressbar">
                     <div class="bar"></div>
                     <div class="percent">0%</div>
                 </div>
+                
 	       		<div class="message_submit_container">
                     <button form="messageform" id="opinion_submit" <?php if($data['isLoggedIn'] == false) echo 'nopriv="nopriv"' ?>>Abschicken</button>   
                 </div><!-- .message_submit_container-->
