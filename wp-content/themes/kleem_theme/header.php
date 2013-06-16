@@ -33,10 +33,11 @@
 
 <body <?php body_class(); ?>>
 
-<?php get_sidebar('header') ?>
-
 <div id="page" class="hfeed site">
 		
+	<?php get_sidebar('header') ?>
+	<div class="clearfix"></div>
+	
 	<header id="masthead" class="site-header" role="banner">
 		<hgroup>
 			<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
