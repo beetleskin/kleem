@@ -54,16 +54,18 @@
 
 .main-navigation li .sub-menu {
 	top: 36px;
-	left: -42em;
+	left: -42em; 
 	width: 100%;
 	border-top: 1px solid #0b4982;
 	border-bottom: 1px solid #0b4982;
 }
 
-.main-navigation li .sub-menu > li a,
-.main-navigation li .sub-menu > li{
-	float: left;
+#menu-klimo_primary .menu-item:hover .sub-menu {
+	border-top: 1px solid #00883b;
+	border-bottom: 1px solid #00883b;
 }
+
+
 
 
 /*submenu*/
