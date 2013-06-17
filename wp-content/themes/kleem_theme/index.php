@@ -26,7 +26,7 @@ get_header(); ?>
 				<?php get_template_part( 'content', get_post_format() ); ?>
 			<?php endwhile; ?>
 
-			<?php kleem_get_ajax_pagination(); ?>
+			<?php kleem_ajax_pagination(); ?>
 
 		<?php else : ?>
 

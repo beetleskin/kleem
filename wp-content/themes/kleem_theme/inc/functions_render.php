@@ -237,7 +237,7 @@ function kleem_get_the_ratingbox($postID = 0, $userID = 0) {
 
 
 
-function kleem_get_ajax_pagination($readMore = 'Mehr Posts ...', $buttonStyle = 'green') {
+function kleem_ajax_pagination($readMore = 'Mehr Posts ...', $buttonStyle = 'green') {
     // ajax more posts config
     global $wp_query;
     $maxPages = $wp_query->max_num_pages;
