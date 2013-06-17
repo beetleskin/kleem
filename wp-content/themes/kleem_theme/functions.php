@@ -10,6 +10,8 @@ add_action( 'after_setup_theme', 'theme_formats');
 add_action( 'widgets_init', 'kleem_widgets_init' );
 add_filter('query_vars', 'kleem_queryvars');
 add_filter('pre_get_posts', 'kleem_filter');
+
+
 /* front end action hooks */
 add_filter('created_klimo_idea_topics', 'kleem_add_idea_menu_term_item_hook');
 add_filter('sidebar_login_widget_logged_out_links', 'kleem_sidebar_login_loggedout_links_hook');
@@ -18,6 +20,11 @@ add_filter('login_url', 'kleem_override_login_page', 10, 2);
 add_filter('register_url', 'kleem_override_register_page', 10, 2);
 add_filter('lostpassword_url', 'kleem_override_lostpw_page', 10, 2);
 add_action( 'template_redirect', 'kleem_redirect' );
+
+add_filter('sidebar_login_include_css', 'kleem_sidebar_login_include_css', 10, 2);
+add_filter('sidebar_login_widget_logged_out_title', 'kleem_sidebar_login_widget_logged_out_title', 10, 2);
+add_filter('sidebar_login_widget_form_args', 'kleem_sidebar_login_widget_form_args', 10, 2);
+
 
 
 include_once ('inc/functions_admin.php');
@@ -210,6 +217,25 @@ function kleem_sidebar_login_loggedin_links_hook($links) {
 		$links['profile']['href'] = home_url( '/wpm_profile/' );
 	}
 	return $links;
+}
+
+function kleem_sidebar_login_include_css($args) {
+	// no custom css
+	return false;
+}
+
+function kleem_sidebar_login_widget_logged_out_title($args) {
+	// no title
+	return "";
+}
+
+function kleem_sidebar_login_widget_form_args($args) {
+	$args['label_username'] = "Benutzer";
+	$args['label_password'] = "Pwd";
+	$args['label_remember'] = "merken";
+	$args['label_login'] = "Login";
+	$args['remember'] = false;
+	return $args;
 }
 
 ?>

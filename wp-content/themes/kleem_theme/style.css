@@ -14,10 +14,86 @@
 /*top sidebar*/
 
 #tertiary.widget-area {
-	margin: 0 auto;
-	max-width: 68.571428571rem;
+	width: auto;
+	margin: 0px;
+	padding: 8px;
+	background-color: green;
+}
+
+#tertiary.widget-area * {
+	float: left;
+}
+
+#tertiary input {
+	
+}
+
+#tertiary.widget-area .widget {
+	margin: 0px;
+}
+
+#tertiary.widget-area .widget p {
+	margin: 0px;
+}
+
+#tertiary .widget_oa_social_login {
+	width: 117px !important;
+	height: 35px !important;
+	overflow: hidden;
+}
+
+#tertiary .oneall_social_login {
+	margin-top: -2px;
+}
+
+#tertiary .widget.widget_wp_sidebarlogin {
+	margin-top: 6px;
+}
+
+#tertiary .widget.widget_wp_sidebarlogin form{
+	position: relative;
+}
+
+#tertiary .widget.widget_wp_sidebarlogin p.sidebar_login_error {
+	position: absolute;
+	display: block;
+	z-index: 1000;
+	top: 40px;
+}
+
+#tertiary .widget.widget_wp_sidebarlogin p.sidebar_login_error * {
 	float: none;
-	}
+}
+
+#tertiary .widget_wp_sidebarlogin #loginform p {
+	margin-left: 1rem;
+}
+
+#tertiary .widget_wp_sidebarlogin #loginform p input[type="text"],
+#tertiary .widget_wp_sidebarlogin #loginform p input[type="password"] {
+	height: 15px;
+	padding: 2px;
+	margin-left: 0.5rem;
+}
+
+#tertiary .widget_wp_sidebarlogin #loginform p input[type="submit"] {
+	height: 21px;
+	padding: 2px;
+}
+
+#tertiary .sidebar_login_links li {
+	margin-left: 1rem;
+}
+
+#tertiary .widget_wp_sidebarlogin h3 {
+	margin: 0px;
+	text-transform: none;
+}
+
+#tertiary .widget_wp_sidebarlogin form .input{
+	width: 100px;
+	margin: 0px;
+}
 	
 /*top sidebar*/
 
@@ -69,3 +145,13 @@
 
 
 /*submenu*/
+/*main menu*/
+
+
+
+/* stuff */
+.clearfix {
+	padding: 0px;
+	margin: 0px;
+	clear: both;
+}
