@@ -112,6 +112,8 @@
 .main-navigation ul#menu-hauptmenu > li a{
 	text-align: center;
 	display: block;	text-transform: none;
+	line-height: 2.792308;
+
 }
 
 
@@ -121,11 +123,12 @@
 	position: relative;
 }
 
-.main-navigation li .sub-menu > li > a{
+.main-navigation ul#menu-hauptmenu .sub-menu > li > a{
 	width: auto;
 	margin: 0px 0px 0px 0px;
-		line-height: 1.792308;
-
+	line-height: 1.792308;
+	background: #fff;
+	border: none;
 }
 
 .main-navigation li .sub-menu > li{
@@ -135,6 +138,7 @@
 #menu-hauptmenu:hover .sub-menu {
 	display:none;
 	visibility: hidden;
+
 }
 
 #menu-hauptmenu > li:hover .sub-menu {
@@ -155,7 +159,7 @@
 	left: 0em; 
 	width: 100%;
 	border-top: 1px solid #0b4982;
-	border-bottom: 1px solid #0b4982;
+	
 }
 
 .main-navigation li.current-menu-item .sub-menu {
@@ -181,4 +185,41 @@
 	padding: 0px;
 	margin: 0px;
 	clear: both;
+}
+
+
+
+/*page*/
+
+#page{
+	background: none;
+	box-shadow: none;
+}
+
+#masthead{
+	background: #fff;
+	padding: 4em;
+}
+
+body {
+background-image: url('images/background.png'); /*als img einsetzen und fixen beispiel abwaaehlkalender!!!*/
+}
+
+.site-content article {
+	background: #fff;
+	width: 104%;
+}
+
+#secondary{
+	background: #fff;
+}
+
+footer[role="contentinfo"] {
+	background: #000;
+}
+
+.widget-area {
+	float: right;
+	width: 24.041667%;
+	padding: 2em;
 }
