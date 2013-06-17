@@ -301,4 +301,37 @@ function kleem_auto_link_text($text) {
 }
 
 
+function kleem_posted_on() {
+	printf( __( 'Erstellt am <a href="%1$s" title="%2$s" rel="bookmark"><time class="entry-date" datetime="%3$s" pubdate>%4$s</time></a><span class="byline"> von <span class="author vcard"><a class="url fn n" href="%5$s" title="%6$s" rel="author">%7$s</a></span></span>', 'cazuela'),
+		esc_url( get_permalink() ),
+		esc_attr( get_the_time() ),
+		esc_attr( get_the_date( 'c' ) ),
+		esc_html( get_the_date() ),
+		esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
+		esc_attr( sprintf( __( 'View all posts by %s'), get_the_author() ) ),
+		get_the_author()
+	);
+}
+
+function kleem_post_meta() {
+	/* get data to be rendered */
+	$categories_list = get_the_category_list( __( ', ', 'twentytwelve' ) );
+	$tag_list = get_the_tag_list( '', __( ', ', 'twentytwelve' ) );
+	$tax_list = "";
+	if($categories_list && $tag_list) {
+		$tax_list = $categories_list . ', ' . $tag_list;
+	} elseif($categories_list) {
+		$tax_list = $categories_list;
+	} else {
+		$tax_list = $tag_list;
+	}
+	
+	
+	if ( $tax_list ) {
+		$utility_text = __( 'Tags: %1$s', 'twentytwelve' );
+		printf($utility_text, $tax_list);
+	}
+}
+
+
 ?>
