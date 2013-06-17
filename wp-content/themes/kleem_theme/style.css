@@ -38,19 +38,19 @@
 
 #tertiary .widget_oa_social_login {
 	width: 117px !important;
-	height: 35px !important;
+	height: 31px !important;
 	overflow: hidden;
 }
 
 #tertiary .oneall_social_login {
-	margin-top: -2px;
+	margin-top: -3px;
 }
 
 #tertiary .widget.widget_wp_sidebarlogin {
-	margin-top: 6px;
+	margin-top: 5px;
 }
 
-#tertiary .widget.widget_wp_sidebarlogin form{
+#tertiary .widget.widget_wp_sidebarlogin form {
 	position: relative;
 }
 
@@ -87,6 +87,7 @@
 
 #tertiary .widget_wp_sidebarlogin h3 {
 	margin: 0px;
+	margin-right: 1rem;
 	text-transform: none;
 }
 
