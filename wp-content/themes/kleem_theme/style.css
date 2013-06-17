@@ -105,14 +105,13 @@
 	background: pink;
 	width: 14em;
 	margin: 0 0em 0 1em;
+	line-height: 2.792308;
 }
 
 
 .main-navigation ul#menu-hauptmenu > li a{
 	text-align: center;
-	display: block;
-	line-height: 2.792308;
-	text-transform: none;
+	display: block;	text-transform: none;
 }
 
 
@@ -122,27 +121,55 @@
 	position: relative;
 }
 
+.main-navigation li .sub-menu > li > a{
+	width: auto;
+	margin: 0px 0px 0px 0px;
+		line-height: 1.792308;
 
+}
+
+.main-navigation li .sub-menu > li{
+	margin: 0px;
+}
+
+#menu-hauptmenu:hover .sub-menu {
+	display:none;
+	visibility: hidden;
+}
+
+#menu-hauptmenu > li:hover .sub-menu {
+	display:block;
+	visibility: visible;
+}
+
+#menu-hauptmenu li {
+	display: inline-block;
+	position: static;
+}
 
 /*main menu*/
 
 /* submenu*/
 
 .main-navigation li .sub-menu {
-	top: 36px;
-	left: -42em; 
+	left: 0em; 
 	width: 100%;
 	border-top: 1px solid #0b4982;
 	border-bottom: 1px solid #0b4982;
 }
 
-#menu-klimo_primary .menu-item:hover .sub-menu {
-	border-top: 1px solid #00883b;
-	border-bottom: 1px solid #00883b;
+.main-navigation li.current-menu-item .sub-menu {
+	display: block !important;
 }
 
+.main-navigation li.current-menu-ancestor .sub-menu{
+	display: block;
+}
 
-
+.main-navigation li.menu-parent-item:hover .sub-menu {
+	background: #fff;
+	width: 100%;
+}
 
 /*submenu*/
 /*main menu*/
