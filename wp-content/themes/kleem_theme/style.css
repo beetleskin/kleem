@@ -19,12 +19,51 @@
 	float: none;
 	}
 	
-
-
-
 /*top sidebar*/
 
 /*main menu*/
 
 
+.main-navigation ul#menu-hauptmenu > li{
+	float: right !important;
+	background: pink;
+	width: 14em;
+	margin: 0 0em 0 1em;
+}
+
+
+.main-navigation ul#menu-hauptmenu > li a{
+	text-align: center;
+	display: block;
+	line-height: 2.792308;
+	text-transform: none;
+}
+
+
+.main-navigation ul#menu-hauptmenu{
+	border: none;
+	width: 100%;
+	position: relative;
+}
+
+
+
 /*main menu*/
+
+/* submenu*/
+
+.main-navigation li .sub-menu {
+	top: 36px;
+	left: -42em;
+	width: 100%;
+	border-top: 1px solid #0b4982;
+	border-bottom: 1px solid #0b4982;
+}
+
+.main-navigation li .sub-menu > li a,
+.main-navigation li .sub-menu > li{
+	float: left;
+}
+
+
+/*submenu*/
