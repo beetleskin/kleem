@@ -1,6 +1,6 @@
 /*
  Theme Name: 	Kleem
- Template: 		twentytwelve
+ Template:  		twentytwelve
  Author: 		Marina T, Stefan K
  Author 		URI: http://wordpress.org/
  Description: 	Custom child theme for the Twenty Twelve theme
@@ -168,6 +168,10 @@
 		background: #fff;
 		width: 100%;
 	}
+	#secondary.widget-area {
+		float: right;
+		width: 31.041667%;
+}
 }
 
 

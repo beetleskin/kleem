@@ -17,15 +17,15 @@ get_header(); ?>
 		<div id="content" role="main">
 
 		<?php if ( have_posts() ) : ?>
-			<header class="archive-header">
+			<!--<header class="archive-header">
 				<h1 class="archive-title"><?php printf( __( 'Tag Archives: %s', 'twentytwelve' ), '<span>' . single_tag_title( '', false ) . '</span>' ); ?></h1>
 
 			<?php if ( tag_description() ) : // Show an optional tag description ?>
 				<div class="archive-meta"><?php echo tag_description(); ?></div>
 			<?php endif; ?>
-			</header><!-- .archive-header -->
+			</header> .archive-header -->
 
-			<?php
+			<?php 
 			/* Start the Loop */
 			while ( have_posts() ) : the_post();
 
