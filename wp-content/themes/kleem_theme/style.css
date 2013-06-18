@@ -12,7 +12,6 @@
 /* -------------------------------------------------------------- */
 
 /*top sidebar*/
-
 #tertiary.widget-area {
 	width: auto;
 	margin: 0px;
@@ -98,13 +97,21 @@
 
 
 
-/*main menu*/
+/* main menu */
 @media screen and (min-width: 600px) {
+	#site-navigation {
+		margin-bottom: 2.7em;	/* nasty placeholder for the submenu*/
+	}
+
+
+	#site-navigation .menu-hauptmenu-container {
+		float: right;
+	}
+
 	.main-navigation ul#menu-hauptmenu > li{
-		float: right !important;
 		background: pink;
 		width: 14em;
-		margin: 0 0em 0 1em;
+		margin: 0 1em 0 0;
 		line-height: 2.792308;
 	}
 	
@@ -112,12 +119,10 @@
 		text-align: center;
 		display: block;	text-transform: none;
 		line-height: 2.792308;
-	
 	}
 	
 	.main-navigation ul#menu-hauptmenu{
 		border: none;
-		width: 100%;
 		position: relative;
 	}
 	
@@ -168,13 +173,7 @@
 		background: #fff;
 		width: 100%;
 	}
-	#secondary.widget-area {
-		float: right;
-		width: 31.041667%;
 }
-}
-
-
 
 
 /* stuff */
@@ -185,9 +184,7 @@
 }
 
 
-
-/*page*/
-
+/* page */
 #page{
 	background: none;
 	box-shadow: none;
@@ -201,6 +198,7 @@
 	position: fixed;
 	top: 0;
 	left: 0;
+	z-index: -1;
 }
 
 #masthead{
@@ -208,21 +206,32 @@
 	padding: 4em;
 }
 
-body {
-/*	background-image: url('images/background.png'); als img einsetzen und fixen beispiel abwaaehlkalender!!!*/
+
+/* main */
+#main {
+	margin: 1.714285714rem 0 0;
 }
+
+#primary.site-content {
+	width: 74.5%;
+	margin: 0px;
+}
+
 
 .site-content article {
 	background: #fff;
+	padding: 2%;
 }
 
-.widget-area {
-	float: right;
-}
 
-#secondary{
+/* sidebar */
+#secondary.widget-area {
+	width: 23%;
+	margin: 0px;
+	padding: 0.5%;
 	background: #fff;
 }
+
 
 footer[role="contentinfo"] {
 	background: #000;
