@@ -217,10 +217,14 @@
 	margin: 0px;
 }
 
-
-.site-content article {
+#primary.site-content article,
+#primary.site-content.single #content {
 	background: #fff;
 	padding: 2%;
+}
+
+#primary.site-content.single article {
+	padding: 0;
 }
 
 
