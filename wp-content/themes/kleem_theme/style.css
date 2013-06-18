@@ -207,7 +207,10 @@ background-image: url('images/background.png'); /*als img einsetzen und fixen be
 
 .site-content article {
 	background: #fff;
-	width: 104%;
+}
+
+.widget-area {
+	float: right;
 }
 
 #secondary{
@@ -218,8 +221,3 @@ footer[role="contentinfo"] {
 	background: #000;
 }
 
-.widget-area {
-	float: right;
-	width: 24.041667%;
-	padding: 2em;
-}
