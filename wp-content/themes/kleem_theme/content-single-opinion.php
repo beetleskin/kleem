@@ -11,20 +11,20 @@
 	<article id="opinion-<?php the_ID(); ?>" <?php post_class(); ?>>
 		
 		<header class="entry-header">
-		<?php if (has_post_thumbnail() ): ?>
-			<div class="entry-thumbnail">
-			<a class="thickbox" href="<?php echo current(wp_get_attachment_image_src( get_post_thumbnail_id(), 'full')); ?>"><?php the_post_thumbnail('thumbnail'); ?></a>
-		</div><!-- .entry-thumbnail -->
-		<?php endif; ?>
-        <div class="opinion_topics">
-			<?php echo kleem_get_the_topic_list(get_the_ID()); ?>
- 		</div><!-- .opinion_topics -->
-        <h1 class="entry-title">
-        	<?php kleem_the_colored_title(true); ?>
-        </h1>
+			<?php if (has_post_thumbnail() ): ?>
+				<div class="entry-thumbnail">
+					<a class="thickbox" href="<?php echo current(wp_get_attachment_image_src( get_post_thumbnail_id(), 'full')); ?>"><?php the_post_thumbnail('thumbnail'); ?></a>
+				</div><!-- .entry-thumbnail -->
+			<?php endif; ?>
+	        <div class="opinion_topics">
+				<?php echo kleem_get_the_topic_list(get_the_ID()); ?>
+	 		</div><!-- .opinion_topics -->
+	        <h1 class="entry-title">
+	        	<?php kleem_the_colored_title(true); ?>
+	        </h1>
 		</header><!-- .entry-header -->
-		
-		
+			
+			
 		<div class="opinion-reference">
             <?php echo kleem_get_the_reference(get_the_ID()); ?>
     	</div><!-- .opinion-reference -->

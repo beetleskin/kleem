@@ -41,7 +41,7 @@ get_header(); ?>
 
 			endwhile;
 
-			kleem_get_ajax_pagination();
+			kleem_ajax_pagination();
 			?>
 
 		<?php else : ?>

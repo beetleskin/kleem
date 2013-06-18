@@ -280,7 +280,7 @@ class FrontendPostSubmitter {
         
 		// insert post
         $post_args = array(
-            'ping_status'   => 'open',
+        	'comment_status'=> 'open',
             'post_author'   => get_current_user_id(),
             'post_content'  => $description,
             'post_status'   => 'publish',
