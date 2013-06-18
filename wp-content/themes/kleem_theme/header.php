@@ -32,6 +32,9 @@
 </head>
 
 <body <?php body_class(); ?>>
+	<!--eigenes Hintergrundbild machen! Und herausfinden wie hier auf das Bild verlinkt wird und warum das über allem liegt und n z-inex braucht-->
+	<img id="background-fix"  src="http://static.tumblr.com/lvwmvsv/tIVmj79mh/bg-berlin.png" >  
+
 
 <div id="page" class="hfeed site">
 		

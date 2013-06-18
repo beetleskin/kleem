@@ -193,13 +193,23 @@
 	box-shadow: none;
 }
 
+#background-fix{
+	min-height: 100%;
+	min-width: 1024px;
+	width: 100%;
+	height: auto;
+	position: fixed;
+	top: 0;
+	left: 0;
+}
+
 #masthead{
 	background: #fff;
 	padding: 4em;
 }
 
 body {
-	background-image: url('images/background.png'); /*als img einsetzen und fixen beispiel abwaaehlkalender!!!*/
+/*	background-image: url('images/background.png'); als img einsetzen und fixen beispiel abwaaehlkalender!!!*/
 }
 
 .site-content article {
