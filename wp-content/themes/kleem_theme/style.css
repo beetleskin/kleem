@@ -9,7 +9,17 @@
 
 */
 @import url("../twentytwelve/style.css");
+@import url("http://fonts.googleapis.com/css?family=Cutive");
 /* -------------------------------------------------------------- */
+
+
+body.custom-font-enabled {
+	font-family: 'Cutive', serif; 
+    font-size: 1em;
+    
+}     
+     
+
 
 /*top sidebar*/
 #tertiary.widget-area {
@@ -98,10 +108,8 @@
 
 /* header */ 
 #masthead {
-	height: 27em;
 	background: #fff;
 	padding: 2em 0 0 0;
-
 }
 
 #masthead #header-img {
@@ -115,90 +123,91 @@
 #masthead h2.site-description {
 	clear: none;
 	padding: 2em;
+	text-indent: 4em;
 }
 
 
 /* main menu */
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 750px) {
 
 	#site-navigation {
-		margin-bottom: 2.7em;	/* nasty placeholder for the submenu*/
-	}
-
-
-	#site-navigation .menu-hauptmenu-container {
-		float: right;
-	}
-
-	.main-navigation ul#menu-hauptmenu > li {
-		background-color: #ebebeb;
-		width: 14em;
-		margin: 0 1em 0 0;
-		line-height: 2.792308;
-	}
-
-	.main-navigation ul#menu-hauptmenu > li:hover,
-	.main-navigation ul#menu-hauptmenu > li.current-menu-item {
-		background-color: #D51279;
-	}
-
-	.main-navigation ul#menu-hauptmenu > li:last-child {
+		left: 18rem;
+		top: -2.4rem;
+		position: relative;
 		margin: 0px;
 	}
-	
-	.main-navigation ul#menu-hauptmenu > li a {
-		text-align: center;
-		display: block;	text-transform: none;
-		line-height: 2.792308;
-	}
-	
+
 	.main-navigation ul#menu-hauptmenu {
 		border: none;
 		position: relative;
 	}
 	
-	.main-navigation ul#menu-hauptmenu .sub-menu > li > a {
-		width: auto;
-		margin: 0px 0px 0px 0px;
-		line-height: 1.792308;
-		background: #fff;
-		border: none;
+	.main-navigation ul#menu-hauptmenu li {
+		height: 2.6em;
+		margin: 0 1em 0 0;
+		display: inline-block;
+		position: static;
+		background-color: #ebebeb;
+		padding: 0;
 	}
 	
-	.main-navigation li .sub-menu > li {
+	.main-navigation ul#menu-hauptmenu > li {
+		width: 14em;
+	}
+	
+	.main-navigation ul#menu-hauptmenu > li:last-child {
 		margin: 0px;
 	}
 	
-	#menu-hauptmenu:hover .sub-menu {
+	.main-navigation ul#menu-hauptmenu li a {
+		text-align: center;
+		display: block;	
+		line-height: 3.2em;
+		height: 2.6em;
+	}
+	
+	
+	/* submenu and hover */
+	.main-navigation ul#menu-hauptmenu .sub-menu {
+		left: -21em; 
+		width: 100%;
+		background: #fff;
+		border-top: 2px solid #D51279;
+	}
+	
+	.main-navigation ul#menu-hauptmenu .sub-menu > li {
+		margin: 0 0 0 1em;
+	}
+	
+	.main-navigation ul#menu-hauptmenu .sub-menu > li > a {
+		width: auto;
+		background: #fff;
+		border: none;
+		padding: 0;
+	}
+	
+	.main-navigation ul#menu-hauptmenu:hover .sub-menu {
 		display:none;
 		visibility: hidden;
 	}
 	
-	#menu-hauptmenu > li:hover .sub-menu {
+	.main-navigation ul#menu-hauptmenu > li:hover .sub-menu {
 		display: block;
 		visibility: visible;
 	}
+
 	
-	#menu-hauptmenu li {
-		display: inline-block;
-		position: static;
-	}
-	
-	/* submenu*/
-	.main-navigation li .sub-menu {
-		left: 0em; 
-		width: 100%;
-		background: #fff;
-		border-top: 1px solid #0b4982;
-		
-	}
-	
-	.main-navigation li.current-menu-item .sub-menu {
+	.main-navigation ul#menu-hauptmenu li.current-menu-item .sub-menu {
 		display: block !important;
 	}
 	
-	.main-navigation li.current-menu-ancestor .sub-menu{
+	.main-navigation ul#menu-hauptmenu li.current-menu-ancestor .sub-menu{
 		display: block;
+	}
+	
+	.main-navigation ul#menu-hauptmenu > li:hover,
+	.main-navigation ul#menu-hauptmenu > li.current-menu-item {
+		background-color: #D51279;
 	}
 }
 
