@@ -96,9 +96,31 @@
 }
 
 
+/* header */ 
+#masthead {
+	height: 27em;
+	background: #fff;
+	padding: 2em 0 0 0;
+
+}
+
+#masthead #header-img {
+	width: 20%;
+	min-width: 200px;
+	float: left;
+	height: auto;
+	padding: 0 2rem;
+}
+
+#masthead h2.site-description {
+	clear: none;
+	padding: 2em;
+}
+
 
 /* main menu */
 @media screen and (min-width: 600px) {
+
 	#site-navigation {
 		margin-bottom: 2.7em;	/* nasty placeholder for the submenu*/
 	}
@@ -108,25 +130,34 @@
 		float: right;
 	}
 
-	.main-navigation ul#menu-hauptmenu > li{
-		background: pink;
+	.main-navigation ul#menu-hauptmenu > li {
+		background-color: #ebebeb;
 		width: 14em;
 		margin: 0 1em 0 0;
 		line-height: 2.792308;
 	}
+
+	.main-navigation ul#menu-hauptmenu > li:hover,
+	.main-navigation ul#menu-hauptmenu > li.current-menu-item {
+		background-color: #D51279;
+	}
+
+	.main-navigation ul#menu-hauptmenu > li:last-child {
+		margin: 0px;
+	}
 	
-	.main-navigation ul#menu-hauptmenu > li a{
+	.main-navigation ul#menu-hauptmenu > li a {
 		text-align: center;
 		display: block;	text-transform: none;
 		line-height: 2.792308;
 	}
 	
-	.main-navigation ul#menu-hauptmenu{
+	.main-navigation ul#menu-hauptmenu {
 		border: none;
 		position: relative;
 	}
 	
-	.main-navigation ul#menu-hauptmenu .sub-menu > li > a{
+	.main-navigation ul#menu-hauptmenu .sub-menu > li > a {
 		width: auto;
 		margin: 0px 0px 0px 0px;
 		line-height: 1.792308;
@@ -134,7 +165,7 @@
 		border: none;
 	}
 	
-	.main-navigation li .sub-menu > li{
+	.main-navigation li .sub-menu > li {
 		margin: 0px;
 	}
 	
@@ -144,7 +175,7 @@
 	}
 	
 	#menu-hauptmenu > li:hover .sub-menu {
-		display:block;
+		display: block;
 		visibility: visible;
 	}
 	
@@ -157,6 +188,7 @@
 	.main-navigation li .sub-menu {
 		left: 0em; 
 		width: 100%;
+		background: #fff;
 		border-top: 1px solid #0b4982;
 		
 	}
@@ -167,11 +199,6 @@
 	
 	.main-navigation li.current-menu-ancestor .sub-menu{
 		display: block;
-	}
-	
-	.main-navigation li.menu-parent-item:hover .sub-menu {
-		background: #fff;
-		width: 100%;
 	}
 }
 
@@ -185,7 +212,7 @@
 
 
 /* page */
-#page{
+#page {
 	background: none;
 	box-shadow: none;
 }
@@ -199,11 +226,6 @@
 	top: 0;
 	left: 0;
 	z-index: -1;
-}
-
-#masthead{
-	background: #fff;
-	padding: 4em;
 }
 
 
