@@ -33,7 +33,7 @@
 
 <body <?php body_class(); ?>>
 	<!--eigenes Hintergrundbild machen! Und herausfinden wie hier auf das Bild verlinkt wird und warum das über allem liegt und n z-inex braucht-->
-	<img id="background-fix"  src="http://static.tumblr.com/lvwmvsv/tIVmj79mh/bg-berlin.png" >  
+	<img id="background-fix"  src="/wp-content/themes/kleem_theme/images/background.png">  
 
 
 <div id="page" class="hfeed site">
@@ -43,7 +43,7 @@
 	
 	<header id="masthead" class="site-header" role="banner">
 		<hgroup>
-			<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+			<img id="header-img" src="/wp-content/themes/kleem_theme/images/header_img.jpg">
 			<h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
 		</hgroup>
 
