@@ -1,4 +1,4 @@
-<img id="background-fix"  src="images/background.png" >  
+<img id="background-fix"  src="wp-content/themes/kleem_theme/images/background.jpg" >  
 
 <?php
 /**
