@@ -1,7 +1,6 @@
 <?php
 
 
-/* front end action hooks */
 
 function render_init() {
 	// enqueue main script

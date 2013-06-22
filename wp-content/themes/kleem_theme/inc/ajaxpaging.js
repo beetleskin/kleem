@@ -5,6 +5,7 @@
 
 jQuery(function($) { 
 	
+	
 	$.fn.ajaxPaging = function( options ) {
 		//build main options before element iteration
 		var opts = $.extend({}, {

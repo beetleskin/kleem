@@ -1,5 +1,6 @@
 <?php
  
+ 
 /**
  * Registeres the post type 'opinion' along with its taxonomy 'opintion_topic'
  */

@@ -8,6 +8,7 @@ function add_export_tool_menu_item() {
     add_submenu_page('tools.php', 'Meinungen exportieren', 'Meinungen exportieren', 'administrator', 'opinion_export', 'opinion_export_form_cb');
 }
 
+
 function opinion_export_form_cb() {
     $form_param =  "export_opinions";
     
@@ -30,6 +31,7 @@ function opinion_export_form_cb() {
 
     echo $form;
 }
+
 
 function opinion_export_dl() {
     $query_args = array(
@@ -68,6 +70,7 @@ function opinion_export_dl() {
         echo "</div>";
     }
 }
+
 
 function popularity_sort(&$a, &$b) {
     return $a["popularity"] < $b["popularity"];

@@ -1,6 +1,7 @@
 <?php
 // TODO: wrap rating post meta in one array
 
+
 function ajax_init() {
 	// register ajax callbacks
 	add_action('wp_ajax_ajax_rate', 'ajax_rate');
