@@ -28,7 +28,7 @@ add_filter('sidebar_login_widget_form_args', 'kleem_sidebar_login_widget_form_ar
 
 
 include_once ('inc/functions_admin.php');
-include_once ('inc/functions_render.php');
+include_once ('inc/functions_render.php'); 
 include_once ('inc/functions_ajax.php');
 include_once ('inc/functions_data.php');
 
