@@ -13,17 +13,21 @@ jQuery(function($) {
 			var msgID = $this.attr('postID');
 			var active = true;
 	
+	
 			function __construct() {
 				$('.ratebutton', $this).click(rateClicked);
 			}
+			
 			
 			function setActive() {
 				active = true;
 			}
 			
+			
 			function setInactive() {
 				active = false;
 			}
+	
 	
 			function rateClicked(event) {
 				// unbind the buttons
@@ -51,11 +55,13 @@ jQuery(function($) {
 				});
 			};
 	
+	
 			function ratingSent(data, textStatus, jqXH) {
 				if(data.newBox) {
 					$this.replaceWith( $(data.newBox).ratingBox() );
 				}
 			}
+	
 	
 			function ajaxError(jqXHR, textStatus, errorThrown) {
 				setActive();
