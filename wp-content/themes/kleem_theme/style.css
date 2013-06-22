@@ -254,11 +254,12 @@ body.custom-font-enabled {
 	margin: 1.714285714rem 0 0;
 }
 
+/*
 #primary.site-content {
 	width: 100%;
 	margin: 0px;
 }
-
+*/
 
 @media screen and (min-width: 600px) {
 	#primary.site-content {
