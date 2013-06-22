@@ -300,8 +300,9 @@ body.custom-font-enabled {
 
 #primary.site-content article,
 #primary.site-content.single #content {
+	width: 90%;
 	background: #fff;
-	padding: 2%;
+	padding: 1.2em 1.2em 0.2em 1.2em;
 }
 
 #primary.site-content.single article {
@@ -357,8 +358,8 @@ footer[role="contentinfo"] {
 article header.entry-header img.wp-post-image{
 	display: inline;
 	clear: none;
-	margin: 0;
 	float: left;
+	margin: 0em 1em 0em 0em;
 
 }
 
@@ -373,5 +374,6 @@ article header.entry-header a .entry-title a{
 
 article header.entry-header .entry-meta{
 		clear: none;
-
+		font-size: 0.80rem;
+		margin-top: 0.1em;
 }
