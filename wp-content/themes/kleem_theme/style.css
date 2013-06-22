@@ -35,7 +35,7 @@ body.custom-font-enabled {
 	width: auto;
 	margin: 0px;
 	padding: 8px;
-	background-color: green;
+	background-color: none;
 }
 
 #tertiary.widget-area * {
@@ -101,12 +101,15 @@ body.custom-font-enabled {
 
 #tertiary .sidebar_login_links li {
 	margin-left: 1rem;
+	color: #fff;
+
 }
 
 #tertiary .widget_wp_sidebarlogin h3 {
 	margin: 0px;
 	margin-right: 1rem;
 	text-transform: none;
+	color: #fff;
 }
 
 #tertiary .widget_wp_sidebarlogin form .input{
@@ -121,18 +124,23 @@ body.custom-font-enabled {
 	padding: 2em 0 0 0;
 }
 
+#masthead hgroup h1 span a{
+	padding-top: 0.4em;
+}
+
 #masthead #header-img {
-	width: 40%;
+	width: 36%;
 	min-width: 200px;
 	float: left;
 	height: auto;
-	padding: 0 2rem;
+	padding: 0 2.8em 0.1em 0;	
 }
 
 #masthead h2.site-description {
 	clear: none;
-	padding: 2em;
-	text-indent: 4em;
+	text-align: none;
+	padding: 0em;
+	/*text-indent: 4em;*/
 }
 
 
@@ -155,17 +163,24 @@ body.custom-font-enabled {
 	}
 
 	.main-navigation ul#menu-hauptmenu {
-		border: none;
+		border-bottom: #cb427a 2px solid;
+		border-top: none;
+		padding-bottom: 0.01em;
 		position: relative;
 	}
 	
-	.main-navigation ul#menu-hauptmenu li {
+	.main-navigation ul#menu-hauptmenu > li {
 		height: 2.6em;
 		margin: 0 1em 0 0;
 		display: inline-block;
 		position: static;
 		background-color: #ebebeb;
 		padding: 0;
+		
+	}
+	
+	.main-navigation ul#menu-hauptmenu li:first-child{
+		margin-left: 32em;
 	}
 	
 	.main-navigation ul#menu-hauptmenu > li {
@@ -186,11 +201,11 @@ body.custom-font-enabled {
 	
 	/* submenu and hover */
 	.main-navigation ul#menu-hauptmenu .sub-menu {
-		left: -21em; 
+		left: 0em; 
 		width: 100%;
 		background: #fff;
-		border-top: 2px solid #eb008b;
-	}
+		margin-top: 0.2em;
+		}
 	
 	.main-navigation ul#menu-hauptmenu .sub-menu > li {
 		margin: 0 0 0 1em;
@@ -224,7 +239,14 @@ body.custom-font-enabled {
 	
 	.main-navigation ul#menu-hauptmenu > li:hover,
 	.main-navigation ul#menu-hauptmenu > li.current-menu-item {
-		background-color: #eb008b;
+		background-color: #cb427a;
+	}
+	
+	.site-header h1 {
+		font-size: 1.857142857rem;
+		line-height: 1.846153846;
+		margin-bottom: 0;
+		display: inline;
 	}
 }
 
