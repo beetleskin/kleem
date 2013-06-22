@@ -33,7 +33,7 @@
 
 <body <?php body_class(); ?>>
 	<!--eigenes Hintergrundbild machen! Und herausfinden wie hier auf das Bild verlinkt wird und warum das über allem liegt und n z-inex braucht-->
-	<img id="background-fix"  src="wp-content/themes/kleem_theme/images/HaraldKleem">  
+	<img id="background-fix"  src="wp-content/themes/kleem_theme/images/background.jpg">  
 
 
 <div id="page" class="hfeed site">
@@ -43,7 +43,7 @@
 	
 	<header id="masthead" class="site-header" role="banner">
 		<hgroup>
-			<img id="header-img" src="/wp-content/themes/kleem_theme/images/header_img.jpg">
+			<img id="header-img" src="/wp-content/themes/kleem_theme/images/HaraldKleem.png">
 			<h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
 		</hgroup>
 
