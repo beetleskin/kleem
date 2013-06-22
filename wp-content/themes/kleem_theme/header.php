@@ -43,7 +43,9 @@
 	
 	<header id="masthead" class="site-header" role="banner">
 		<hgroup>
+
 			<img id="header-img" src="/wp-content/themes/kleem_theme/images/HaraldKleem.png">
+			<h1 id="site-title"><span><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></span></h1>
 			<h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
 		</hgroup>
 
