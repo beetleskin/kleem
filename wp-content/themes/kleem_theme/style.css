@@ -352,3 +352,26 @@ footer[role="contentinfo"] {
 	background: #000;
 }
 
+/*article*/
+
+article header.entry-header img.wp-post-image{
+	display: inline;
+	clear: none;
+	margin: 0;
+	float: left;
+
+}
+
+article header.entry-header a .entry-title{
+		display: inline;
+}
+
+article header.entry-header a .entry-title a{
+		text-decoration: none;		
+}
+
+
+article header.entry-header .entry-meta{
+		clear: none;
+
+}
