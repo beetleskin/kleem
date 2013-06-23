@@ -243,6 +243,7 @@ body.custom-font-enabled {
 		width: auto;
 		background: #fff;
 		border: none;
+		text-transform: none;
 		padding: 0;
 	}
 	
@@ -410,6 +411,7 @@ article header.entry-header img.wp-post-image{
 
 article header.entry-header a .entry-title{
 	display: inline;
+	font-size: 1em;
 }
 
 article header.entry-header a .entry-title a,
@@ -472,3 +474,19 @@ footer[role="contentinfo"] {
 	margin-top: 0;
 }
 
+#menu-footermenu li > a{
+	float: left;
+	margin-left: 1em;
+	color: #fff;
+}
+
+@media screen and (min-width: 600px) {
+#menu-footermenu{
+	margin-left: 52em;
+	}
+}
+
+/*opinions*/
+.post-type-archive-opinion .opinion_topics .opinion_topic_wrap{
+	margin-bottom: 2em;
+}
