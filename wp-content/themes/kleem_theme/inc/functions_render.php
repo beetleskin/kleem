@@ -1,6 +1,7 @@
 <?php
 
 add_filter('wpmem_register_form', 'kleem_adapt_register_form');
+add_filter('comment_form_defaults', 'comment_form_defaults_hook');
 
 function render_init() {
 	// enqueue main script
@@ -336,6 +337,13 @@ function kleem_post_meta() {
 function kleem_adapt_register_form($form) {
 	$form = str_replace('<small>Powered by <a href="http://rocketgeek.com" target="_blank">WP-Members</a></small>', '', $form);
 	return $form;
+}
+
+
+function comment_form_defaults_hook($args) {
+	unset($args['logged_in_as']);
+	unset($args['comment_notes_after']);
+	return $args;
 }
 
 
