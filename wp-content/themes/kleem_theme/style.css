@@ -490,3 +490,27 @@ footer[role="contentinfo"] {
 .post-type-archive-opinion .opinion_topics .opinion_topic_wrap{
 	margin-bottom: 2em;
 }
+
+.post-type-archive-opinion .ratingbox{
+	float: right;
+} 
+
+
+.post-type-archive-opinion .ratingbox .agreement a{
+	float:left;
+	margin-right: 2em;
+	padding: 0.6em 1.5em 0.4em 1.5em;
+	text-align: center;
+	background: #cb427a;
+}
+
+.post-type-archive-opinion .ratingbox .disaffirmation a{
+	padding: 0.8em 2.2em 0.8em 2.2em;
+	text-align: center;
+	background: #cb427a;
+
+}
+
+.post-type-archive-opinion .ratingbox{
+	width: 37%;
+}
