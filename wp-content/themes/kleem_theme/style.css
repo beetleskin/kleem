@@ -55,13 +55,13 @@ body.custom-font-enabled {
 }
 
 #tertiary .widget_oa_social_login {
-	width: 117px !important;
-	height: 31px !important;
+	width: 117px;
+	height: 37px;
 	overflow: hidden;
 }
 
 #tertiary .oneall_social_login {
-	margin-top: -3px;
+	width: 200px;
 }
 
 #tertiary .widget.widget_wp_sidebarlogin {
