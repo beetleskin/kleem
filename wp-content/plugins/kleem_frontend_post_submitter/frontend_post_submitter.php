@@ -162,8 +162,12 @@ class FrontendPostSubmitter {
         // autosuggest
         wp_enqueue_script('autosuggest', plugins_url('script/autoSuggestv14/jquery.autoSuggest.packed.js', __FILE__), array('jquery'));
         
+		// jquery-ajaxForm
+        wp_deregister_script('jquery-form');
+        wp_enqueue_script('jquery-form-new', 'http://malsup.github.com/jquery.form.js', array('jquery'));
+		
         // message form script
-        wp_enqueue_script('fps-script', plugins_url('script/frontend_post_form.js', __FILE__), array('jquery', 'jquery-form', 'autosuggest', 'jquery-ui-multiselect'));
+        wp_enqueue_script('fps-script', plugins_url('script/frontend_post_form.js', __FILE__), array('jquery', 'jquery-form-new', 'autosuggest', 'jquery-ui-multiselect'));
     }
     
     
