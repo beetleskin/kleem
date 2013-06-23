@@ -166,7 +166,8 @@ body.custom-font-enabled {
 #masthead h2.site-description {
 	clear: none;
 	text-align: none;
-	padding: 0em;
+	padding-right: 1em;
+	
 	/*text-indent: 4em;*/
 }
 
@@ -327,14 +328,13 @@ body.custom-font-enabled {
 
 
 #primary.site-content {
-	width: 100%;
 	margin: 0px;
 }
 
 
 @media screen and (min-width: 600px) {
 	#primary.site-content {
-		width: 74.5%;
+		width: 73.0%;
 		display: block;
 	}
 }
@@ -356,8 +356,8 @@ body.custom-font-enabled {
 	width: auto;
 	display: block;
 	margin: 0px;
-	padding: 0.5%;
-	background: #fff;
+	padding: 0em;
+	background: none;
 }
 
 .site-content article {
@@ -375,7 +375,7 @@ body.custom-font-enabled {
 
 @media screen and (min-width: 600px) {
 	#secondary.widget-area {
-		width: 23%;
+		width: 24%;
 	}
 	
 	#secondary.widget-area .widget {
@@ -388,6 +388,15 @@ body.custom-font-enabled {
 #secondary.widget-area .widget img {
 	height: auto;
 }
+
+.widget-area #s{
+	margin-right: 1em;
+}
+
+#searchsubmit{
+	line-height: 1em;
+}
+
 
 /*article*/
 
@@ -427,8 +436,7 @@ article header.entry-header .entry-meta .byline .author a{
 /*Articles*/
 
 footer.entry-meta {
-	margin-top: 24px;
-	margin-top: 1.714285714rem;
+	margin-top: 0em;
 	font-size: 13px;
 	font-size: 0.8rem;
 	line-height: 1.846153846;
