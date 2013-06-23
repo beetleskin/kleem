@@ -343,6 +343,7 @@ body.custom-font-enabled {
 #primary.site-content.single #content {
 	background: #fff;
 	padding: 1.2em 1.2em 0.2em 1.2em;
+	border-bottom: none;
 }
 
 #primary.site-content.single article {
@@ -388,11 +389,6 @@ body.custom-font-enabled {
 	height: auto;
 }
 
-
-footer[role="contentinfo"] {
-	background: #000;
-}
-
 /*article*/
 
 article header.entry-header img.wp-post-image{
@@ -404,20 +400,40 @@ article header.entry-header img.wp-post-image{
 }
 
 article header.entry-header a .entry-title{
-		display: inline;
+	display: inline;
 }
 
-article header.entry-header a .entry-title a{
-		text-decoration: none;		
+article header.entry-header a .entry-title a,
+article .entry-header a{
+	text-decoration: none;	
+	color: #515151;	
 }
 
+	
 
 article header.entry-header .entry-meta{
-		clear: none;
-		font-size: 0.80rem;
-		margin-top: 0.1em;
+	clear: none;
+	font-size: 0.80rem;
+	margin-top: 0.1em;
+	color: #757575 !important;
 }
 
+
+article header.entry-header .entry-meta .entry-date,
+article header.entry-header .entry-meta .byline .author a{
+	color: #757575 !important;
+
+}
+/*Articles*/
+
+footer.entry-meta {
+	margin-top: 24px;
+	margin-top: 1.714285714rem;
+	font-size: 13px;
+	font-size: 0.8rem;
+	line-height: 1.846153846;
+	color: #757575;
+}
 /*Anzeigen des wpmem-Plugnin*/
 
 .wpmem_login .form fieldset > div{
@@ -438,3 +454,13 @@ article header.entry-header .entry-meta{
 #wpmem_reg fieldset .button_div{
 	margin-bottom: 20px;
 }
+
+/*footer website*/
+
+
+footer[role="contentinfo"] {
+	background: #000;
+	border-top: none;
+	margin-top: 0;
+}
+
