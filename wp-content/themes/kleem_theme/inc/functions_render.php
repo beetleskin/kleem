@@ -1,6 +1,6 @@
 <?php
 
-
+add_filter('wpmem_register_form', 'kleem_adapt_register_form');
 
 function render_init() {
 	// enqueue main script
@@ -330,6 +330,12 @@ function kleem_post_meta() {
 		$utility_text = __( 'Tags: %1$s', 'twentytwelve' );
 		printf($utility_text, $tax_list);
 	}
+}
+
+
+function kleem_adapt_register_form($form) {
+	$form = str_replace('<small>Powered by <a href="http://rocketgeek.com" target="_blank">WP-Members</a></small>', '', $form);
+	return $form;
 }
 
 
