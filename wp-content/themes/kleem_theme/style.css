@@ -96,7 +96,7 @@ body.custom-font-enabled {
 
 #tertiary .widget_wp_sidebarlogin #loginform p input[type="submit"] {
 	height: 21px;
-	padding: 2px;
+	padding: 4px;
 }
 
 #tertiary .sidebar_login_links li {
@@ -110,12 +110,39 @@ body.custom-font-enabled {
 	margin-right: 1rem;
 	text-transform: none;
 	color: #fff;
+	line-height: 2.5;
 }
 
 #tertiary .widget_wp_sidebarlogin form .input{
 	width: 100px;
 	margin: 0px;
 }
+
+#tertiary .sidebar_login_links li > a{
+	color: #fff;
+	font-size: 0.85rem;
+	padding-top: 0.1em;
+	line-height: 2.0;
+
+}
+
+#loginform p label{
+	color: #fff;
+	font-size: 0.85rem;
+	padding-top: 0.1em;
+	line-height: 2.0;
+}
+
+
+#loginform p.login-username input,
+#loginform p.login-password input,
+#wpmem_login fieldset input,
+#wpmem_reg fieldset input
+{
+	line-height:2.0;
+}
+
+
 
 
 /* header */ 
@@ -165,7 +192,7 @@ body.custom-font-enabled {
 	.main-navigation ul#menu-hauptmenu {
 		border-bottom: #cb427a 2px solid;
 		border-top: none;
-		padding-bottom: 0.01em;
+		padding-bottom: 0.02em;
 		position: relative;
 	}
 	
@@ -204,7 +231,7 @@ body.custom-font-enabled {
 		left: 0em; 
 		width: 100%;
 		background: #fff;
-		margin-top: 0.2em;
+		border-top: #cb427a 2px solid;
 		}
 	
 	.main-navigation ul#menu-hauptmenu .sub-menu > li {
@@ -238,7 +265,8 @@ body.custom-font-enabled {
 	}
 	
 	.main-navigation ul#menu-hauptmenu > li:hover,
-	.main-navigation ul#menu-hauptmenu > li.current-menu-item {
+	.main-navigation ul#menu-hauptmenu > li.current-menu-item,
+	.main-navigation ul#menu-hauptmenu .current-menu-ancestor {
 		background-color: #cb427a;
 	}
 	
@@ -247,6 +275,19 @@ body.custom-font-enabled {
 		line-height: 1.846153846;
 		margin-bottom: 0;
 		display: inline;
+	}
+	
+	/*ney*/
+	.main-navigation ul#menu-hauptmenu .sub-menu .current-menu-item a{
+		background: none;
+		color: #000;
+	}		
+	.main-navigation ul#menu-hauptmenu .sub-menu li.current-menu-item,
+	.main-navigation ul#menu-hauptmenu .sub-menu li.current-menu-item:hover{
+		border-bottom: 0.4em solid #cb427a;
+	}
+	.main-navigation ul#menu-hauptmenu .sub-menu li:hover{
+		border-bottom: 0.4em solid #ebebeb;
 	}
 }
 
@@ -300,7 +341,6 @@ body.custom-font-enabled {
 
 #primary.site-content article,
 #primary.site-content.single #content {
-	width: 90%;
 	background: #fff;
 	padding: 1.2em 1.2em 0.2em 1.2em;
 }
@@ -376,4 +416,25 @@ article header.entry-header .entry-meta{
 		clear: none;
 		font-size: 0.80rem;
 		margin-top: 0.1em;
+}
+
+/*Anzeigen des wpmem-Plugnin*/
+
+.wpmem_login .form fieldset > div{
+	float: left;
+}
+
+#wpmem_reg fieldset div,
+#wpmem_login fieldset div{
+	margin-bottom: 20px;
+}
+#wpmem_login fieldset legend,
+#wpmem_reg fieldset legend{
+	margin-bottom: 20px;
+	font-style: italic;
+}
+
+#wpmem_login fieldset .button_div,
+#wpmem_reg fieldset .button_div{
+	margin-bottom: 20px;
 }
