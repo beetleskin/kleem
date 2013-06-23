@@ -81,7 +81,7 @@ jQuery(function($) { post_submit_form : {
 				'maxfilesize' : $('#maxfilesize', dom_selector),
 			};
 			this.sending = false;
-			this.progressbar = $('.progress', dom_selector);
+			this.progressbar = $('#progressbar', dom_selector);
 
 			this.__construct = function() {
 
