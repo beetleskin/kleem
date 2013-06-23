@@ -35,7 +35,7 @@ body.custom-font-enabled {
 	width: auto;
 	margin: 0px;
 	padding: 8px;
-	background-color: none;
+	background-color: white;
 }
 
 #tertiary.widget-area * {

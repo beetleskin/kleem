@@ -38,6 +38,7 @@
 
 <div id="page" class="hfeed site">
 		
+	<a title="gruene.de" href="http://www.gruene.de/"><img src="/wp-content/themes/kleem_theme/images/logo_gruene.png" alt="Startseite" width="162" height="78"></a>
 	<?php get_sidebar('header') ?>
 	<div class="clearfix"></div>
 	
