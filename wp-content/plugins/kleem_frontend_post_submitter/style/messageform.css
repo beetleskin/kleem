@@ -34,7 +34,7 @@
 	background: #fff;
 	color: #f6f6f6;
 	background-color: #cb427a;
-	height: 50px;
+	height: 30px;
 	width: 100%;
 	margin-bottom:10px;
 }
@@ -43,31 +43,24 @@
 	clear:none;
 	float:left;
 }
-#messageform .itemhead.obligated img{
-	width: 70px;
-	left: -22px;
-	position: relative;
-	top: 60px;
-}
+
 #messageform .itemhead.obligated h2{
 	color:#2a2a2a;
 	font-weight: bold;
-	margin-left: 10px;
-	position: relative;
-	left: -19px;
 }
 
 /*obligated_______________*/
 
 #messageform .itembody{
 		margin-bottom: 10px;
+		line-height: 30px;
 
 	
 }
 #messageform .itembody #message{
 	background-color: #f6f6f6;
 	border: 1px solid #E8E8E8;
-	width:470px;
+	width:90%;
 	max-width:470px;
 	height:100px;
 	margin-left:auto;
@@ -81,7 +74,7 @@
 #messageform .itembody #description{
 	background-color: #f6f6f6;
 	border: 1px solid #E8E8E8;
-	width:470px;
+	width:90%;
 	max-width:470px;
 	height:100px;
 	margin-left:auto;
@@ -94,26 +87,21 @@
 }
 /*additional_______________*/
 #messageform .itemhead:not(.obligated){
-	height: 50px;
+	height: 30px;
 	width: 100%;
 	margin-bottom: 10px;
 	background-color: #cb427a;
 	cursor:pointer;
 }
 #messageform .itemhead img.additional {
-	width: 40px;
-	margin-left:5px;
-	margin-top:5px;
+	width: 3.8%;
 	clear:none;
 	float:left;
+	box-shadow: none;
 }
 #messageform .itemhead h2 {
-	clear:none;
 	float:left;
 	font-weight: bold;
-	position: relative;
-	left: 18px;
-
 }
 
 /* progress bar*/
@@ -164,11 +152,11 @@
 
 
 #messageform .itemhead{
-	line-height:50px;
+	line-height:30px;
 	cursor:default;
 }
 #messageform .itembody .all_topics_container{
-	width:470px;
+	width:100%;
 	height:auto;
 	margin-left:auto;
 	margin-right:auto;
@@ -182,7 +170,7 @@
 	border-radius: 10px;
 	color: #2A2A2A;
 	box-shadow: inset 0 1px 1px rgba(0,0,0,0.1);
-	width:40%;
+	width:35%;
 	margin-right:15px;
 	float:left;
 }
@@ -190,6 +178,18 @@
 #messageform .itembody .sub_topics_container h2{
 	text-align:center;
 }
+#messageform .itemhead.obligated h2{
+	margin: 0px !important;
+	float: none;
+	vertical-align: baseline;
+}
+
+#messageform .itemhead h2{
+	margin: 0;
+	clear: none;
+}
+
+
 #messageform .itembody .topics_container h2{
 	font-weight: bold;
 }
@@ -244,6 +244,10 @@
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
 	border-radius: 10px;
+}
+
+#messageform .all_topics_container .custom_topics_container{
+	float: left;
 }
 
 /*jquery*/
