@@ -52,7 +52,6 @@ body .site {
 #user-menu {
 	height: 2.75em;
 	background-color: #0a321e;
-	color: #fff;
 	border-bottom: 1px solid rgba(0,0,0,0.3);
 }
 
@@ -67,6 +66,7 @@ body .site {
 
 #tertiary.widget-area {
 	width: auto;
+	position: relative;
 	float: right;
 	margin: 0;
 	padding: 0;
@@ -80,8 +80,10 @@ body .site {
 	
 }
 
-#tertiary.widget-area .widget {
+#tertiary.widget-area .widget,
+#tertiary.widget-area .widget a {
 	margin: 0px;
+	color: #fff;
 }
 
 #tertiary.widget-area .widget p {
@@ -102,15 +104,13 @@ body .site {
 	margin-top: 5px;
 }
 
-#tertiary .widget.widget_wp_sidebarlogin form {
-	position: relative;
-}
-
 #tertiary .widget.widget_wp_sidebarlogin p.sidebar_login_error {
 	position: absolute;
-	display: block;
 	z-index: 1000;
-	top: 40px;
+	top: 3.4em;
+	background-color: #0a321e;
+	padding: 0.1em 0.6em;
+	right: 0px;
 }
 
 #tertiary .widget.widget_wp_sidebarlogin p.sidebar_login_error * {
@@ -135,8 +135,6 @@ body .site {
 
 #tertiary .sidebar_login_links li {
 	margin-left: 1rem;
-	color: #fff;
-
 }
 
 #tertiary .widget_wp_sidebarlogin h3 {
@@ -147,37 +145,11 @@ body .site {
 	line-height: 2.5;
 }
 
-#tertiary .widget_wp_sidebarlogin form .input{
+#tertiary .widget_wp_sidebarlogin form .input {
 	width: 100px;
+	width: 8em;
 	margin: 0px;
 }
-
-#tertiary .sidebar_login_links li > a{
-	color: #fff;
-	font-size: 0.85rem;
-	padding-top: 0.1em;
-	line-height: 2.0;
-
-}
-
-#loginform p label{
-	color: #fff;
-	font-size: 0.85rem;
-	padding-top: 0.1em;
-	line-height: 2.0;
-}
-
-
-#loginform p.login-username input,
-#loginform p.login-password input,
-#wpmem_login fieldset input,
-#wpmem_reg fieldset input
-{
-	line-height:2.0;
-}
-
-
-
 
 /* header */ 
 #masthead {
