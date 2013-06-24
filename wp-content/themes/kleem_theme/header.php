@@ -32,12 +32,15 @@
 <body <?php body_class(); ?>>
 	<!--eigenes Hintergrundbild machen! Und herausfinden wie hier auf das Bild verlinkt wird und warum das über allem liegt und n z-inex braucht-->
 	<img id="background-fix"  src="/wp-content/themes/kleem_theme/images/background.jpg">  
-
-
+	
+<nav id="user-menu">
+	<div class="inner">
+		<?php get_sidebar('header') ?>
+	</div>
+</nav>
 <div id="page" class="hfeed site">
 		
 	<a title="gruene.de" href="http://www.gruene.de/"><img src="/wp-content/themes/kleem_theme/images/logo_gruene.png" alt="Startseite" width="15%" height="auto"></a>
-	<?php get_sidebar('header') ?>
 	<div class="clearfix"></div>
 	
 	<header id="masthead" class="site-header" role="banner">
