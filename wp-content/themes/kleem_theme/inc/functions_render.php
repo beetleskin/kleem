@@ -206,7 +206,7 @@ function kleem_get_the_ratingbox($postID = 0, $userID = 0) {
         $nopriv = "";
         $onClick = 'onclick="return false;"';
         $link = "#";
-        $rated = get_user_meta($userID, 'rated', true);
+        $rated = get_user_meta($userID, '_rated', true);
         if($rated != "" && array_key_exists($postID, $rated)) {
             $ratedClass = 'rated';
             if(intval($rated[$postID]) > 0 ) {
@@ -281,23 +281,17 @@ function kleem_ajax_pagination($readMore = 'Mehr Posts ...', $buttonStyle = 'gre
 
 
 function kleem_auto_link_text($text) {
-   $pattern  = '#\b(([\w-]+://?|www[.])[^\s()<>]+(?:\([\w\d]+\)|([^[:punct:]\s]|/)))#';
-   $callback = create_function('$matches', '
-       $url       = array_shift($matches);
-       $url_parts = parse_url($url);
-
-       $text = parse_url($url, PHP_URL_HOST) . parse_url($url, PHP_URL_PATH);
-       $text = preg_replace("/^www./", "", $text);
-
-       $last = -(strlen(strrchr($text, "/"))) + 1;
-       if ($last < 0) {
-           $text = substr($text, 0, $last) . "&hellip;";
-       }
-
-       return sprintf(\'<a rel="nofollow" href="%s">%s</a>\', $url, $text);
-   ');
-
-   return preg_replace_callback($pattern, $callback, $text);
+    $text = html_entity_decode($text);
+    $text = " ".$text;
+    $text = eregi_replace('(((f|ht){1}tp://)[-a-zA-Z0-9@:%_\+.~#?&//=]+)',
+            '<a href="\\1" target=_blank>\\1</a>', $text);
+    $text = eregi_replace('(((f|ht){1}tps://)[-a-zA-Z0-9@:%_\+.~#?&//=]+)',
+            '<a href="\\1" target=_blank>\\1</a>', $text);
+    $text = eregi_replace('([[:space:]()[{}])(www.[-a-zA-Z0-9@:%_\+.~#?&//=]+)',
+    '\\1<a href="http://\\2" target=_blank>\\2</a>', $text);
+    $text = eregi_replace('([_\.0-9a-z-]+@([0-9a-z][0-9a-z-]+\.)+[a-z]{2,3})',
+    '<a href="mailto:\\1" target=_blank>\\1</a>', $text);
+    return $text;
 }
 
 
@@ -339,10 +333,10 @@ function kleem_adapt_register_form($form) {
 	return $form;
 }
 
-
 function comment_form_defaults_hook($args) {
-	unset($args['logged_in_as']);
-	unset($args['comment_notes_after']);
+	$args['logged_in_as'] = "";
+	$args['comment_notes_after'] = "";
+	
 	return $args;
 }
 
