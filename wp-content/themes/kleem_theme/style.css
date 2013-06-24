@@ -117,6 +117,9 @@ body .site {
 	float: none;
 }
 
+#tertiary .widget_wp_sidebarlogin #loginform {
+}
+
 #tertiary .widget_wp_sidebarlogin #loginform p {
 	margin-left: 1rem;
 }
