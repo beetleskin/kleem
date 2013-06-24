@@ -30,9 +30,10 @@ body .site {
 	margin-top: 0.428571rem;
 }
 
-#page a img{
+#page > a > img{
 	margin-top: 2em;
 }
+
 
 
 
@@ -406,6 +407,9 @@ body .site {
 
 
 /*article*/
+.entry-header .entry-title{
+	display: inline;
+}
 
 article header.entry-header img.wp-post-image{
 	display: inline;
@@ -415,10 +419,17 @@ article header.entry-header img.wp-post-image{
 
 }
 
-article header.entry-header a .entry-title{
+article.type-opinion header.entry-header a .entry-title{
 	display: inline;
 	font-size: 1em;
 }
+
+article.type-opinion .opinion_topics .opinion_topic_wrap a{
+	padding: 1em 1em 0.5em 1em;
+	font-size: 0.8em;
+	border: 1px solid #cb427a;
+}
+
 
 article header.entry-header a .entry-title a,
 article .entry-header a{
@@ -492,133 +503,8 @@ footer[role="contentinfo"] {
 	}
 }
 
-/*opinions*/
 
-/* entry control (rating box, share, comment) */
-article.type_opinion footer.entry-meta {
-	height: auto;
-	background: #2a2a2a;
-	padding: 5px 5px 10px 5px;
-	-webkit-border-bottom-left-radius: 10px;
-	-webkit-border-bottom-right-radius: 10px;
-	-moz-border-radius-bottomleft: 10px;
-	-moz-border-radius-bottomright: 10px;
-	border-bottom-left-radius: 10px;
-	border-bottom-right-radius: 10px;
-}
-
-
-/* Comment Box */
-article.type_opinion footer.entry-meta .comment_box {
-	width: 40px;
-	height: 40px;
-	float: left;
-	background: url(images/commentBox.png);
-}
-
-article.type_opinion footer.entry-meta .comment_number {
-	display: block;
-	line-height: 33px;
-	text-align: center;
-	color: #E8E8E8;
-}
-
-
-/* RatingBox */
-
-article.type_opinion footer.entry-meta .ratingbox {
-	border: 0px solid #36363b;
-	text-align: center;
-	padding: 10px 3px 1px 3px;
-	width: 230px;
-	margin: 0px;
-	float: right;
-}
-
-
-article.type_opinion footer.entry-meta .ratebutton {
-	width: 50%;
-	float: left;
-}
-
-article.type_opinion footer.entry-meta .ratingbox .ratebutton a {
-	display: block;
-	background: #E8E8E8;
-	border: 1px solid #E8E8E8;
-	font-weight: bold;
-	width: 100px;
-	margin: 0px 3px 0px 3px;
-	padding: 4px;
-	color: #2a2a2a;
-	-webkit-border-radius: 10px;
-	-moz-border-radius: 10px;
-	border-radius: 10px;
-}
-
-article.type_opinion footer.entry-meta .ratingbox.rated .agreement.ratebutton.checked a {
-	background-color: #E8E8E8;
-	box-shadow: none;
-	border: 3px solid #A1CC12;
-	padding: 2px;
-}
-article.type_opinion footer.entry-meta .ratingbox.rated .disaffirmation.ratebutton a {
-	background-color: gray;
-	box-shadow: none;
-	border: 3px solid gray;
-	padding: 2px;
-}
-article.type_opinion footer.entry-meta .ratingbox.rated .disaffirmation.ratebutton.checked a {
-	background-color: #E8E8E8;
-	box-shadow: none;
-	border: 3px solid #A1CC12;
-	padding: 2px;
-}
-article.type_opinion footer.entry-meta .ratingbox.rated .agreement.ratebutton a {
-	background-color: gray;
-	box-shadow: none;
-	border: 3px solid gray;
-	padding: 2px;
-}
-
-
-
-article.type_opinion footer.entry-meta .rateometer {
-	width: 100%;
-	float: left;
-	clear: both;
-	overflow: hidden;
-	margin-top: 12px;
-}
-
-article.type_opinion footer.entry-meta .rateometer > div {
-	float: left;
-}
-
-article.type_opinion footer.entry-meta .rateometer > .agreement {
-	height: 10px;
-	background: #A1CC12;
-}
-
-article.type_opinion footer.entry-meta .rateometer > .disaffirmation {
-	height: 10px;
-	background: #e8e8e8;
-}
-
-article.type_opinion .checked a {
-	background-color: red;
-}
-
-article.type_opinion footer.entry-meta .rateometer .stats {
-	color: gray;
-	clear: both;
-	width: 100%;
-}
-
-article.type_opinione footer.entry-meta .rateometer .stats span:nth-child(2) {
-	margin-left: 10px;
-}
-
-/*.post-type-archive-opinion .opinion_topics .opinion_topic_wrap{
+.post-type-archive-opinion .opinion_topics .opinion_topic_wrap{
 	margin-bottom: 2em;
 }
 
@@ -644,4 +530,4 @@ article.type_opinione footer.entry-meta .rateometer .stats span:nth-child(2) {
 
 .post-type-archive-opinion .ratingbox{
 	width: 37%;
-}*/
+}
