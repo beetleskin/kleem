@@ -9,9 +9,17 @@
 
 */
 @import url("../twentytwelve/style.css");
-@import url("http://fonts.googleapis.com/css?family=Cutive");
 /* -------------------------------------------------------------- */
 
+@font-face {
+    font-family: 'Cutive';
+    src: url('fonts/cutive/cutive.eot');
+    src: url('fonts/cutive/cutive.eot?#iefix') format('embedded-opentype'),
+         url('fonts/cutive/cutive.woff') format('woff'),
+         url('fonts/cutive/cutive.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
 
 /* body and page */
 body.custom-font-enabled {
