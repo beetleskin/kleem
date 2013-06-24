@@ -11,7 +11,6 @@
 @import url("../twentytwelve/style.css");
 /* -------------------------------------------------------------- */
 
-
 @font-face {
     font-family: 'Cutive';
     src: url('fonts/cutive/cutive.eot');
@@ -21,7 +20,6 @@
     font-weight: normal;
     font-style: normal;
 }
-
 
 /* body and page */
 body.custom-font-enabled {
@@ -40,19 +38,33 @@ body .site {
 	margin-top: 0.428571rem;
 }
 
-#page > a > img{
+#page > a > img {
 	margin-top: 2em;
 }
 
 
+/* top sidebar */
+#user-menu {
+	height: 2.75em;
+	background-color: #0a321e;
+	color: #fff;
+	border-bottom: 1px solid rgba(0,0,0,0.3);
+}
+
+#user-menu .inner {
+	max-width: 960px;
+	max-width: 68.571428571rem;
+	margin: 0 auto;
+	padding: 0 40px;
+	padding: 0 2.857142857rem;
+}
 
 
-/*top sidebar*/
 #tertiary.widget-area {
 	width: auto;
-	margin: 0px;
-	padding: 8px;
-	background: none;
+	float: right;
+	margin: 0;
+	padding: 0;
 }
 
 #tertiary.widget-area * {
