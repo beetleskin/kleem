@@ -82,7 +82,7 @@ class FrontendPostSubmitter {
 		        	</div>
 		        	
 		        	<fieldset form="messageform">
-			      	  	<div class="itemhead obligated"><img src="<?php echo $data ["images"]["arrow"];  ?>"/><h2>Sag deine Meinung</h2></div>
+			      	  	<div class="itemhead obligated"><h2>Sag deine Meinung</h2></div>
 			     	    <div class="itembody">
 			        	    <textarea id="message" name="message" placeholder="Deine Meinung (kurzgefasst: 300 Zeichen) ..."></textarea>
 			        	</div>
@@ -97,7 +97,7 @@ class FrontendPostSubmitter {
 		        	</fieldset>
 		
 					<fieldset form="messageform">
-				        <div class="itemhead obligated"><img src="<?php echo $data ["images"]["arrow"];  ?>"/><h2>Themen hinzufügen</h2></div>
+				        <div class="itemhead obligated"><h2>Themen hinzufügen</h2></div>
 				        <div class="itembody">
 				        	<div class="all_topics_container clearfix">
 					        	<div class="topics_container">

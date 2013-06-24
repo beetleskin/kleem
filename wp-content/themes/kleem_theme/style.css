@@ -31,9 +31,10 @@ body .site {
 	margin-top: 0.428571rem;
 }
 
-#page a img{
+#page > a > img{
 	margin-top: 2em;
 }
+
 
 
 
@@ -407,6 +408,9 @@ body .site {
 
 
 /*article*/
+.entry-header .entry-title{
+	display: inline;
+}
 
 article header.entry-header img.wp-post-image{
 	display: inline;
@@ -416,10 +420,17 @@ article header.entry-header img.wp-post-image{
 
 }
 
-article header.entry-header a .entry-title{
+article.type-opinion header.entry-header a .entry-title{
 	display: inline;
 	font-size: 1em;
 }
+
+article.type-opinion .opinion_topics .opinion_topic_wrap a{
+	padding: 1em 1em 0.5em 1em;
+	font-size: 0.8em;
+	border: 1px solid #cb427a;
+}
+
 
 article header.entry-header a .entry-title a,
 article .entry-header a{
