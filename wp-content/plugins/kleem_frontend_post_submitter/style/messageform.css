@@ -257,10 +257,10 @@
 #messageform .all_topics_container h2{
 	font-size: 1rem;
 }
-span
 
-#errormessage p{
-	margin: 1em;
+#messageform .wrap #errormessage {
+	padding-top: 1em;
+	text-align: center;
 }
 
 #image_upload{

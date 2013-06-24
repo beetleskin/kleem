@@ -450,7 +450,11 @@ article.type-opinion .opinion_topics .opinion_topic_wrap a{
 	padding: 1em 1em 0.5em 1em;
 	font-size: 0.8em;
 	border: 1px solid #cb427a;
-	float: left;
+	float:	left;
+}
+
+article.type-opinion .opinion_topics .opinion_topic_wrap a:last-of-type{
+
 }
 
 
@@ -534,9 +538,6 @@ footer[role="contentinfo"] {
 }
 
 
-.post-type-archive-opinion .opinion_topics .opinion_topic_wrap{
-	margin-bottom: 2em;
-}
 
 .post-type-archive-opinion .ratingbox{
 	float: right;
@@ -560,4 +561,12 @@ footer[role="contentinfo"] {
 
 .post-type-archive-opinion .ratingbox{
 	width: 37%;
+}
+
+.required {
+color: #2a2a2a;
+}
+
+#respond form input[type="text"], #respond form textarea{
+	line-height: normal;
 }
