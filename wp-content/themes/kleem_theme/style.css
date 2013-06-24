@@ -428,6 +428,7 @@ article.type-opinion .opinion_topics .opinion_topic_wrap a{
 	padding: 1em 1em 0.5em 1em;
 	font-size: 0.8em;
 	border: 1px solid #cb427a;
+	float: left;
 }
 
 
