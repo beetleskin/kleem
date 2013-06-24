@@ -9,7 +9,7 @@
 
 */
 @import url("../twentytwelve/style.css");
-@import url("http://fonts.googleapis.com/css?family=Cutive");
+/*@import url("http://fonts.googleapis.com/css?family=Cutive");*/
 /* -------------------------------------------------------------- */
 
 
@@ -438,7 +438,14 @@ article .entry-header a{
 	color: #515151;	
 }
 
+article.type-opinion .entry-header{
+	float: none;
+}
+
+#primary.site-content article.type-opinion{
+	padding: 1em 1em 5em 1em;
 	
+}
 
 article header.entry-header .entry-meta{
 	clear: none;
