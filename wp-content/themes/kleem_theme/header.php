@@ -9,6 +9,8 @@
  * @since Twenty Twelve 1.0
  */
 ?><!DOCTYPE html>
+ <link rel="shortcut icon" href="http://kleem.de/wp-content/themes/kleem_theme/images/favicon.ico"/>
+
 <!--[if IE 7]>
 <html class="ie ie7" <?php language_attributes(); ?>>
 <![endif]-->
@@ -35,6 +37,7 @@
 
 
 <div id="page" class="hfeed site">
+	
 		
 	<a title="gruene.de" href="http://www.gruene.de/"><img src="/wp-content/themes/kleem_theme/images/logo_gruene.png" alt="Startseite" width="15%" height="auto"></a>
 	<?php get_sidebar('header') ?>
