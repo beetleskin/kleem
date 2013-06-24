@@ -206,7 +206,7 @@ function kleem_get_the_ratingbox($postID = 0, $userID = 0) {
         $nopriv = "";
         $onClick = 'onclick="return false;"';
         $link = "#";
-        $rated = get_user_meta($userID, 'rated', true);
+        $rated = get_user_meta($userID, '_rated', true);
         if($rated != "" && array_key_exists($postID, $rated)) {
             $ratedClass = 'rated';
             if(intval($rated[$postID]) > 0 ) {
