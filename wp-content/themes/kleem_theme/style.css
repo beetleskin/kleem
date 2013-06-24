@@ -146,15 +146,6 @@ body .site {
 	margin: 0px;
 }
 
-#loginform p.login-username input,
-#loginform p.login-password input,
-#wpmem_login fieldset input,
-#wpmem_reg fieldset input {
-	line-height:2.0;
-}
-
-
-
 /* header */ 
 #masthead {
 	background: #fff;
