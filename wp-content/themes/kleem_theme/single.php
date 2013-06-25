@@ -1,5 +1,3 @@
-<img id="background-fix"  src="wp-content/themes/kleem_theme/images/background.jpg" >  
-
 <?php
 /**
  * The Template for displaying all single posts.

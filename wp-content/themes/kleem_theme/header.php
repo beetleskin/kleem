@@ -9,7 +9,7 @@
  * @since Twenty Twelve 1.0
  */
 ?><!DOCTYPE html>
- <link rel="shortcut icon" href="http://kleem.de/wp-content/themes/kleem_theme/images/favicon.ico"/>
+ <link rel="shortcut icon" href="/wp-content/themes/kleem_theme/images/favicon.ico"/>
 
 <!--[if IE 7]>
 <html class="ie ie7" <?php language_attributes(); ?>>
@@ -32,8 +32,7 @@
 </head>
 
 <body <?php body_class(); ?>>
-	<!--eigenes Hintergrundbild machen! Und herausfinden wie hier auf das Bild verlinkt wird und warum das über allem liegt und n z-inex braucht-->
-	<img id="background-fix"  src="/wp-content/themes/kleem_theme/images/background.jpg">  
+<img id="background-fix" src="/wp-content/themes/kleem_theme/images/background.jpg">  
 	
 <nav id="user-menu">
 	<div class="inner">
