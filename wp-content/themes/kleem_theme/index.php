@@ -18,7 +18,7 @@ get_header(); ?>
 	<div id="primary" class="site-content">
 		<div id="content" role="main">
 
-			<?php echo do_shortcode("[metaslider id=85]"); ?>
+			<?php echo do_shortcode("[metaslider id=51]"); ?>
 			<?php if ( have_posts() ) : ?>
 
 			<?php /* Start the Loop */ ?>
