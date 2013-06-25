@@ -46,7 +46,7 @@ jQuery(function($) {
 						bookboak : kleem_ajax_config.bookboak,
 						rating : {
 							msgID : msgID,
-							val : delta,
+							val : delta
 						}
 					},
 					success : ratingSent,
