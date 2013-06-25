@@ -136,6 +136,26 @@
 	.main-navigation ul#menu-hauptmenu .sub-menu li:hover{
 		border-bottom: 0.4em solid #ebebeb;
 	}
+	
+		#primary.site-content {
+		width: 73.0%;
+		display: block;
+	}
+	
+	#secondary.widget-area {
+		width: 24%;
+	}
+	
+	#secondary.widget-area .widget {
+		width: auto;
+		display: block;
+		float: none
+	}
+	
+	#menu-footermenu{
+	margin-left: 52em;
+	}
+}
 
 <![endif]-->
 
