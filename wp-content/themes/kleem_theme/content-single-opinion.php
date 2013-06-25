@@ -45,7 +45,7 @@
 	    
 	    
 	    <footer class="entry-control">
+	    	<?php echo kleem_get_the_ratingbox(); ?>
 	    	<?php if(function_exists('get_twoclick_buttons')) {get_twoclick_buttons(get_the_ID());}?>
-	        <?php echo kleem_get_the_ratingbox(); ?>
 	    </footer><!-- .entry-control -->
 	</article><!-- #post -->

@@ -554,31 +554,40 @@ footer[role="contentinfo"] {
 
 
 
-.type-opinion .ratingbox{
+.type-opinion .ratingbox {
 	float: right;
 	width: 239px;
-	margin:0 0 0 0;
+	margin: 0 0 0 0;
+	font-size: 11px;
+	font-size: 0.8rem;
 } 
 
 
-.type-opinion .ratingbox div > a{
+.type-opinion .ratingbox div > a {
+	width: 80px;
 	float: left;
 	display: inline;
 	padding: 0.6em 1.5em 0.4em 1.5em;
 	text-align: center;
-	background: #ebebeb;
-	width: 80px;
-	color: #fff;
-	text-decoration: none;
-}
-
-.type-opinion .ratingbox .ratebutton.checked a{
+	line-height: 1.5;
 	background: #cb427a;
+	text-decoration: none;
+	color: #fff;
 }
 
-.type-opinion .ratingbox div.agreement > a{
+.type-opinion .ratingbox .ratebutton.checked a {
+	background: #ebebeb;
+}
+
+.type-opinion .ratingbox div.agreement > a {
 	margin:0;
 }
+
+.type-opinion .ratingbox .stats {
+	line-height: 2;
+	color: #757575;
+}
+
 
 .type-opinion .ratingbox div.disaffirmation > a{
 	margin: 0em 0em 0em 1em;;
