@@ -33,7 +33,7 @@ jQuery(function($) {
 						paged : paged,
 						bookboak : kleem_ajax_config.bookboak,
 						action : kleem_ajax_config.morePostsAction,
-						query : query,
+						query : query
 						
 					},
 					dataType : "html",
