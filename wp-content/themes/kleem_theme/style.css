@@ -21,6 +21,124 @@
     font-style: normal;
 }
 
+
+<!--[if IE 8]>
+
+	.site {
+		min-width: 800px;
+	}
+	
+	#site-navigation {
+		top: -2.4rem;
+		position: relative;
+		margin: 0px;
+	}
+
+	.main-navigation ul#menu-hauptmenu {
+		border-bottom: #cb427a 2px solid;
+		border-top: none;
+		padding-bottom: 0.02em;
+		position: relative;
+	}
+	
+	.main-navigation ul#menu-hauptmenu > li {
+		height: 2.6em;
+		margin: 0 1em 0 0;
+		display: inline-block;
+		position: static;
+		background-color: #ebebeb;
+		padding: 0;
+		
+	}
+	
+	.main-navigation ul#menu-hauptmenu li:first-child{
+		margin-left: 32em;
+	}
+	
+	.main-navigation ul#menu-hauptmenu > li {
+		width: 14em;
+	}
+	
+	.main-navigation ul#menu-hauptmenu > li:last-child {
+		margin: 0px;
+	}
+	
+	.main-navigation ul#menu-hauptmenu li a {
+		text-align: center;
+		display: block;	
+		line-height: 2.6rem;
+		height: 2.6em;
+	}
+	
+	
+	/* submenu and hover */
+	.main-navigation ul#menu-hauptmenu .sub-menu {
+		left: 0em; 
+		width: 100%;
+		background: #fff;
+		border-top: #cb427a 2px solid;
+		}
+	
+	.main-navigation ul#menu-hauptmenu .sub-menu > li {
+		margin: 0 0 0 1em;
+	}
+	
+	.main-navigation ul#menu-hauptmenu .sub-menu > li > a {
+		width: auto;
+		background: #fff;
+		border: none;
+		text-transform: none;
+		padding: 0;
+		/*font-size: 0.9rem;*/
+	}
+	
+	.main-navigation ul#menu-hauptmenu:hover .sub-menu {
+		display:none;
+		visibility: hidden;
+	}
+	
+	.main-navigation ul#menu-hauptmenu > li:hover .sub-menu {
+		display: block;
+		visibility: visible;
+	}
+
+	
+	.main-navigation ul#menu-hauptmenu li.current-menu-item .sub-menu {
+		display: block !important;
+	}
+	
+	.main-navigation ul#menu-hauptmenu li.current-menu-ancestor .sub-menu{
+		display: block;
+	}
+	
+	.main-navigation ul#menu-hauptmenu > li:hover,
+	.main-navigation ul#menu-hauptmenu > li.current-menu-item,
+	.main-navigation ul#menu-hauptmenu .current-menu-ancestor {
+		background-color: #cb427a;
+	}
+	
+	.site-header h1 {
+		font-size: 1.857142857rem;
+		line-height: 1.846153846;
+		margin-bottom: 0;
+		display: inline;
+	}
+	
+	/*ney*/
+	.main-navigation ul#menu-hauptmenu .sub-menu .current-menu-item a{
+		background: none;
+		color: #000;
+	}		
+	.main-navigation ul#menu-hauptmenu .sub-menu li.current-menu-item,
+	.main-navigation ul#menu-hauptmenu .sub-menu li.current-menu-item:hover{
+		border-bottom: 0.4em solid #cb427a;
+	}
+	.main-navigation ul#menu-hauptmenu .sub-menu li:hover{
+		border-bottom: 0.4em solid #ebebeb;
+	}
+
+<![endif]-->
+
 /* body and page */
 body.custom-font-enabled {
 	font-family: 'Cutive', serif; 
