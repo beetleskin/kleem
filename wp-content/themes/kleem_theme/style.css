@@ -488,10 +488,19 @@ article.type-opinion .stats span.agreement{
 }
 
 
-#primary.site-content article.type-opinion{
+/*#primary.site-content #content article.type-opinion{
 	padding: 1em 1em 6em 1em;
 	
+}*/
+#primary.site-content #content article.type-opinion footer.entry-meta{
+	height: 75px;
+	background: #fff;
 }
+
+.entry-control .social_share_privacy{
+	padding: 1em;
+}
+
 
 article header.entry-header .entry-meta{
 	clear: none;
@@ -542,6 +551,7 @@ footer.entry-meta {
 footer[role="contentinfo"] {
 	background: #000;
 	border-top: none;
+	height: 30px;
 	margin-top: 0;
 }
 
@@ -568,9 +578,10 @@ article.type-opinion .ratingbox {
 }
 
 article.type-opinion .entry-control .ratingbox {
-	float: none;
+	float: right;
 	margin-top: 1em;
 }
+
 
 article.type-opinion .ratingbox div > a {
 	width: 80px;
