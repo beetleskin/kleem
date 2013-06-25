@@ -241,7 +241,7 @@ body .site {
 #tertiary .widget.widget_wp_sidebarlogin {
 	margin-top: 5px;
 }
-
+ 
 #tertiary .widget.widget_wp_sidebarlogin p.sidebar_login_error {
 	position: absolute;
 	z-index: 1000;
@@ -530,7 +530,7 @@ body .site {
 	#secondary.widget-area .widget {
 		width: auto;
 		display: block;
-		float: none
+		float: none;
 	}
 }
 
