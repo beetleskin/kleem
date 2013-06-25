@@ -554,16 +554,20 @@ footer[role="contentinfo"] {
 
 
 
-.type-opinion .ratingbox {
+article.type-opinion .ratingbox {
 	float: right;
 	width: 239px;
 	margin: 0 0 0 0;
 	font-size: 11px;
 	font-size: 0.8rem;
-} 
+}
 
+article.type-opinion .entry-control .ratingbox {
+	float: none;
+	margin-top: 1em;
+}
 
-.type-opinion .ratingbox div > a {
+article.type-opinion .ratingbox div > a {
 	width: 80px;
 	float: left;
 	display: inline;
@@ -575,21 +579,21 @@ footer[role="contentinfo"] {
 	color: #fff;
 }
 
-.type-opinion .ratingbox .ratebutton.checked a {
+article.type-opinion .ratingbox .ratebutton.checked a {
 	background: #ebebeb;
 }
 
-.type-opinion .ratingbox div.agreement > a {
+article.type-opinion .ratingbox div.agreement > a {
 	margin:0;
 }
 
-.type-opinion .ratingbox .stats {
+article.type-opinion .ratingbox .stats {
 	line-height: 2;
 	color: #757575;
 }
 
 
-.type-opinion .ratingbox div.disaffirmation > a{
+article.type-opinion .ratingbox div.disaffirmation > a{
 	margin: 0em 0em 0em 1em;;
 
 }
