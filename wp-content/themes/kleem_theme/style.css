@@ -29,7 +29,7 @@
 
 /* header */ 
 .ie8 #masthead {
-	min-height:300px;
+	min-height:269px;
 	margin-bottom:30px;
 }
 
@@ -57,7 +57,7 @@
 }
 
 .ie8 .main-navigation ul#menu-hauptmenu li:first-child{
-	margin-left: 25em;
+	margin-left: 29em;
 }
 
 .ie8 .main-navigation ul#menu-hauptmenu > li {
@@ -122,6 +122,26 @@
 	background-color: #cb427a;
 }
 
+.ie8 .main-navigation ul#menu-hauptmenu > li > a:hover{
+	color: #2a2a2a;
+}
+
+.ie8 .main-navigation ul#menu-hauptmenu > li.current-menu-item > a{
+	color: #fff;
+}
+.ie8 #messageform .itemhead h2{
+	font-size: 14px;
+} 
+
+.ie8 #messageform .itemhead{
+	height: 30px;
+	width: 100%;
+	margin-bottom: 10px;
+	background-color: #cb427a;
+	cursor: pointer;
+}
+
+
 .ie8 .site-header h1 {
 	font-size: 1.857142857rem;
 	line-height: 1.846153846;
@@ -151,6 +171,11 @@
 	margin-left: 52em;
 }
 
+/*article*/
+.ie8 .site-content article {
+	margin-bottom: 20px;
+}
+
 /* END IE 8 */
 
 /* body and page */
@@ -178,6 +203,7 @@ body .site {
 #page > a > img {
 	margin-top: 2em;
 }
+
 
 
 /* top sidebar */
