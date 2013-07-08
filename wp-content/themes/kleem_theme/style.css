@@ -201,7 +201,7 @@ body .site {
 }
 
 #page > a > img {
-	margin-top: 2em;
+	margin-top: 0em;
 }
 
 
@@ -232,6 +232,8 @@ body .site {
 
 #tertiary.widget-area * {
 	float: left;
+	font-size: 13px;
+	font-size: 0.928571429rem;
 }
 
 #tertiary input {
@@ -243,6 +245,13 @@ body .site {
 	margin: 0px;
 	color: #fff;
 }
+
+
+#tertiary.widget-area .widget li.logout-link a,
+#tertiary.widget-area .widget li.profil-link a{
+		margin-top: 5px;
+}
+
 
 #tertiary.widget-area .widget p {
 	margin: 0px;
@@ -284,14 +293,14 @@ body .site {
 
 #tertiary .widget_wp_sidebarlogin #loginform p input[type="text"],
 #tertiary .widget_wp_sidebarlogin #loginform p input[type="password"] {
-	height: 15px;
+	/*height: 15px;*/
 	padding: 2px;
 	margin-left: 0.5rem;
 }
 
 #tertiary .widget_wp_sidebarlogin #loginform p input[type="submit"] {
-	height: 21px;
-	padding: 4px;
+	height: auto;
+	padding: 2px;
 }
 
 #tertiary .sidebar_login_links li {
@@ -304,18 +313,23 @@ body .site {
 	text-transform: none;
 	color: #fff;
 	line-height: 2.5;
+	font-size: 13px;
+	font-size: 0.928571429rem;
 }
 
 #tertiary .widget_wp_sidebarlogin form .input {
 	width: 100px;
 	width: 8em;
 	margin: 0px;
+	font-size: 13px;
+	font-size: 0.928571429rem;
 }
 
 /* header */ 
 #masthead {
 	background: #fff;
 	padding: 2em 0 0 0;
+	min-height: 267px;
 }
 
 #masthead hgroup h1 span a{
@@ -356,6 +370,7 @@ body .site {
 		position: relative;
 		margin: 0px;
 	}
+	
 
 	.main-navigation ul#menu-hauptmenu {
 		border-bottom: #cb427a 2px solid;
@@ -400,6 +415,7 @@ body .site {
 		width: 100%;
 		background: #fff;
 		border-top: #cb427a 2px solid;
+		height:30px;
 		}
 	
 	.main-navigation ul#menu-hauptmenu .sub-menu > li {
@@ -412,7 +428,8 @@ body .site {
 		border: none;
 		text-transform: none;
 		padding: 0;
-		/*font-size: 0.9rem;*/
+		font-size: 13px;
+		font-size: 0.928571429rem;
 	}
 	
 	.main-navigation ul#menu-hauptmenu:hover .sub-menu {
