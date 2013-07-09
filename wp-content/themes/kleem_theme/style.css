@@ -201,7 +201,7 @@ body .site {
 }
 
 #page > a > img {
-	margin-top: 0em;
+	margin-bottom: 1em;
 }
 
 
@@ -324,6 +324,31 @@ body .site {
 	font-size: 13px;
 	font-size: 0.928571429rem;
 }
+
+#secondary .widget-area .widget {
+	-webkit-hyphens: auto;
+	-moz-hyphens: auto;
+	hyphens: auto;
+	margin-bottom: 3px;
+	margin-bottom: 0.428571429rem;
+	word-wrap: break-word;
+}
+
+#searchform{
+	background: #fff;
+	height: 35px;
+	margin-right: 6px;
+	margin-right: 0.4em;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+	padding: 9px;
+}
+#searchform #s {
+	margin-right: 0.3em;
+}
+
+
 
 /* header */ 
 #masthead {
@@ -567,6 +592,7 @@ body .site {
 		width: 100%;
 		display: block;
 		float: none;
+		margin-bottom: 7px;
 	}
 }
 
@@ -724,7 +750,7 @@ footer.entry-meta {
 
 
 footer[role="contentinfo"] {
-	background: #000;
+	background: #0a321e;
 	border-top: none;
 	height: 30px;
 	margin-top: 0;
@@ -764,7 +790,6 @@ article.type-opinion .ratingbox div > a {
 	display: inline;
 	padding: 0.6em 1.5em 0.4em 1.5em;
 	text-align: center;
-	line-height: 1.5;
 	background: #cb427a;
 	text-decoration: none;
 	color: #fff;
@@ -772,6 +797,8 @@ article.type-opinion .ratingbox div > a {
 
 article.type-opinion .ratingbox .ratebutton.checked a {
 	background: #ebebeb;
+		color: #6a6a6a;
+
 }
 
 article.type-opinion .ratingbox div.agreement > a {
@@ -801,3 +828,13 @@ article.type-opinion .ratingbox div.disaffirmation > a{
 	height: 37px;
 	overflow: hidden;
 }
+
+.entry-title .opinion_topic span{
+	color: red !important;
+}
+
+.type-opinion .entry-header .entry-title a{
+	color:#cb427a;
+}
+
+

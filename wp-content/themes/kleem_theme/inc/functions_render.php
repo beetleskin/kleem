@@ -64,7 +64,7 @@ function kleem_the_colored_title($withLinks = false, $beforeWord = "", $afterWor
                 $containerStart .= '<a href="' . get_term_link($term) . '" rel="topic"';
                 $containerEnd .= '</a>';
             } else {
-                $containerStart .= '<span style="color:#1982D1"';
+                $containerStart .= '<span style="color:#cb427a"';
                 $containerEnd .= '</span>';
             }
             
