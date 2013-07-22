@@ -87,7 +87,6 @@ function kleem_queryvars($qvars) {
 	return $qvars;
 }
 
-
 /*
  * Handle cutom queries of the 'opinion' post type: Read $REQUEST params and convert to WP_QUERY params.
  */

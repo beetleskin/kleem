@@ -760,15 +760,20 @@ footer[role="contentinfo"] {
 	float: left;
 	margin-left: 1em;
 	color: #fff;
+	text-decoration: none;
+	font-size: 13px;
+	font-size: 0.928571429rem;
 }
 
 @media screen and (min-width: 600px) {
 #menu-footermenu{
-	margin-left: 52em;
+	width: 30.4em;
+	height: auto;
+	width: 364px;
+	float: right;
+	margin-top: 20px;
 	}
 }
-
-
 
 article.type-opinion .ratingbox {
 	float: right;
@@ -837,4 +842,7 @@ article.type-opinion .ratingbox div.disaffirmation > a{
 	color:#cb427a;
 }
 
-
+a {
+	outline: none;
+	color: #cb427a;
+}
