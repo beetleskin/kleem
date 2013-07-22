@@ -7,3 +7,6 @@ Template:       urwahl3000
 Version:        1.0.0
 */
 
+#tertiary li{
+	background: none;
+}
