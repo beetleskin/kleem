@@ -485,7 +485,7 @@ if(!class_exists('Twoclick_Social_Media_Buttons_Frontend')) {
 				'length_tweettext' => strlen($var_sTweettext),
 				'length_twitter_name' => (!empty($this->array_TwoclickButtonsOptions['twoclick_buttons_twitter_reply'])) ? strlen(' via @' . $this->array_TwoclickButtonsOptions['twoclick_buttons_twitter_reply']) : 0,
 				'length_tweetlink' => 20,
-				'length_more' => strlen(' [...]')
+				'length_more' => strlen(' [...]w')
 			);
 
 			$length_new_tweettext = $array_TweettextData['length_tweettext_maximal'] - $array_TweettextData['length_twitter_name'] - $array_TweettextData['length_tweetlink'] - $array_TweettextData['length_more'];
