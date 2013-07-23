@@ -17,12 +17,7 @@
 				</div> <!-- end #inner-footer -->
 				
 			</footer> 
-			<p class="copyright">Diese Seite nutzt das freie Wordpress-Theme <a href="http://kre8tiv.de/urwahl3000/">Urwahl3000</a>. Erstellt mit ❤ von <a href="http://kre8tiv.de">kre8tiv - Benjamin Jopen</a>.</p>
-		
-			
 		</div> 
-		
-
 		<?php wp_footer(); ?>
 
 	</body>

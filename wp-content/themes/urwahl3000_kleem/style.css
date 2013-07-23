@@ -32,7 +32,6 @@
 	font-family: 'OpenSansRegular', Arial, Helvetica Neue, Helvetica, Verdana, sans-serif;
 }
 
-
 @media screen {
 	#wrap #logo img {
 		max-width: 100%;
@@ -103,6 +102,16 @@
 		position: relative;
 	}
 	
+	
+/* sidebar1 - infoleiste */
+	#sidebar1 li.widget_text {
+		padding: 0px
+	}
+	
+	#sidebar1 li.widget_text img {
+		width: 100%;
+		height: auto;
+	}
 	
 /* article - thumbnail */
 	article img.wp-post-image,
