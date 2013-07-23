@@ -1,10 +1,66 @@
 /*
 Theme Name:     Urwahl3000 Kleem Childtheme
-Theme URI:      http://kre8tiv.de/urwahl3000/
+Theme URI:      http://www.kleem.de
 Description:    Child-Theme für Urwahl3000
-Author:         Benjamin Jopen
-Author URI:     http://kre8tiv.de/
+Authoren:         Marina Thuns, Stefan Kaiser
 Template:       urwahl3000                           
 Version:        1.0.0
 */
 
+
+
+#sidebar0 ul{
+	list-style: none;
+}
+
+#sidebar0 p{
+	float: left;
+}
+
+#sidebar0 label{
+	color: #fff;
+}
+
+#sidebar0 .sidebar_login_links > li > a{
+	color: #fff;
+}
+
+#sidebar0 h3.widgettitle{
+	display: inline;
+	color: #fff;
+	font-size: 1em;
+	font-family: 'OpenSansRegular', Arial, Helvetica Neue, Helvetica, Verdana, sans-serif;
+}
+
+@media only screen and (min-width: 770px){
+	#sidebar0 .widget {
+		height: 26px;
+		background: none !important;
+		box-shadow: none !important;
+		margin: 0 0 0em 0;
+		padding: 0em;
+		background: #e6e6e6;
+		box-shadow: 5px 5px 10px rgba(0,0,0,0.2);
+	}
+	#portal {
+		height: 33px;
+		display: block;
+		background: #0a321e;
+		text-align: right;
+		padding: 0.5em 1em 0em 0em;
+		box-shadow: 5px 5px 10px rgba(0,0,0,0.2);
+		z-index: 2;
+		position: relative;
+	}
+	#sidebar0 *{
+		float: left; 
+		margin-left: 0.2em;
+		margin-left: 4px;
+	} 
+	#sidebar0{
+		float: right;
+	}
+	#sidebar0 input{
+		margin-top: 3px;
+	}
+}
