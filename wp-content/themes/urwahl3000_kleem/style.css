@@ -70,6 +70,16 @@ Version:        1.0.0
 		z-index: 2;
 		position: relative;
 	}
+	#header.widthimg .headerimg {
+		display: block;
+		z-index: 1;
+		top: 0;
+		box-shadow: none;
+	}
+	#header.widthimg {
+		padding: 0;
+		margin: 0em 0;
+	}
 	 
 }
 
