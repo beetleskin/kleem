@@ -289,8 +289,8 @@ function kleem_posted_on() {
 
 function kleem_post_meta() {
 	/* get data to be rendered */
-	$categories_list = get_the_category_list( __( ', ', 'twentytwelve' ) );
-	$tag_list = get_the_tag_list( '', __( ', ', 'twentytwelve' ) );
+	$categories_list = get_the_category_list( ', ' );
+	$tag_list = get_the_tag_list( '', ', ' );
 	$tax_list = "";
 	if($categories_list && $tag_list) {
 		$tax_list = $categories_list . ', ' . $tag_list;
