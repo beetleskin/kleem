@@ -3,12 +3,10 @@
 // kre8tive stuff
 add_action( 'after_setup_theme', 'kr8_childtheme',9999 );
 function kr8_childtheme() {
-  if (!is_admin()) {
-
-    wp_register_style( 'kr8-childtheme', get_stylesheet_directory_uri() . '/style.css', array('kr8-stylesheet'), '', 'all' );
-    wp_enqueue_style( 'kr8-childtheme' );
-
-  }
+	if (!is_admin()) {
+    	wp_register_style( 'kr8-childtheme', get_stylesheet_directory_uri() . '/style.css', array('kr8-stylesheet'), '', 'all' );
+    	wp_enqueue_style( 'kr8-childtheme' );
+	}
 }
 
 
@@ -49,12 +47,6 @@ include_once ('functions/functions_data.php');
 
 function kleem_setup() {
     
-	// post formats
-	add_theme_support( 'post-formats', array( 'status', 'video', 'quote' ) );
-	
-	// navs
-	register_nav_menu('bottom', 'Footermenu');
-	
 	// data stuff
 	kleem_register_pt_opinion();
 
@@ -67,13 +59,13 @@ function kleem_setup() {
 function kleem_widgets_init() {
 	// widget area stuff
 	register_sidebar(array(
-		'name' => 'Benutzer-Menu',
-		'id' => 'sidebar-header',
+		'name' 			=> 'Benutzer-Menu',
+		'id' 			=> 'sidebar-header',
 		'description'   => 'Widgetd für das Ein- und Ausloggen',
 		'before_widget' => "\n\t\t" . '<li id="%1$s" class="widget %2$s">',
-		'after_widget' => '</li>',
-		'before_title' => "\n\t" . '<h3 class="widgettitle">',
-		'after_title' => '</h3>',
+		'after_widget' 	=> '</li>',
+		'before_title' 	=> "\n\t" . '<h3 class="widgettitle">',
+		'after_title' 	=> '</h3>',
 	));
 }
 
@@ -153,7 +145,6 @@ function kleem_redirect() {
 }
 
 
-//WP Members
 function kleem_activate() {
 	kleem_add_post_type();
 	flush_rewrite_rules();
