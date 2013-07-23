@@ -9,13 +9,12 @@
 	margin: 0em auto;
 	margin-top: 0em;
 }
-.wrap {
+.wrap #messageform_wrap{
 	border: 3px solid #cb427a;
 	width: 100%;
-	margin-left: auto;
-	margin-right: auto;
 
 }
+
 #messageform {
 	width: 100%;
 	margin-left: 0px;
