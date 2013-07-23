@@ -44,6 +44,20 @@
 
 
 @media only screen and (min-width: 770px){
+
+/* header - image */	
+	#header.widthimg {
+		padding: 0;
+		margin: 0em 0;
+	}
+	
+	#header.widthimg .headerimg {
+		display: block;
+		z-index: 1;
+		top: 0;
+		box-shadow: none;
+	}
+	
 	
 /* sidebar0 - user menu */
 	#portal {
