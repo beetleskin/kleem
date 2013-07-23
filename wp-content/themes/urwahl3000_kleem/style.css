@@ -40,6 +40,14 @@
 		margin-top: 0.6em;
 		margin-top: 10px;
 	}
+	#wrap #logo img {
+		max-width: 100%;
+		height: auto;
+		margin-top: 0.6em;
+		margin-top: 0px;
+		top: -21px;
+		position: relative;
+	}
 }
 
 
@@ -56,6 +64,17 @@
 		z-index: 1;
 		top: 0;
 		box-shadow: none;
+	}
+	
+	#header.widthimg #logo {
+		position: relative;
+		left: 0px;
+		top: 0%;
+		float: left;
+	}
+	
+	#header #titel-and-description{
+		float: left;
 	}
 	
 	
@@ -98,9 +117,12 @@
 	#header .hgroup {
 		display: inline-block;
 		text-align: right;
-		width: 90%;
+		width: 52%;
 		z-index: 2;
 		position: relative;
+		background: #0a321e;
+		padding: 2em;
+		padding: 10px;
 	}
 	
 	

@@ -105,9 +105,7 @@
 
 		<div id="wrap">
 			
-				<nav class="mobile-switch"><ul><li class="first"><a id="switch-menu" href="#menu">Menü</a></li><li class="middle"><?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?></li><li class="last"><a id="switch-search" href="#search">Suche</a></li></ul></nav>
-				<p id="logo"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="Zur Startseite"><img src="<?php echo get_template_directory_uri(); ?>/lib/images/logo.png" width="135" height="auto" alt="<?php bloginfo('name'); ?>"></a></p>
-						
+				<nav class="mobile-switch"><ul><li class="first"><a id="switch-menu" href="#menu">Menü</a></li><li class="middle"><?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?></li><li class="last"><a id="switch-search" href="#search">Suche</a></li></ul></nav>						
 						<?php if (get_header_image() != '') {	?>
 							<header id="header" class="pos widthimg" role="banner">
 							<img src="<?php header_image(); ?>" height="<?php echo get_custom_header()->height; ?>" width="<?php echo get_custom_header()->width; ?>" alt="" class="headerimg"/><? 
@@ -118,9 +116,14 @@
 						<?php } ?>
 
 						<div class="hgroup">
-							<h1 id="site-title"><span><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></span></h1>
-							<h2 id="site-description"><?php bloginfo( 'description' ); ?></h2>
-						</div>						
+							<div id="titel-and-description">
+								<h1 id="site-title"><span><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></span></h1>
+								<h2 id="site-description"><?php bloginfo( 'description' ); ?></h2>
+							</div>
+							<p id="logo"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="Zur Startseite"><img src="<?php echo get_template_directory_uri(); ?>/lib/images/logo.png" width="135" height="auto" alt="<?php bloginfo('name'); ?>"></a></p>
+						</div>		
+
+				
 						<?php get_search_form( $echo ); ?>
 				</header>
 
