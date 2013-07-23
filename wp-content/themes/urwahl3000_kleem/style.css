@@ -53,8 +53,8 @@ Version:        1.0.0
 		position: relative;
 	}
 	#sidebar0 *{
-		float: left;
-		margin-left:0.2em;
+		float: left; 
+		margin-left: 0.2em;
 		margin-left: 4px;
 	} 
 	#sidebar0{
