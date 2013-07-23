@@ -1,10 +1,10 @@
 /*
-Theme Name:     Urwahl3000 Kleem Childtheme
-Theme URI:      http://www.kleem.de
-Description:    Child-Theme für Urwahl3000
-Authoren:         Marina Thuns, Stefan Kaiser
-Template:       urwahl3000                           
-Version:        1.0.0
+	Theme Name:     Urwahl3000 Kleem Childtheme
+	Theme URI:      http://www.kleem.de
+	Description:    Child-Theme für Urwahl3000
+	Authoren:         Marina Thuns, Stefan Kaiser
+	Template:       urwahl3000                           
+	Version:        1.0.0
 */
 
 
@@ -13,11 +13,11 @@ Version:        1.0.0
 	list-style: none;
 }
 
-#sidebar0 p{
+#sidebar0 p {
 	float: left;
 }
 
-#sidebar0 label{
+#sidebar0 label {
 	color: #fff;
 }
 
@@ -32,16 +32,20 @@ Version:        1.0.0
 	font-family: 'OpenSansRegular', Arial, Helvetica Neue, Helvetica, Verdana, sans-serif;
 }
 
-@media only screen and (min-width: 770px){
-	#sidebar0 .widget {
-		height: 26px;
-		background: none !important;
-		box-shadow: none !important;
-		margin: 0 0 0em 0;
-		padding: 0em;
-		background: #e6e6e6;
-		box-shadow: 5px 5px 10px rgba(0,0,0,0.2);
+
+@media screen {
+	#wrap #logo img {
+		max-width: 100%;
+		height: auto;
+		margin-top: 0.6em;
+		margin-top: 10px;
 	}
+}
+
+
+@media only screen and (min-width: 770px){
+	
+/* sidebar0 - user menu */
 	#portal {
 		height: 33px;
 		display: block;
@@ -52,17 +56,31 @@ Version:        1.0.0
 		z-index: 2;
 		position: relative;
 	}
-	#sidebar0 *{
+	
+	#sidebar0 {
+		float: right;
+	}
+	
+	#sidebar0 * {
 		float: left; 
 		margin-left: 0.2em;
 		margin-left: 4px;
 	} 
-	#sidebar0{
-		float: right;
+	
+	#sidebar0 .widget {
+		height: 26px;
+		background: none !important;
+		box-shadow: none !important;
+		margin: 0 0 0em 0;
+		padding: 0em;
+		background: #e6e6e6;
+		box-shadow: 5px 5px 10px rgba(0,0,0,0.2);
 	}
-	#sidebar0 input{
+	
+	#sidebar0 input {
 		margin-top: 3px;
 	}
+	
 	#header .hgroup {
 		display: inline-block;
 		text-align: right;
@@ -70,23 +88,35 @@ Version:        1.0.0
 		z-index: 2;
 		position: relative;
 	}
-	 
-}
-
-@media screen{
-img {
-	max-width: 100%;
-	height: auto;
-	margin-top: 0.6em;
-	margin-top: 10px;
+	
+	
+/* article - thumbnail */
+	article img.wp-post-image,
+	.archive article img.wp-post-image,
+	.search-results article img.wp-post-image {
+		width: 175px;
+		height: auto;
+		margin: 10px 0.7em 0 0;;
+		padding: 0;
+		float: left;
+	}
+	
+	
+/* opinion - topics */
+	article.opinion .opinion_topics .opinion_topic_wrap {
+		float: left;
+		background-color: #cb427a;
+		margin-right: 10px;
+		padding: 3px;
+		margin-top: 10px;
 	}
 }
 
+
 @media only screen and (max-width: 769px){
-	
 	#wrap #logo img {
-	max-width: 100%;
-	height: auto;
-	display: none;
+		max-width: 100%;
+		height: auto;
+		display: none;
 	}
 }
