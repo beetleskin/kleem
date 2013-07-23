@@ -111,6 +111,7 @@
 	#sidebar1 li.widget_text img {
 		width: 100%;
 		height: auto;
+		margin-bottom: -6px;
 	}
 	
 /* article - thumbnail */
