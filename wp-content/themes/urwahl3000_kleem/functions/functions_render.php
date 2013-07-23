@@ -6,8 +6,8 @@ add_filter('comment_form_defaults', 'comment_form_defaults_hook');
 function render_init() {
 	// enqueue main script
 	wp_enqueue_style('thickbox');
-    wp_enqueue_script('kleem-opinion-script', get_stylesheet_directory_uri() . '/inc/opinion.js', array('thickbox', 'jquery'));
-	wp_enqueue_script('ajaxpaging', get_stylesheet_directory_uri() . '/inc/ajaxpaging.js', array('jquery'));
+    wp_enqueue_script('kleem-opinion-script', get_stylesheet_directory_uri() . '/functions/opinion.js', array('thickbox', 'jquery'));
+	wp_enqueue_script('ajaxpaging', get_stylesheet_directory_uri() . '/functions/ajaxpaging.js', array('jquery'));
 	
 	// hide toolbar ...
 	if ( current_user_can('subscriber') ) {
