@@ -63,4 +63,30 @@ Version:        1.0.0
 	#sidebar0 input{
 		margin-top: 3px;
 	}
+	#header .hgroup {
+		display: inline-block;
+		text-align: right;
+		width: 90%;
+		z-index: 2;
+		position: relative;
+	}
+	 
+}
+
+@media screen{
+img {
+	max-width: 100%;
+	height: auto;
+	margin-top: 0.6em;
+	margin-top: 10px;
+	}
+}
+
+@media only screen and (max-width: 769px){
+	
+	#wrap #logo img {
+	max-width: 100%;
+	height: auto;
+	display: none;
+	}
 }
