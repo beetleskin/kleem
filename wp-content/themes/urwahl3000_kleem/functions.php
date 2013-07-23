@@ -19,8 +19,8 @@ register_activation_hook(__FILE__, 'kleem_activate');
 register_deactivation_hook(__FILE__, 'kleem_deactivate');
 
 add_action('generate_rewrite_rules', 'kleem_add_rewrite_rules');
-add_action( 'after_setup_theme', 'theme_formats');
-add_action( 'widgets_init', 'kleem_widgets_init' );
+add_action('after_setup_theme', 'theme_formats');
+add_action('widgets_init', 'kleem_widgets_init' );
 add_filter('query_vars', 'kleem_queryvars');
 add_filter('pre_get_posts', 'kleem_filter');
 
@@ -66,14 +66,15 @@ function kleem_setup() {
 
 function kleem_widgets_init() {
 	// widget area stuff
-	register_sidebar( array(
-		'name' => __( 'User profile widget area', 'twentytwelve' ),
+	register_sidebar(array(
+		'name' => 'Benutzer-Menu',
 		'id' => 'sidebar-header',
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget' => '</aside>',
-		'before_title' => '<h3 class="widget-title">',
+		'description'   => 'Widgetd für das Ein- und Ausloggen',
+		'before_widget' => "\n\t\t" . '<li id="%1$s" class="widget %2$s">',
+		'after_widget' => '</li>',
+		'before_title' => "\n\t" . '<h3 class="widgettitle">',
 		'after_title' => '</h3>',
-	) );
+	));
 }
 
 function theme_formats(){

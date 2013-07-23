@@ -31,11 +31,10 @@
 						    <footer class="article-footer">
     							<p class="tags"><?php the_tags('<span class="tags-title">' . __('', '') . '</span> ', ', ', ''); ?></p>
 						    </footer> 
-						    <?php // comments_template(); // uncomment if you want to use them ?>
-						    </article> 
+					    </article> 
 						    
-						    <div class="sharewrap">
-						    	<p class="calltoshare">Teile diesen Inhalt:</p>
-						    	<div id="socialshareprivacy"></div>
-						    </div>
+					    <div class="sharewrap">
+					    	<p class="calltoshare">Teile diesen Inhalt:</p>
+					    	<div id="socialshareprivacy"></div>
+					    </div>
 						    

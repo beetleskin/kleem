@@ -51,8 +51,8 @@ function kleem_the_colored_title($withLinks = false, $beforeWord = "", $afterWor
             
             $color = wp_strip_all_tags($term->description);
 
-            if(strlen($color) < 3|| strlen($color) > 10) {
-                $color = "";
+            if( !(strpos($color, "#", 0) === 0) || strlen($color) > 7 ) {
+                $color = "#cb427a";
             }
             
             
@@ -64,16 +64,12 @@ function kleem_the_colored_title($withLinks = false, $beforeWord = "", $afterWor
                 $containerStart .= '<a href="' . get_term_link($term) . '" rel="topic"';
                 $containerEnd .= '</a>';
             } else {
-                $containerStart .= '<span style="color:#cb427a"';
+                $containerStart .= '<span';
                 $containerEnd .= '</span>';
             }
             
             
-            if($term->parent != '0') {
-                $newWord .= $containerStart . ' class="opinion_topic main_topic" style="color: ' . $color . ';">' . $escWord . $containerEnd;
-            } else {
-                $newWord .= $containerStart . ' class="opinion_topic user_topic">' . $escWord . $containerEnd;
-            }
+            $newWord .= $containerStart . ' class="opinion_topic ' . (($term->parent == '0')? 'user_topic' : 'main_topic') . '" style="color: ' . $color . ';">' . $escWord . $containerEnd;
             $word = str_replace($escWord, $newWord, $word);
         } else {
             $word = $beforeWord . $word . $afterWord;
@@ -97,22 +93,6 @@ function kleem_the_colored_title($withLinks = false, $beforeWord = "", $afterWor
     }
 }
 
-
-
-function kleem_get_the_reference($id = 0, $parseYoutube = true) {
-    
-    $url = get_post_meta($id, 'reference', true);
-    if (is_wp_error($url) || strlen($url) == 0)
-        return "";
-    
-    
-    if ($parseYoutube === true && preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url, $match)) {
-        return '<iframe width="300" height="200" modestbranding="1" rel="0" showinfo="0" controls="0" src="http://www.youtube-nocookie.com/embed/' . $match[1] . '?wmode=transparent" frameborder="0" allowfullscreen></iframe>';
-    }
-
-
-    return '<a target="_blank "href="' . $url . '" title="Message-Quellenangabe"">' . __('Referenz') . '</a>';
-}
 
 
 function kleem_get_the_topic_list($id = 0, $sep = "") {
@@ -322,7 +302,7 @@ function kleem_post_meta() {
 	
 	
 	if ( $tax_list ) {
-		$utility_text = __( 'Tags: %1$s', 'twentytwelve' );
+		$utility_text = __( 'Tags: %1$s', 'Urwahl3000' );
 		printf($utility_text, $tax_list);
 	}
 }
