@@ -33,20 +33,7 @@
 }
 
 @media screen {
-	#wrap #logo img {
-		max-width: 100%;
-		height: auto;
-		margin-top: 0.6em;
-		margin-top: 10px;
-	}
-	#wrap #logo img {
-		max-width: 100%;
-		height: auto;
-		margin-top: 0.6em;
-		margin-top: 0px;
-		top: -21px;
-		position: relative;
-	}
+
 }
 
 
@@ -65,17 +52,30 @@
 		box-shadow: none;
 	}
 	
+	#header #logo {
+		width: 100%;
+	}
+	
 	#header.widthimg #logo {
-		position: relative;
-		left: 0px;
-		top: 0%;
-		float: left;
+		position: absolute;
+		left: 82.3%;
+		top: 11%;
 	}
 	
-	#header #titel-and-description{
-		float: left;
+	#header.widthimg .hgroup {
+		position: absolute;
+		top: 44%;
+		background: #0a321e;
+		width: auto;
+		padding: 0.6em;
+		padding: 10px;
+		right: 9%;
+		box-shadow: 5px 5px 10px rgba(0,0,0,0.2);
 	}
 	
+	#header.widthimg #logo img{
+		width: 14%;
+	}
 	
 /* sidebar0 - user menu */
 	#portal {
@@ -113,16 +113,7 @@
 		margin-top: 3px;
 	}
 	
-	#header .hgroup {
-		display: inline-block;
-		text-align: right;
-		width: 52%;
-		z-index: 2;
-		position: relative;
-		background: #0a321e;
-		padding: 2em;
-		padding: 10px;
-	}
+
 	
 	
 /* sidebar1 - infoleiste */
@@ -160,9 +151,5 @@
 
 
 @media only screen and (max-width: 769px){
-	#wrap #logo img {
-		max-width: 100%;
-		height: auto;
-		display: none;
-	}
+
 }
