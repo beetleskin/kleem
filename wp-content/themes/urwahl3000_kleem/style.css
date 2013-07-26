@@ -52,14 +52,11 @@
 		box-shadow: none;
 	}
 	
-	#header #logo {
-		width: 100%;
-	}
-	
 	#header.widthimg #logo {
 		position: absolute;
-		left: 82.3%;
 		top: 11%;
+		width: 100%;
+		left: 0px;
 	}
 	
 	#header.widthimg .hgroup {
@@ -75,6 +72,9 @@
 	
 	#header.widthimg #logo img{
 		width: 14%;
+		position: absolute;
+		right: 3.6%;
+
 	}
 	
 /* sidebar0 - user menu */
@@ -136,6 +136,7 @@
 		margin: 10px 0.7em 0 0;;
 		padding: 0;
 		float: left;
+		clear: left;
 	}
 	
 	
@@ -152,4 +153,10 @@
 
 @media only screen and (max-width: 769px){
 
+}
+
+/*Arguments Style*/
+
+article.type-opinion h1{
+	clear: both;
 }

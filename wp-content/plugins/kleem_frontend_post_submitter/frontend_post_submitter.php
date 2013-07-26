@@ -82,26 +82,26 @@ class FrontendPostSubmitter {
 		        	</div>
 		        	
 		        	<fieldset form="messageform">
-			      	  	<div class="itemhead obligated"><h2>Sag deine Meinung</h2></div>
+			      	  	<div class="itemhead obligated"><h2>Ihr Argument</h2></div>
 			     	    <div class="itembody">
-			        	    <textarea id="message" name="message" placeholder="Deine Meinung (kurzgefasst: 300 Zeichen) ..."></textarea>
+			        	    <textarea id="message" name="message" placeholder="Ihr Argument (kurzgefasst: 300 Zeichen) ..."></textarea>
 			        	</div>
 			        </fieldset>
 			        
 			        <fieldset form="messageform">
-				        <div class="itemhead"><img class="additional" src="<?php echo $data ["images"]["plus"];  ?>"/><h2>Details und Bild hinzufügen</h2></div>
+				        <div class="itemhead"><img class="additional" src="<?php echo $data ["images"]["plus"];  ?>"/><h2>Details/Bild</h2></div>
 				        <div class="itembody" style="display: none;">
-				            <textarea id="description" name="description" placeholder="Du brauchst noch ein paar Sätze um deinen Standpunkt zu erklären? Dann schreibe hier deinen Text (500 Zeichen) ..."></textarea>
+				            <textarea id="description" name="description" placeholder="Es sind noch ein paar Sätze mehr nötig um das Argument näher zu erläutern? Hier ist PLatz dafür (500 Zeichen) ..."></textarea>
 				        	<input type="file" id="image_upload" name="message_image" accept="image/*">
 				        </div>
 		        	</fieldset>
 		
 					<fieldset form="messageform">
-				        <div class="itemhead obligated"><h2>Themen hinzufügen</h2></div>
+				        <div class="itemhead obligated"><h2>Themen</h2></div>
 				        <div class="itembody">
 				        	<div class="all_topics_container clearfix">
 					        	<div class="topics_container">
-						        	<h2>Wähle <u>mindestens</u> ein Thema aus:</h2>
+						        	<h2>Wählen Sie <u>mindestens</u> ein Thema aus:</h2>
 						            <select id="topics" name="topics" multiple="multiple">
 						                
 						                <?php foreach ( $data['topics'] as &$topic ): ?>

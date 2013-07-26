@@ -4,8 +4,8 @@
 					
 					<?php if ( have_posts() ) : ?>
 						
-						<?php /* teaser slider */ ?>
-						<?php echo do_shortcode("[metaslider id=85]"); ?>
+						<!--<?php /* teaser slider */ ?>
+						<?php echo do_shortcode("[metaslider id=85]"); ?>-->
 						
 					    <?php /* Start the Loop */ ?>
 						<?php while ( have_posts() ) : the_post(); ?>
