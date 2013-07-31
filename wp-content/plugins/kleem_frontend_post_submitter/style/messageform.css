@@ -57,31 +57,20 @@
 
 #messageform .itembody #message{
 	background-color: #f6f6f6;
-	border: 1px solid #E8E8E8;
 	width:90%;
-	max-width:470px;
-	height:100px;
-	margin-left:auto;
-	margin-right:auto;
+	margin: 0 auto;
 	color: #2A2A2A;
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
 	border-radius: 10px;
-	display:block;
 }
 #messageform .itembody #description{
 	background-color: #f6f6f6;
-	border: 1px solid #E8E8E8;
 	width:90%;
-	max-width:470px;
-	height:100px;
-	margin-left:auto;
-	margin-right:auto;
-	color: #2A2A2A;
+	margin: 0 auto;
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
 	border-radius: 10px;
-	display: block;
 }
 /*additional_______________*/
 #messageform .itemhead:not(.obligated){
@@ -159,17 +148,33 @@
 }
 #messageform .itembody .topics_container{
 	background-color: #F6F6F6;
-	border: 1px solid #E8E8E8;
-	min-height: 120px;
+	border: 1px solid #cecece;
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
 	border-radius: 10px;
 	color: #2A2A2A;
-	box-shadow: inset 0 1px 1px rgba(0,0,0,0.1);
-	width:186px;
-	margin-right:3em;
-	margin-left:2em;
-	float:left;
+	padding: 2%;
+	width: 90%;
+	margin: 0 auto;
+}
+
+#messageform .itembody .topics_container:hover{
+	border: 1px solid #999;
+}
+
+
+/*h2 bottom*/
+#messageform .itembody .topics_container h2{
+	font-size: 1em;
+	line-height: normal;
+	font-family: inherit;
+}
+
+#messageform .itembody .custom_topics_container h2{
+	font-size: 1em;
+	line-height: normal;
+	font-family: inherit;
+
 }
 
 #messageform .itembody .sub_topics_container{
@@ -185,27 +190,36 @@
 	margin-bottom: 10px
 }
 #messageform .itembody .as-selections{
-	width:200px;
-	margin: 20px auto 40px auto;
-	border: 1px solid #E8E8E8;
+	border: none;
+	box-shadow: none;
+	background: none;
+}
+/*Bottom Tags*/
+#messageform .custom_topics_container{
+	border: 1px solid #cecece;
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
 	border-radius: 10px;
-	color: #2A2A2A;
-	box-shadow: inset 0 1px 1px rgba(0,0,0,0.1);
+	box-shadow: none;
+	background-color: #F6F6F6;
+	padding: 2%;
+	width: 90%;
+	margin: 5% auto;
 }
+
+#messageform .custom_topics_container:hover{
+	border: 1px solid #999;
+}
+
 #messageform .tfcounter {
 	width: auto;
-	padding: 0px;
 	position: relative;
-	display: inline;
-	top: -19px;
-	left: 81%;
+	left: 85%;
 	font-size: 1em;
 }
 
 #messageform .message_submit_container{
-	height: 40px;
+	margin-top: 2%;	
 }
 
 #messageform #message_submit{
@@ -222,17 +236,12 @@
 	border-radius: 10px;
 }
 
-#messageform .all_topics_container .custom_topics_container{
-	float: left;
-}
-
-#messageform .wrap #errormessage {
-	padding-top: 1em;
-	text-align: center;
-}
-
-#image_upload{
-	margin: 2.1em;
+input#image_upload{
+	width: 90% !important;
+	margin: 0 auto;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
 }
 
 .topics_container button[type="button"]{
@@ -282,11 +291,29 @@
 	color: #2a2a2a;
 }
 
+#messageform .custom_topics_container .as-selections li:before{
+	content: "";
+}
+
+#messageform .custom_topics_container .as-list li:before{
+	content: "";
+}
+
+#messageform #custom_topics{
+	margin-bottom: 0;
+}
+
+#messageform a{
+	color: #63a14f;
+	text-decoration: underline;
+;
+}
+
 
 /*jquery*/
 /* Component containers
 ----------------------------------*/
-.ui-widget {cursor:pointer;margin-left:10px; margin-top:10px; width: 165px !important; font-family: \\\"Helvetica Neue\\\", Helvetica, Arial, sans-serif; font-size: 15px ; }
+.ui-widget {cursor:pointer; width: 190px !important; font-family: \\\"Helvetica Neue\\\", Helvetica, Arial, sans-serif; font-size: 15px ; }
 .ui-widget .ui-widget { font-size: 1em; }
 .ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button { font-family: \\\"Helvetica Neue\\\", Helvetica, Arial, sans-serif; font-size: 1em; }
 .ui-widget-content {margin-left:0px; margin-top:0px; border: 0px solid #2a2a2a; background: #e8e8e8 url(images/ui-bg_flat_100_e8e8e8_40x100.png) 50% 50% repeat-x; color: #2a2a2a; }
@@ -296,11 +323,11 @@
 
 /* Interaction states
 ----------------------------------*/
-.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default { border: 0px solid #2a2a2a; background: #63a14f; font-weight: bold; color: #2a2a2a; }
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default { border: 0px solid #2a2a2a; background: #63a14f; font-weight: bold; color: #fff; text-shadow: 1px 1px 2px #012b12;}
 .ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited { color: #2a2a2a; text-decoration: none; }
-.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus { border: 0px solid #2a2a2a; background: #63a14f; font-weight: bold; color: #2a2a2a; }
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus { border: 0px solid #2a2a2a; background: #63a14f; font-weight: bold; color: #fff; text-shadow: 1px 1px 2px #012b12;}
 .ui-state-hover a, .ui-state-hover a:hover { color: #2a2a2a; text-decoration: none; }
-.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active { border: 0px solid #2a2a2a; background: #63a14f; font-weight: bold; color: #2a2a2a; }
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active { border: 0px solid #2a2a2a; background: #63a14f; font-weight: bold; color: #fff; }
 .ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited { color: #2a2a2a; text-decoration: none; }
 .ui-widget :active { outline: none; }
 

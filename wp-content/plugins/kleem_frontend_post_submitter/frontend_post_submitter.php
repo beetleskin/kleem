@@ -77,7 +77,7 @@ class FrontendPostSubmitter {
 		        <div class="wrap">   
 		        	<div id="errormessage" class="error">
 	        	    <?php if($data['isLoggedIn'] == false) : ?>
-                        <p>Um eine <strong>neue Meinung</strong> zu erstellen musst du <a href="<?php echo $data['nopriv_redirect']; ?>">eingeloggt</a> sein!</p>
+                        <p>Um ein <strong>neues Argument</strong> zu erstellen müssen Sie <a href="<?php echo $data['nopriv_redirect']; ?>">eingeloggt</a> sein!</p>
                     <?php endif; ?>
 		        	</div>
 		        	
@@ -91,7 +91,7 @@ class FrontendPostSubmitter {
 			        <fieldset form="messageform">
 				        <div class="itemhead"><img class="additional" src="<?php echo $data ["images"]["plus"];  ?>"/><h2>Details/Bild</h2></div>
 				        <div class="itembody" style="display: none;">
-				            <textarea id="description" name="description" placeholder="Es sind noch ein paar Sätze mehr nötig um das Argument näher zu erläutern? Hier ist PLatz dafür (500 Zeichen) ..."></textarea>
+				            <textarea id="description" name="description" placeholder="Es sind noch ein paar Sätze mehr nötig um Ihr Argument näher zu erläutern? Hier ist Platz dafür (500 Zeichen) ..."></textarea>
 				        	<input type="file" id="image_upload" name="message_image" accept="image/*">
 				        </div>
 		        	</fieldset>
@@ -101,7 +101,7 @@ class FrontendPostSubmitter {
 				        <div class="itembody">
 				        	<div class="all_topics_container clearfix">
 					        	<div class="topics_container">
-						        	<h2>Wählen Sie <u>mindestens</u> ein Thema aus:</h2>
+						        	<h2>Bitte ordnen Sie ihrem Argument <u>mindestens</u> eines der folgenden Themen zu:</h2>
 						            <select id="topics" name="topics" multiple="multiple">
 						                
 						                <?php foreach ( $data['topics'] as &$topic ): ?>
@@ -111,7 +111,7 @@ class FrontendPostSubmitter {
 						            </select>
 						  		</div>
 						       	<div class="custom_topics_container">
-						            <h2>Eigene Themen hinzufügen:</h2>
+						            <h2>Ordnen Sie ihrem Argument weitere Themen zu (nach jedem Begriff <a href="http://klimotion.de/wp-content/uploads/2013/04/tab-key.png" target="_blank">Tab</a> bedienen):</h2>
 						            <input type="select" id="custom_topics" name="custom_topics" placeholder="Thema hinzufügen ..."/>
 						        </div>
 						        <p style="clear:both;"></p>
@@ -498,9 +498,9 @@ class FrontendPostSubmitter {
         $postPermaLink = get_post_permalink($postID, false);
         
         $html = '<div id="submitSuccessMessage">';
-        $html .= '<p>Deine Nachricht wurde erfoglreich abgeschickt!</p>';
-        $html .= '<div class="redirect thePost"><a href="' . $postPermaLink . '">Meinung ansehen</a></div>';
-        $html .= '<div class="redirect newMessage"><a href="' . self::$url . '">Neue Meinung schreiben</a></div>';
+        $html .= '<p>Dein Argument wurde erfolgreich abgeschickt!</p>';
+        $html .= '<div class="redirect thePost"><a href="' . $postPermaLink . '">Argument ansehen</a></div>';
+        $html .= '<div class="redirect newMessage"><a href="' . self::$url . '">Neues Argument schreiben</a></div>';
         $html .= '</div>';
         
         return $html;

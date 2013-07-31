@@ -60,7 +60,7 @@ jQuery(function($) { post_submit_form : {
 				minChars : messageform_validation.sub_topic_min_chars,
 				asHtmlID : "custom_topics",
 				startText : "Thema ...",
-				emptyText : "neues Thema mit TAB",
+				emptyText : "Nach jedem Begriff bitte TAB",
 				limitText : "nur maximal " + messageform_validation.custom_topics_max + " Themen sind erlaubt",
 				selectionLimit : messageform_validation.custom_topics_max,
 			};
