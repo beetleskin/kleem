@@ -131,32 +131,184 @@
 	article img.wp-post-image,
 	.archive article img.wp-post-image,
 	.search-results article img.wp-post-image {
-		width: 175px;
+		width: 22.3%;
 		height: auto;
 		margin: 10px 0.7em 0 0;;
 		padding: 0;
 		float: left;
-		clear: left;
 	}
 	
 	
 /* opinion - topics */
 	article.opinion .opinion_topics .opinion_topic_wrap {
 		float: left;
-		background-color: #cb427a;
+		background-color: #63a14f;
 		margin-right: 10px;
 		padding: 3px;
 		margin-top: 10px;
 	}
 }
 
+/*article: type-opinion*/
+
+
+
+article.type-opinion header.entry-header a .entry-title{
+	display: inline;
+	font-size: 1em;
+	line-height: 1.8;
+}
+
+article.type-opinion div.opinion_topics{
+	height: 30px;
+	margin-bottom: 4.5%;
+}
+
+article.type-opinion .opinion_topics .opinion_topic_wrap a{
+	padding:0.6em 0.8em 0.6em 0.8em;
+	font-size: 0.9em;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+
+article.type-opinion .entry-header{
+	float: none;
+}
+
+
+article.type-opinion .rateometer > .agreement {
+	height: 10px;
+	background: #63a14f;
+	margin-top:1em;
+}
+
+article.type-opinion .rateometer > div {
+	float: left;
+}
+
+article.type-opinion .rateometer > .disaffirmation {
+	height: 10px;
+	background: #ebebeb;
+	margin-top:1em;
+}
+
+article.type-opinion  .stats span.disaffirmation{
+	margin-left: 1.6em;
+}
+
+article.type-opinion .stats span.agreement{
+	margin-left: 0.2em;
+}
+
+#primary.site-content #content article.type-opinion footer.entry-meta{
+	height: 75px;
+	background: #fff;
+}
+
+article.type-opinion .ratingbox {
+	float: right;
+	width: 251px;
+	margin: 0 0 0 0;
+	font-size: 11px;
+	font-size: 0.8rem;
+}
+
+article.type-opinion .entry-control .ratingbox {
+	float: right;
+	margin-top: 1em;
+}
+
+
+article.type-opinion .ratingbox div > a {
+	width: 75px;
+	float: left;
+	display: inline;
+	padding: 0.3em 1.5em 0.3em 1.5em;
+	text-align: center;
+	background: #63a14f;
+	text-decoration: none;
+	color: #fff;
+	font-size: 0.9rem;
+}
+
+article.type-opinion .ratingbox .ratebutton.checked a {
+	background: #ebebeb;
+	color: #6a6a6a;
+
+}
+
+article.type-opinion .ratingbox  > a {
+	margin:0;
+}
+
+article.type-opinion .ratingbox .stats {
+	line-height: 2;
+	color: #757575;
+}
+
+
+article.type-opinion .ratingbox div.disaffirmation > a{
+	margin: 0em 0em 0em 1em;
+
+}
+
+article.type-opinion .entry-header .entry-title a{
+	color:#63a14f;
+}
+
+#respond form input[type="text"], #respond form textarea{
+	line-height: normal;
+}
+
+#respond .oneall_social_login {
+	height: 37px;
+	overflow: hidden;
+}
+
+article.type-opinion .article-header h1 a{
+	font-size: 1rem;
+	color: inherit;
+	line-height: normal;
+	text-decoration: none;
+	font-family:'OpenSansRegular', Arial, Helvetica Neue, Helvetica, Verdana, sans-serif;
+}
+
+.archive article.type-opinion h1.h2, 
+.search-results article.type-opinion h1.h2 {
+	line-height: 0.75em;
+}
+
+article.type-opinion .article-footer{
+	clear: both;
+	margin-top: 2%;
+}
+
+article.type-opinion p.byline{
+	margin-top: 2% !important;
+}
+
+article.type-opinion img.wp-post-image, 
+.archive article.type-opinion img.wp-post-image, 
+.search-results article.type-opinion img.wp-post-image{
+	padding: 0 2% 0 0;
+	margin: 0;
+}
+
+article.type-opinion .opinion_topic_wrap a{
+	color: #fff;
+}
 
 @media only screen and (max-width: 769px){
-
+	article img.wp-post-image, .archive article img.wp-post-image, .search-results article img.wp-post-image {
+	width: 26.3%;
+	height: auto;
+	margin: 10px 0.7em 0 0;
+	padding: 0;
+	float: left;
+}
 }
 
 /*Arguments Style*/
 
-article.type-opinion h1{
-	clear: both;
-}
+
