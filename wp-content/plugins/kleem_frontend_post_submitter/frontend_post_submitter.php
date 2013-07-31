@@ -231,6 +231,8 @@ class FrontendPostSubmitter {
             die();
         }
         
+		global $wpdb;
+		
         $error = null;
         $description = wp_strip_all_tags($_POST['description']);
         $message = wp_strip_all_tags($_POST['message']);
@@ -281,6 +283,17 @@ class FrontendPostSubmitter {
 		if( function_exists("kleem_auto_link_text")) {
 			$description = kleem_auto_link_text($description);
 		}
+		
+		// cleate slug
+		$message_array = explode("-", sanitize_title($message));
+		$slug = "";
+		$counter = 6;
+		do {
+			$slug = implode("-", array_slice($message_array, 0, $counter++));
+			$check_sql = "SELECT post_name FROM $wpdb->posts WHERE post_name = %s AND ID != %d LIMIT 1";
+			$post_name_check = $wpdb->get_var( $wpdb->prepare( $check_sql, $slug, $post_ID ) );
+		} while ($post_name_check);
+		
         
 		// insert post
         $post_args = array(
@@ -290,6 +303,7 @@ class FrontendPostSubmitter {
             'post_status'   => 'publish',
             'post_title'    => $message,
             'post_type'     => 'opinion',
+            'post_name'		=> $slug
         );
 
         $postID = wp_insert_post($post_args);
