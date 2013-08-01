@@ -642,7 +642,14 @@ function nav_breadcrumb() {
         $post_type = get_post_type_object(get_post_type());
         $slug = $post_type->rewrite;
         echo '<a href="' . $homeLink . '/' . $slug['slug'] . '/">' . $post_type->labels->singular_name . '</a> ' . $delimiter . ' ';
-        echo $before . get_the_title() . $after;
+		// use slug as breadcrumb title, if title is longer
+		$title = str_replace("-", " ", $post->post_name) . ( (strlen($post->post_title) > strlen($post->post_name) + 10)? " ..." : "");
+        // fallback for posts that have slugs wighout length restriction
+        if(strlen($title) >= 70) {
+			$pos = strpos($title, " ", 60);
+			$title = substr($title, 0, $pos) . " ...";
+		}
+        echo $before . $title . $after;
       } else {
         $cat = get_the_category(); $cat = $cat[0];
         echo get_category_parents($cat, TRUE, ' ' . $delimiter . ' ');
