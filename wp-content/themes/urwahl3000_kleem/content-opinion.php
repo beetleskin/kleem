@@ -22,3 +22,4 @@
 			<?php echo kleem_get_the_ratingbox(); ?>
 		</footer><!-- .entry-meta -->
 	</article><!-- #post -->
+	<div class="clearfix"></div>

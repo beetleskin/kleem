@@ -37,3 +37,4 @@
 	    	<?php if(function_exists('get_twoclick_buttons')) { get_twoclick_buttons(get_the_ID()); }?>
 	    </footer><!-- .entry-control -->
 	</article><!-- #post -->
+	<div class="clearfix"></div>
