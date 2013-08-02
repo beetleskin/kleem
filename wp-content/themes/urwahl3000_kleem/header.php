@@ -87,7 +87,7 @@
 	</head>
 
 	<body <?php body_class(); ?>>
-	
+		
 		<nav class="unsichtbar"><h6>Sprungmarken dieser Website</h6><ul>
 			<li><a href="#content">Direkt zum Inhalt</a></li>
 			<li><a href="#nav-main">Zur Navigation</a></li>
@@ -106,7 +106,13 @@
 					</div><!-- #secondary -->
 				<?php endif; ?>
 			</div>
+		<div id="fb-like-button">
+			<a href="https://www.facebook.com/pages/Harald-Kleem/585914218119717?ref=br_tf">
+				<img src="http://kleem.de/wp-content/uploads/2013/08/facebook_link.png" width="30px" height="30px" border="0">
+			</a>
+		</div>
 		</section>
+		
 			
 
 		<div id="wrap">
