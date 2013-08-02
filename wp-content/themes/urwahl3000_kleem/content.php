@@ -18,7 +18,7 @@
 								<p class="byline"><a href="<?php the_permalink(); ?>" title="Permanenter Verweis zu <?php the_title(); ?>"><time class="updated" datetime="<?php echo the_time('c'); ?>"><?php the_time('j. F Y')?>, um <?php the_time('H:i')?> Uhr</time></a> •  <?php comments_popup_link( 'Keine Kommentare', '1 Kommentar', '% Kommentare', 'comments-link', 'Kommentare sind geschlossen'); ?></p>
 							</header><!-- .article-header -->
 						
-							<?php if (is_singular()): ?>
+							<?php if (is_singular() || is_sticky()): ?>
 							<div class="entry-content clearfix">
 								<?php the_content(); ?>
 							</div><!-- .entry-content -->
