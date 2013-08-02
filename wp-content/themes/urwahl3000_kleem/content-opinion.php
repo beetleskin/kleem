@@ -4,6 +4,7 @@
 			<div class="opinion_topics">
 				<?php echo kleem_get_the_topic_list(get_the_ID()); ?>
 	 		</div><!-- .opinion_topics -->
+	 		<div class="clearfix"></div>
 			<?php if (has_post_thumbnail() ): ?>
 			<div class="article-thumbnail">
 				<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_post_thumbnail('thumbnail'); ?></a>

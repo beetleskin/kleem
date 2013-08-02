@@ -14,6 +14,7 @@
 			<div class="opinion_topics">
 				<?php echo kleem_get_the_topic_list(get_the_ID()); ?>
 	 		</div><!-- .opinion_topics -->
+	 		<div class="clearfix"></div>
 			<?php if (has_post_thumbnail() ): ?>
 				<div class="article-thumbnail">
 					<a class="thickbox" rel="bookmark" title="<?php the_title_attribute(); ?>" href="<?php echo current(wp_get_attachment_image_src( get_post_thumbnail_id(), 'full')); ?>"><?php the_post_thumbnail('thumbnail'); ?></a>
