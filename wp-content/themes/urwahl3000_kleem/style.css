@@ -138,20 +138,23 @@
 		float: left;
 	}
 	
-	
-/* opinion - topics */
-	article.opinion .opinion_topics .opinion_topic_wrap {
-		float: left;
-		background-color: #63a14f;
-		margin-right: 10px;
-		padding: 3px;
-		margin-top: 10px;
-	}
 }
+
+/*thumbs images*/
+.blog .wp-post-image{
+	margin: 1% 2% 0% 0%;
+}
+
 
 /*article: type-opinion*/
 
-
+article.opinion .opinion_topics .opinion_topic_wrap {
+	float: left;
+	background-color: #63a14f;
+	margin: 0 2% 2% 0;
+	padding: 3px;
+	
+}
 
 article.type-opinion header.entry-header a .entry-title{
 	display: inline;
@@ -266,16 +269,17 @@ article.type-opinion .entry-header .entry-title a{
 	overflow: hidden;
 }
 
-article.type-opinion .article-header h1 a{
+article.type-opinion .article-header h1 a,
+article.type-opinion .article-header h1{
 	font-size: 1rem;
 	color: inherit;
 	line-height: normal;
-	text-decoration: none;
 	font-family:'OpenSansRegular', Arial, Helvetica Neue, Helvetica, Verdana, sans-serif;
 }
 
 .archive article.type-opinion h1.h2, 
-.search-results article.type-opinion h1.h2 {
+.search-results article.type-opinion h1.h2,
+ {
 	line-height: 0.75em;
 }
 
@@ -300,13 +304,19 @@ article.type-opinion .opinion_topic_wrap a{
 }
 
 @media only screen and (max-width: 769px){
+/*alle die größe und im backend einstellen!*/
 	article img.wp-post-image, .archive article img.wp-post-image, .search-results article img.wp-post-image {
-	width: 26.3%;
+	width: 23%;
 	height: auto;
 	margin: 10px 0.7em 0 0;
 	padding: 0;
 	float: left;
-}
+	}
+	
+	article.type-opinion div.opinion_topics {
+	height: 100%;
+	margin-bottom: 2.5%;
+	}
 }
 
 /*Arguments Style*/

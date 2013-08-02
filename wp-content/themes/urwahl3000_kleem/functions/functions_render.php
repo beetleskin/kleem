@@ -52,7 +52,7 @@ function kleem_the_colored_title($withLinks = false, $beforeWord = "", $afterWor
             $color = wp_strip_all_tags($term->description);
 
             if( !(strpos($color, "#", 0) === 0) || strlen($color) > 7 ) {
-                $color = "#cb427a";
+                $color = "#63a14f";
             }
             
             
