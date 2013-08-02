@@ -640,11 +640,7 @@ function nav_breadcrumb() {
     } elseif ( is_single() && !is_attachment() ) {
       if ( get_post_type() != 'post' ) {
         $post_type = get_post_type_object(get_post_type());
-        $slug = $post_type->rewrite;
-        echo '<a href="' . $homeLink . '/' . $slug['slug'] . '/">' . $post_type->labels->singular_name . '</a> ' . $delimiter . ' ';
-		// use slug as breadcrumb title, if title is longer
-		$title = str_replace("-", " ", $post->post_name) . ( (strlen($post->post_title) > strlen($post->post_name) + 10)? " ..." : "");
-        // fallback for posts that have slugs wighout length restriction
+		$title = $post->post_title;
         if(strlen($title) >= 70) {
 			$pos = strpos($title, " ", 60);
 			$title = substr($title, 0, $pos) . " ...";
