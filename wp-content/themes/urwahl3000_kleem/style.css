@@ -40,6 +40,12 @@
 #sidebar0 p.sidebar_login_error {
 	position: absolute;
 	top: 40px;
+	color: white;
+}
+
+#sidebar0 p.sidebar_login_error a {
+	text-decoration: underline;
+	color: white;
 }
 
 
@@ -330,7 +336,8 @@ article.type-opinion .opinion_topic_wrap a{
 }
 
 /* fixes */
-#wpmem_login #rememberme {
+#wpmem_login #rememberme,
+#wpmem_reg #tos {
 	width: auto;
 	display: inline;
 }
