@@ -32,6 +32,17 @@
 	font-family: 'OpenSansRegular', Arial, Helvetica Neue, Helvetica, Verdana, sans-serif;
 }
 
+#sidebar0 p.sidebar_login_error,
+#sidebar0 p.sidebar_login_error * {
+	float: none;
+}
+
+#sidebar0 p.sidebar_login_error {
+	position: absolute;
+	top: 40px;
+}
+
+
 @media screen {
 
 }
