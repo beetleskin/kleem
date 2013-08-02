@@ -8,7 +8,13 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title><?php wp_title(''); ?> - <?php bloginfo('name'); ?></title>
+		<title>
+		<?php if( is_home() ): ?>
+			<?php bloginfo('name'); ?>
+		<?php else: ?>
+			<?php wp_title(''); ?> - <?php bloginfo('name'); ?>
+		<?php endif ?>
+		</title>
 
 		<!-- Google Chrome Frame for IE -->
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
