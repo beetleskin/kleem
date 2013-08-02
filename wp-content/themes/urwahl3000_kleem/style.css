@@ -49,12 +49,24 @@
 }
 
 
-@media screen {
-
-}
-
-
 @media only screen and (min-width: 770px){
+	#fb-like-button {
+		width: 30px;
+		height: 30px;
+		margin-left: 10px;
+		margin-top: -4px;
+		background: #0a321e;
+		-webkit-border-radius: 4px;
+		-moz-border-radius: 4px;
+		border-radius: 4px;
+		border: 1px solid white;
+	}
+	
+	#fb-like-button > a {
+		padding: none;
+		display: block;
+	}
+	
 
 /* header - image */	
 	#header.widthimg {
@@ -144,6 +156,12 @@
 		margin-bottom: -6px;
 	}
 	
+/* article */
+.archive #main article, .search-results #main article, 
+.blog #main article {
+	margin-bottom: 0px;
+}
+	
 /* article - thumbnail */
 	article img.wp-post-image,
 	.archive article img.wp-post-image,
@@ -157,6 +175,30 @@
 	
 }
 
+@media only screen and (min-width: 1250px){
+	
+/* fb like-button */
+	#fb-like-button {
+		width: 42px;
+		height: 43px;
+		position: fixed;
+		left: 0;
+		top: 110px;
+		margin: 0px;
+		-webkit-border-left-right-radius: 0px;
+		-webkit-border-bottom-left-radius: 0px;
+		-moz-border-radius-topleft: 0px;
+		-moz-border-radius-bottomleft: 0px;
+		border-top-left-radius: 0px;
+		border-bottom-left-radius: 0px;
+		border: none;
+	}
+	
+	#fb-like-button > a {
+		padding: 5px 6px 3px 1px;
+	}
+	
+}
 
 /*thumbs images*/
 .blog .wp-post-image{
@@ -164,9 +206,8 @@
 }
 
 
-/*article: type-opinion*/
 
-article.opinion .opinion_topics .opinion_topic_wrap {
+article.type-opinion .opinion_topics .opinion_topic_wrap {
 	float: left;
 	background-color: #63a14f;
 	margin: 0 2% 2% 0;
@@ -180,16 +221,9 @@ article.type-opinion header.entry-header a .entry-title{
 	line-height: 1.8;
 }
 
-article.type-opinion div.opinion_topics{
-	margin-bottom: 4.5%;
-}
-
 article.type-opinion .opinion_topics .opinion_topic_wrap a{
 	padding:0.6em 0.8em 0.6em 0.8em;
 	font-size: 0.9em;
-	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
-	border-radius: 3px;
 }
 
 article.type-opinion .entry-header{
