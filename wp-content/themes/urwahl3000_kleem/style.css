@@ -329,6 +329,14 @@ article.type-opinion .opinion_topic_wrap a{
 	}
 }
 
-/*Arguments Style*/
+/* fixes */
+#wpmem_login #rememberme {
+	width: auto;
+	display: inline;
+}
+
+#wpmem_login .button_div {
+	margin-bottom: 5%;
+}
 
 
