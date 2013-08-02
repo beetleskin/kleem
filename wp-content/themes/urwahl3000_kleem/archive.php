@@ -1,26 +1,30 @@
 			<?php get_header(); ?>	
 			<div id="main" class="ninecol first clearfix" role="main">
 				
-					    <?php if (is_category()) { ?>
+					    <?php if ( is_category() ): ?>
 						    <div class="archive-title">
-						    <h1 class="h2"><?php single_cat_title(); ?></h1>
-						    <?php echo category_description(); ?>
+							    <h1 class="h2"><?php single_cat_title(); ?></h1>
+							    <?php echo category_description(); ?>
 						    </div>
-					    <?php } elseif (is_tag()) { ?> 
-						    <h1 class="archive-title h2"><?php single_tag_title(); ?></h1>
-					    
-					    <?php } elseif (is_author()) { 
-					    	global $post;
-					    	$author_id = $post->post_author;
-					    ?>
+					    <?php  elseif (is_tag()): ?> 
 						    <h1 class="archive-title h2">
-
-						    	<span><?php echo get_the_author_meta('display_name', $author_id); ?>
-
+						    	<?php single_tag_title(); ?>
 						    </h1>
-
-					    <?php } ?>
-
+						<?php  elseif (is_post_type_archive()): ?>
+							<div class="archive-title">
+							    <h1 class="h2"><?php echo get_post_type_object(get_post_type())->labels->name; ?></h1>
+						    </div>
+					    <?php elseif (is_author()): ?>
+					    	<?php  
+						    	global $post;
+						    	$author_id = $post->post_author;
+					    	?>
+						    <h1 class="archive-title h2">
+						    	<span><?php echo get_the_author_meta('display_name', $author_id); ?>
+						    </h1>
+						<?php endif ?>
+						
+						
 					    <?php if (have_posts()): ?>
 					
 					    		

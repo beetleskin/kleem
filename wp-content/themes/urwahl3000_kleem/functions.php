@@ -107,7 +107,7 @@ function kleem_filter($query) {
 		$query_custom_vars = array(
 			'post_type'			=> 'opinion',
 			'post_status'		=> 'publish',
-			'order' 			=> 'DESC',
+			'order' 			=> 'ASC',
 			'orderby'		 	=> 'meta_value_num', 
 			'posts_per_page' 	=> 10);
 		
