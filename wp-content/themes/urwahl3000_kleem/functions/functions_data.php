@@ -7,19 +7,19 @@
 function kleem_register_pt_opinion()  {
     
     $post_type_labels = array(
-        'name' =>               _x('Meinungen', 'post type general name'),
-        'singular_name' =>      _x('Meinung', 'post type singular name'),
-        'add_new' =>            _x('Meinung hinzufügen', ''),
-        'add_new_item' =>       __('Meinung Hinzufügen'),
-        'edit_item' =>          __('Meinung Editieren'),
-        'new_item' =>           __('Neue Meinung'),
-        'all_items' =>          __('Alle Meinungen'),
-        'view_item' =>          __('Meinung Ansehen'),
-        'search_items' =>       __('Meinungen Suchen'),
-        'not_found' =>          __('Keine Meinung gefunden!'),
-        'not_found_in_trash' => __('Keine Meinungen im Papierkorb'), 
+        'name' =>               _x('Argumente', 'post type general name'),
+        'singular_name' =>      _x('Argument', 'post type singular name'),
+        'add_new' =>            _x('Argument hinzufügen', ''),
+        'add_new_item' =>       __('Argument Hinzufügen'),
+        'edit_item' =>          __('Argument Editieren'),
+        'new_item' =>           __('Neue Argument'),
+        'all_items' =>          __('Alle Argumente'),
+        'view_item' =>          __('Argument Ansehen'),
+        'search_items' =>       __('Argumente Suchen'),
+        'not_found' =>          __('Keine Argument gefunden!'),
+        'not_found_in_trash' => __('Keine Argumente im Papierkorb'), 
         'parent_item_colon' =>  '',
-        'menu_name' => 			'Meinungen'
+        'menu_name' => 			'Alle Argumente'
     );
     
     $post_type_args = array(
