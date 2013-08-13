@@ -7,6 +7,24 @@ function kr8_childtheme() {
     	wp_register_style( 'kr8-childtheme', get_stylesheet_directory_uri() . '/style.css', array('kr8-stylesheet'), '', 'all' );
     	wp_enqueue_style( 'kr8-childtheme' );
 	}
+	
+
+	// wp thumbnails
+	add_theme_support('post-thumbnails');
+
+	// default thumb size
+	set_post_thumbnail_size(150, 150, true);
+	add_image_size( 'medium', 540, 370,true );
+	add_image_size( 'large', 1024, 768, true );
+	
+	
+	
+	update_option('thumbnail_size_w', 175);
+	update_option('thumbnail_size_h', 175);
+	update_option('medium_size_w', 540);
+	update_option('medium_size_h', 370);
+	update_option('large_size_w', 1024);
+	update_option('large_size_h', 768);
 }
 
 
@@ -24,7 +42,6 @@ add_filter('pre_get_posts', 'kleem_filter');
 
 
 /* front end action hooks */
-add_filter('created_klimo_idea_topics', 'kleem_add_idea_menu_term_item_hook');
 add_filter('sidebar_login_widget_logged_out_links', 'kleem_sidebar_login_loggedout_links_hook');
 add_filter('sidebar_login_widget_logged_in_links', 'kleem_sidebar_login_loggedin_links_hook');
 add_filter('login_url', 'kleem_override_login_page', 10, 2);

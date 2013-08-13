@@ -18,7 +18,6 @@
 		
 		
 		<footer class="article-footer">
-		    <?php echo kleem_get_the_commentbox(); ?>
 			<?php echo kleem_get_the_ratingbox(); ?>
 		</footer><!-- .entry-meta -->
 	</article><!-- #post -->

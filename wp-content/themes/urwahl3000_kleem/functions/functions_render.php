@@ -124,32 +124,6 @@ function kleem_get_the_topic_list($id = 0, $sep = "") {
 }
 
 
-function kleem_get_the_commentbox($postID = 0) {
-    if($postID == 0) {
-        $postID = get_the_ID();
-        
-        if(! isset($postID)) {
-            return "";
-        }
-    }
-    
-    
-    $html = "";
-    $commentCount = get_comments_number($postID);
-    
-    
-    if ( $commentCount > 0 ) {
-        $html .= '<div class="comment_box">';
-        $html .= '<a class="comment_number" href="' . get_permalink() . '">' . $commentCount . '</a>';
-        $html .= '</div>';
-    }
-    
-    
-    return $html;
-    
-}
-
-
 function kleem_get_the_ratingbox($postID = 0, $userID = 0) {
     if($postID == 0) {
         $postID = get_the_ID();
