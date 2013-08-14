@@ -118,13 +118,13 @@ function kleem_filter($query) {
 	
 	// handle custom request params
 	if ( isset($query->query_vars['opinion_custom']) && !empty($query->query_vars['opinion_custom']) ) {
-		$custom_request = $query -> query_vars['opinion_custom'];
+		$custom_request = $query->query_vars['opinion_custom'];
 
 		// reset everything else
 		$query_custom_vars = array(
 			'post_type'			=> 'opinion',
 			'post_status'		=> 'publish',
-			'order' 			=> 'ASC',
+			'order' 			=> 'DESC',
 			'orderby'		 	=> 'meta_value_num', 
 			'posts_per_page' 	=> 10);
 		
@@ -191,17 +191,14 @@ function kleem_override_login_page($login_url, $redirect) {
 	return $wpm_login_url;
 }
 
-function kleem_override_register_page($register_url, $redirect) {
+function kleem_override_register_page($register_url) {
 	$wpm_register_url = get_permalink(get_page_by_path( 'wpm_register' ) );
 	
 	if(!$wpm_register_url) {
-		// TODO: log error
+		// TODO: log and handle error
 		return $register_url;
 	}
 	
-	if ( !empty($redirect) )
-		$wpm_register_url = add_query_arg('redirect_to', urlencode($redirect), $wpm_register_url);	
-
 	return $wpm_register_url;
 }
 
